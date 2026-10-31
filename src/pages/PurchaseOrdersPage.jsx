@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Search, Plus, CheckCircle, AlertTriangle, Package, Edit2, FileText } from 'lucide-react';
-import { SUPPLIERS, PURCHASE_ORDERS, PRODUCTS, STOCK_MOVEMENTS, QUOTATIONS, RETURNS, APP_SETTINGS, fmt, newPoId, newSmId, newQuoteId, getSupplier, today, newestFirst } from '../data/store';
+import { SUPPLIERS, PURCHASE_ORDERS, PRODUCTS, STOCK_MOVEMENTS, QUOTATIONS, RETURNS, REORDER_REQUESTS, APP_SETTINGS, fmt, newPoId, newSmId, newQuoteId, getSupplier, today, newestFirst } from '../data/store';
 import { useToast } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
 import { format, addDays } from 'date-fns';
@@ -195,7 +195,11 @@ export default function PurchaseOrdersPage() {
   const toast = useToast();
   const { user, canDo } = useAuth();
   // Show the Actions column only to roles that can approve, edit or receive purchase orders
-  const showActions = canDo('po.approve') || canDo('po.edit') || canDo('po.receive') || canDo('po.remind') || canDo('po.approveEscalated');
+  // buttons this role can use on an order
+  const poHasActions = (po) => (po.status === 'draft' && (canDo('po.approve') || canDo('po.edit'))) ||
+    (po.status === 'escalated' && canDo('po.approveEscalated')) ||
+    (['approved', 'ordered', 'partial'].includes(po.status) && canDo('po.remind')) ||
+    (['approved', 'ordered', 'flagged'].includes(po.status) && canDo('po.receive'));
   const [quotePrice, setQuotePrice] = useState({});
   const [orders, setOrders] = useState(() => [...PURCHASE_ORDERS]);
   const [q, setQ] = useState('');
@@ -213,11 +217,14 @@ export default function PurchaseOrdersPage() {
   const [receiving, setReceiving] = useState(null);
   const [tab, setTab] = useState('orders');
 
+  let showActions = false;
   const filtered = orders.filter(po => {
     const sup = SUPPLIERS.find(s => s.id === po.supplierId);
     return (statusFilter === 'all' || po.status === statusFilter) &&
       (po.id.toLowerCase().includes(q.toLowerCase()) || sup?.name.toLowerCase().includes(q.toLowerCase()));
   });
+  // the Actions column shows only when at least one listed order has a button for this role
+  showActions = filtered.some(poHasActions);
 
   const statusBadge = (s) => {
     const map = { draft:'gray', approved:'primary', ordered:'accent', partial:'warning', escalated:'warning', received:'success', cancelled:'danger', flagged:'danger' };
@@ -236,16 +243,18 @@ export default function PurchaseOrdersPage() {
   const handleSave = ({ supplierId, expectedDate, lines, grandTotal, quotationId, urgent }) => {
     const items = lines.map(l => ({ ...l, total: l.qty * l.unitCost }));
     if (modal?.id) {
-      saveOrder({ ...modal, supplierId, expectedDate, items, subtotal: grandTotal, grandTotal, quotationId, urgent });
+      saveOrder({ ...modal, supplierId, expectedDate, items, subtotal: grandTotal, tax: 0, grandTotal, quotationId, urgent });
       toast.success(`Purchase order ${modal.id} updated`);
     } else {
       const po = {
         id: newPoId(), supplierId, date: format(new Date(),'yyyy-MM-dd'), expectedDate, items,
-        subtotal: grandTotal, grandTotal, quotationId, urgent,
+        subtotal: grandTotal, tax: 0, grandTotal, quotationId, urgent,
         status: 'draft', payableStatus: 'none', createdBy: user?.id, approvedBy: null,
       };
       saveOrder(po);
       if (quotationId) { const q = QUOTATIONS.find(x => x.id === quotationId); if (q) q.status = 'accepted'; }
+      // open stock alerts for these products are now handled by this order (stock_alert.is_resolved)
+      REORDER_REQUESTS.filter(a => a.status === 'open' && items.some(it => it.productId === a.productId)).forEach(a => { a.status = 'closed'; a.poId = po.id; });
       toast.success(`Purchase order ${po.id} saved as draft — approve it to send to the supplier`);
     }
     setModal(null);
@@ -342,17 +351,18 @@ export default function PurchaseOrdersPage() {
       {tab === 'reorder' && (
         <div className="table-container">
           <table className="table">
-            <thead><tr><th>Product</th><th>Exchanges</th><th>Stock / Min</th><th>Supplier</th><th>Priority</th><th></th></tr></thead>
+            <thead><tr><th>Product</th><th>Exchanges</th><th>Stock / Min</th><th>Supplier</th><th>Priority</th>{canDo('po.reorder') && <th>Actions</th>}</tr></thead>
             <tbody>
               {reorderList.length === 0 && <tr><td colSpan={6}><div className="empty-state"><div className="empty-state-title">Nothing to reorder</div></div></td></tr>}
               {reorderList.map(r => (
                 <tr key={r.p.id}>
                   <td style={{ fontWeight:600 }}>{r.p.emoji} {r.p.name}</td>
-                  <td>{r.exchanges > 0 ? <span className="badge badge-warning">{r.exchanges} exchange{r.exchanges!==1?'s':''}</span> : '—'}</td>
+                  <td>{r.exchanges > 0 ? <span className="badge badge-warning">{r.exchanges} exchange{r.exchanges!==1?'s':''}</span> : '—'}
+                    {REORDER_REQUESTS.some(a => a.productId === r.p.id && a.status === 'open') && <span className="badge badge-danger" style={{ marginLeft:6 }}>🔔 Stock alert</span>}</td>
                   <td style={{ fontFamily:'var(--font-mono)', color: r.low ? 'var(--danger-400)' : 'inherit' }}>{r.p.stock} / {r.p.minStock}</td>
                   <td style={{ fontSize:13 }}>{getSupplier(r.p.supplierId)?.name}</td>
                   <td>{r.exchanges > 0 && r.low ? <span className="badge badge-danger">Urgent</span> : <span className="badge badge-gray">Normal</span>}</td>
-                  <td>{canDo('po.reorder') && <button className="btn btn-primary btn-sm" onClick={() => startReorder(r)}><Plus size={13}/> Create PO</button>}</td>
+                  {canDo('po.reorder') && <td><button className="btn btn-primary btn-sm" onClick={() => startReorder(r)}><Plus size={13}/> Create PO</button></td>}
                 </tr>
               ))}
             </tbody>

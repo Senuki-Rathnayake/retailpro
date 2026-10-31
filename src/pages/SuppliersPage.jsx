@@ -5,7 +5,7 @@ import { useToast } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
 
 function SupplierModal({ supplier, onClose, onSave }) {
-  const [form, setForm] = useState(supplier || { name:'', contact:'', phone:'', email:'', paymentTerms:30, rating:4 });
+  const [form, setForm] = useState(supplier || { name:'', contact:'', phone:'', email:'', address:'', paymentTerms:30, leadTime:7, rating:4 });
   const set = (k,v) => setForm(f=>({...f,[k]:v}));
   return (
     <div className="modal-overlay" onClick={e=>e.target===e.currentTarget&&onClose()}>
@@ -37,6 +37,16 @@ function SupplierModal({ supplier, onClose, onSave }) {
             <div className="form-group">
               <label className="form-label">Payment Terms (days)</label>
               <input id="sup-terms" className="form-input" type="number" min={0} max={180} value={form.paymentTerms} onChange={e=>set('paymentTerms',+e.target.value)} />
+            </div>
+          </div>
+          <div className="form-row-2">
+            <div className="form-group">
+              <label className="form-label">Lead Time (days)</label>
+              <input id="sup-lead" className="form-input" type="number" min={0} max={365} value={form.leadTime ?? ''} onChange={e=>set('leadTime', e.target.value === '' ? null : +e.target.value)} />
+            </div>
+            <div className="form-group">
+              <label className="form-label">Address</label>
+              <input id="sup-address" className="form-input" value={form.address || ''} onChange={e=>set('address',e.target.value)} placeholder="Street, City" />
             </div>
           </div>
         </div>
@@ -187,6 +197,8 @@ export default function SuppliersPage() {
               <span style={{ display:'flex', gap:8, color:'var(--text-secondary)' }}><Building size={13}/>{s.contact}</span>
               <span style={{ display:'flex', gap:8, color:'var(--text-secondary)' }}><Phone size={13}/>{s.phone}</span>
               <span style={{ display:'flex', gap:8, color:'var(--text-secondary)' }}><Mail size={13}/>{s.email}</span>
+              {s.address && <span style={{ display:'flex', gap:8, color:'var(--text-secondary)' }}>📍 {s.address}</span>}
+              {s.leadTime != null && <span style={{ display:'flex', gap:8, color:'var(--text-secondary)' }}>🚚 Lead time {s.leadTime} days</span>}
             </div>
 
             <StarRating rating={s.rating} />

@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { USERS, ROLES, AUDIT_LOG, newAuditId } from '../data/store';
+import { USERS, ROLES, AUDIT_LOG, newAuditId, pagesOf, setRolePages, permissionsChangedOn, isValidPhone } from '../data/store';
 import { Plus, Shield, Lock, Unlock, Search, Edit2, Trash2, KeyRound, UserPlus } from 'lucide-react';
 import { useToast } from '../context/ToastContext';
-import { PERMISSIONS, useAuth } from '../context/AuthContext';
+import { useAuth } from '../context/AuthContext';
 import { createStaffAccount } from '../lib/staffAccounts';
 import { format } from 'date-fns';
 
@@ -16,15 +16,33 @@ const PAGE_PERMISSIONS = [
   ['users', 'Users & Roles'], ['settings', 'Settings'],
 ];
 
+// Technician skills (multivalued attribute -> technician_specialisation table)
+const SKILLS = ['installation', 'repair', 'maintenance'];
+const ACCESS_LEVELS = [['full', 'Full access'], ['standard', 'Standard'], ['read-only', 'Read only']];
+const CERT_LEVELS = ['Level 1 – Trainee', 'Level 2 – Technician', 'Level 3 – Senior Technician'];
+
 function UserModal({ user, onClose, onSave, saving }) {
   const [form, setForm] = useState(user || {
     name: '',
+    username: '',
     email: '',
+    phone: '',
+    department: '',
+    accessLevel: 'standard',
     password: '123456',
     role: 'sales',
     avatar: '🧑‍💼',
-    active: true
+    active: true,
+    skills: [...SKILLS],
+    certification: CERT_LEVELS[1],
+    zone: '',
   });
+  const toggleSkill = (sk) => setForm(f => {
+    const cur = f.skills || [];
+    return { ...f, skills: cur.includes(sk) ? cur.filter(x => x !== sk) : [...cur, sk] };
+  });
+  const phoneOk = !form.phone || isValidPhone(form.phone);
+  const skillsOk = form.role !== 'technician' || (form.skills || []).length > 0;
 
   const set = (k, v) => setForm(f => ({ ...f, [k]: v }));
 
@@ -77,6 +95,31 @@ function UserModal({ user, onClose, onSave, saving }) {
 
           <div className="form-row-2">
             <div className="form-group">
+              <label className="form-label">Username</label>
+              <input id="user-username" className="form-input" value={form.username || ''} onChange={e => set('username', e.target.value.replace(/\s/g, ''))} placeholder="e.g. kamal.p" />
+            </div>
+            <div className="form-group">
+              <label className="form-label">Phone</label>
+              <input id="user-phone" className="form-input" value={form.phone || ''} onChange={e => set('phone', e.target.value)} placeholder="07X XXX XXXX" />
+              {!phoneOk && <div style={{ color: 'var(--danger-400)', fontSize: 11.5, marginTop: 4 }}>Enter a valid Sri Lankan phone number</div>}
+            </div>
+          </div>
+
+          <div className="form-row-2">
+            <div className="form-group">
+              <label className="form-label">Department</label>
+              <input id="user-department" className="form-input" value={form.department || ''} onChange={e => set('department', e.target.value)} placeholder="e.g. Sales, Stores, Service" />
+            </div>
+            <div className="form-group">
+              <label className="form-label">Access Level</label>
+              <select id="user-access" className="form-select" value={form.accessLevel || 'standard'} onChange={e => set('accessLevel', e.target.value)}>
+                {ACCESS_LEVELS.map(([v, l]) => <option key={v} value={v}>{l}</option>)}
+              </select>
+            </div>
+          </div>
+
+          <div className="form-row-2">
+            <div className="form-group">
               <label className="form-label">Role Assignment *</label>
               <select
                 id="user-role"
@@ -112,12 +155,46 @@ function UserModal({ user, onClose, onSave, saving }) {
               </div>
             </div>
           </div>
+
+          {form.role === 'technician' && (
+            <div className="card" style={{ padding: 12, marginTop: 4 }}>
+              <div className="form-group">
+                <label className="form-label">Skills (specialisations) *</label>
+                <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+                  {SKILLS.map(sk => (
+                    <label key={sk} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, textTransform: 'capitalize' }}>
+                      <input id={`user-skill-${sk}`} type="checkbox" checked={(form.skills || []).includes(sk)} onChange={() => toggleSkill(sk)} /> {sk}
+                    </label>
+                  ))}
+                </div>
+                {!skillsOk && <div style={{ color: 'var(--danger-400)', fontSize: 11.5, marginTop: 4 }}>Choose at least one skill</div>}
+              </div>
+              <div className="form-row-2">
+                <div className="form-group">
+                  <label className="form-label">Certification Level</label>
+                  <select id="user-cert" className="form-select" value={form.certification || ''} onChange={e => set('certification', e.target.value)}>
+                    <option value="">– Not set –</option>
+                    {CERT_LEVELS.map(c => <option key={c} value={c}>{c}</option>)}
+                  </select>
+                </div>
+                <div className="form-group">
+                  <label className="form-label">Assigned Zone</label>
+                  <input id="user-zone" className="form-input" value={form.zone || ''} onChange={e => set('zone', e.target.value)} placeholder="e.g. Colombo North" />
+                </div>
+              </div>
+            </div>
+          )}
+          {user?.createdAt && (
+            <div style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 8 }}>
+              Account created {String(user.createdAt).slice(0, 10)} · last sign-in {user.lastLogin ? String(user.lastLogin).slice(0, 16).replace('T', ' ') : 'never'}
+            </div>
+          )}
         </div>
         <div className="modal-footer">
           <button className="btn btn-outline" onClick={onClose}>Cancel</button>
           <button
             className="btn btn-primary"
-            disabled={saving || !form.name || !form.email || (!user && (form.password || '').length < 6)}
+            disabled={saving || !form.name || !form.email || !phoneOk || !skillsOk || (!user && (form.password || '').length < 6)}
             onClick={() => onSave(form)}
           >
             {saving ? 'Saving…' : user ? 'Save Changes' : 'Create User'}
@@ -138,7 +215,8 @@ export default function UsersPage() {
   const [saving, setSaving] = useState(false);
 
   const [permDraft, setPermDraft] = useState(() =>
-    Object.fromEntries(Object.keys(ROLES).map(k => [k, [...(PERMISSIONS[k] || [])]])));
+    Object.fromEntries(Object.keys(ROLES).map(k => [k, pagesOf(k)])));
+  const [, setSavedTick] = useState(0);
 
   const togglePerm = (role, perm) => setPermDraft(d => ({
     ...d, [role]: d[role].includes(perm) ? d[role].filter(p => p !== perm) : [...d[role], perm],
@@ -156,7 +234,8 @@ export default function UsersPage() {
 
   const savePerms = (role) => {
     if (ROLES[role]?.active === false) { toast.error('Selected role is not active'); return; }
-    PERMISSIONS[role].splice(0, PERMISSIONS[role].length, ...permDraft[role]);
+    setRolePages(role, permDraft[role]);   // saved to the role_permission table
+    setSavedTick(t => t + 1);
     AUDIT_LOG.unshift({
       id: newAuditId(), action: 'PERMISSIONS_UPDATED', userId: me?.id,
       detail: `Permissions for ${ROLES[role]?.label || role} updated (${permDraft[role].length} pages)`,
@@ -208,8 +287,9 @@ export default function UsersPage() {
         authId: res.authId,
         avatar: '👤',
         active: true,
-        ...(form.role === 'technician' ? { skills: ['repair', 'installation', 'maintenance'] } : {}),
+        createdAt: new Date().toISOString(),
       };
+      if (newU.role !== 'technician') { delete newU.skills; delete newU.certification; delete newU.zone; }
       delete newU.password;
       USERS.push(newU);
       setUsers(us => [...us, newU]);
@@ -226,7 +306,7 @@ export default function UsersPage() {
     } else {
       const updated = { ...modal, ...form };
       delete updated.password;
-      if (updated.role === 'technician' && !updated.skills) updated.skills = ['repair', 'installation', 'maintenance'];
+      if (updated.role === 'technician' && !updated.skills?.length) updated.skills = [...SKILLS];
       setUsers(us => us.map(u => u.id === modal.id ? updated : u));
       const i = USERS.findIndex(u => u.id === modal.id);
       if (i !== -1) USERS[i] = updated;
@@ -317,7 +397,7 @@ export default function UsersPage() {
                     <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                       <span style={{ fontSize: 24 }}>{u.avatar}</span>
                       <div>
-                        <div style={{ fontWeight: 600, color: 'var(--text-primary)' }}>{u.name}</div>
+                        <div style={{ fontWeight: 600, color: 'var(--text-primary)' }}>{u.name}{u.username && <span style={{ fontWeight: 400, fontSize: 12, color: 'var(--text-muted)' }}> · @{u.username}</span>}</div>
                         <div style={{ fontSize: 11.5, color: 'var(--text-muted)' }}>{u.department || (u.role === 'technician' && u.skills?.length ? u.skills.join(', ') : ROLES[u.role]?.label)}</div>
                       </div>
                     </div>
@@ -407,7 +487,8 @@ export default function UsersPage() {
             {Object.entries(ROLES).map(([key, role]) => {
               const roleUsers = USERS.filter(u => u.role === key);
               const current = permDraft[key] || [];
-              const changed = current.slice().sort().join() !== (PERMISSIONS[key] || []).slice().sort().join();
+              const changed = current.slice().sort().join() !== pagesOf(key).slice().sort().join();
+              const since = permissionsChangedOn(key);
               return (
                 <div key={key} className="card-elevated" style={{ padding: 20 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
@@ -441,9 +522,12 @@ export default function UsersPage() {
                       );
                     })}
                   </div>
-                  <button className="btn btn-primary btn-sm" disabled={!changed} onClick={() => savePerms(key)}>
-                    Save permissions
-                  </button>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
+                    <button id={`perm-save-${key}`} className="btn btn-primary btn-sm" disabled={!changed} onClick={() => savePerms(key)}>
+                      Save permissions
+                    </button>
+                    {since && <span style={{ fontSize: 11.5, color: 'var(--text-muted)' }}>Last granted {since}</span>}
+                  </div>
                 </div>
               );
             })}

@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Search, Eye, Package, TrendingDown, TrendingUp, AlertTriangle, BarChart2, Edit2, Plus, Trash2, ShieldCheck, BellRing, CheckCircle2 } from 'lucide-react';
-import { PRODUCTS, CATEGORIES, SUPPLIERS, STOCK_MOVEMENTS, SALES_ORDERS, PURCHASE_ORDERS, SERVICE_JOBS, BATCHES, getLowStockProducts, fmt, newSmId, newProductId, lowStockFirst, newestFirst } from '../data/store';
+import { PRODUCTS, CATEGORIES, SUPPLIERS, STOCK_MOVEMENTS, SALES_ORDERS, PURCHASE_ORDERS, SERVICE_JOBS, BATCHES, REORDER_REQUESTS, getLowStockProducts, newReorderId, fmt, newSmId, newProductId, lowStockFirst, newestFirst } from '../data/store';
 import { useToast } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
 import { format } from 'date-fns';
-import { ReceivePurchaseTab, BatchesTab, VerifyStockModal, SparePartsTab } from '../components/StockExtras';
+import { ReceivePurchaseTab, BatchesTab, VerifyStockModal, SparePartsTab, CategoriesTab } from '../components/StockExtras';
 
 function ProductModal({ product, onClose, onSave }) {
   const [form, setForm] = useState(product || {
@@ -20,6 +20,8 @@ function ProductModal({ product, onClose, onSave }) {
     serial: true,
     warranty: 12,
     supplierId: 'SUP001',
+    condition: 'new',
+    description: '',
     emoji: '📦'
   });
 
@@ -129,6 +131,22 @@ function ProductModal({ product, onClose, onSave }) {
             </div>
           </div>
 
+          <div className="form-row-2">
+            <div className="form-group">
+              <label className="form-label">Description</label>
+              <textarea id="prod-description" className="form-textarea" rows={2} value={form.description || ''} onChange={e => set('description', e.target.value)} placeholder="Short description of the product" />
+            </div>
+            <div className="form-group">
+              <label className="form-label">Condition</label>
+              <select id="prod-condition" className="form-select" value={form.condition || 'new'} onChange={e => set('condition', e.target.value)}>
+                <option value="new">New</option>
+                <option value="refurbished">Refurbished</option>
+                <option value="open-box">Open box</option>
+                <option value="used">Used</option>
+              </select>
+            </div>
+          </div>
+
           <div style={{ marginTop: 8 }}>
             <label style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', fontSize: 13, color: 'var(--text-secondary)' }}>
               <input
@@ -225,7 +243,7 @@ function AdjustModal({ product, onClose, onSave }) {
 
 export default function StockPage() {
   const toast = useToast();
-  const { user, canDo } = useAuth();
+  const { user, canDo, can } = useAuth();
   // Show the Actions column only to roles that have at least one stock action
   const showActions = canDo('stock.adjust') || canDo('product.edit') || canDo('product.delete');
   const [q, setQ] = useState('');
@@ -278,6 +296,7 @@ export default function StockPage() {
       type,
       qty: Math.abs(qty),
       ref: serialBatch ? `TAG:${serialBatch}` : 'ADJ',
+      batchId: (serialBatch && BATCHES.find(b => b.productId === p.id && b.batchNo.toLowerCase() === serialBatch.trim().toLowerCase())?.id) || null,
       note: note + (serialBatch ? ` (Batch: ${serialBatch})` : ''),
       date: format(new Date(), 'yyyy-MM-dd'),
       userId: user?.id
@@ -336,7 +355,15 @@ export default function StockPage() {
   const triggerLowStockAlert = () => {
     const lowItems = getLowStockProducts();
     if (lowItems.length > 0) {
-      toast.warning(`Low-Stock Alert Triggered: ${lowItems.length} items are at or below minimum safety levels!`);
+      // one stock_alert row per low product (Purchasing sees it on the reorder list)
+      let added = 0;
+      lowItems.forEach(p => {
+        if (REORDER_REQUESTS.some(a => a.productId === p.id && a.status === 'open')) return;
+        REORDER_REQUESTS.push({ id: newReorderId(), alertType: 'low_stock', productId: p.id, qty: p.minStock,
+          requestDate: format(new Date(), 'yyyy-MM-dd'), status: 'open', raisedBy: user?.id });
+        added++;
+      });
+      toast.warning(`Low-Stock Alert Triggered: ${lowItems.length} items are at or below minimum safety levels!${added ? ` ${added} new alert${added > 1 ? 's' : ''} sent to Purchasing.` : ''}`);
     } else {
       toast.success('All inventory items are currently above safety thresholds.');
     }
@@ -403,6 +430,7 @@ export default function StockPage() {
           {canDo('stock.receive') && <button id="tab-receive" className={`tab-btn ${activeTab === 'receive' ? 'active' : ''}`} onClick={() => setActiveTab('receive')}>📥 Receive Purchase</button>}
           <button id="tab-batches" className={`tab-btn ${activeTab === 'batches' ? 'active' : ''}`} onClick={() => setActiveTab('batches')}>🏷️ Batches</button>
           <button id="tab-spares" className={`tab-btn ${activeTab === 'spares' ? 'active' : ''}`} onClick={() => setActiveTab('spares')}>🔧 Spare Parts</button>
+          {can('categories') && <button id="tab-categories" className={`tab-btn ${activeTab === 'categories' ? 'active' : ''}`} onClick={() => setActiveTab('categories')}>🗂️ Categories</button>}
         </div>
         <div style={{ marginLeft: 'auto', display: 'flex', gap: 10, flexWrap: 'wrap' }}>
           <div className="search-bar">
@@ -571,6 +599,7 @@ export default function StockPage() {
 
       {activeTab === 'receive' && <ReceivePurchaseTab toast={toast} user={user} onChange={reload} />}
       {activeTab === 'batches' && <BatchesTab toast={toast} canMark={canDo('stock.batch')} />}
+      {activeTab === 'categories' && <CategoriesTab toast={toast} canEdit={canDo('product.add')} />}
       {activeTab === 'spares' && <SparePartsTab toast={toast} user={user} canIssue={canDo('service.issueParts')} canManage={canDo('product.obsolete')} onChange={reload} />}
       {verifying && <VerifyStockModal toast={toast} user={user} onClose={() => setVerifying(false)} onChange={reload} />}
 

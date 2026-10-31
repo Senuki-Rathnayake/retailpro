@@ -111,7 +111,7 @@ export default function InvoicesPage() {
       <div className="table-container">
         <table className="table">
           <thead>
-            <tr><th>Invoice #</th><th>Customer</th><th>Date</th><th>Items</th><th>Grand Total</th><th>Paid</th><th>Balance</th><th>Status</th><th>Actions</th></tr>
+            <tr><th>Invoice #</th><th>Customer</th><th>Date</th><th>Items</th><th>Grand Total</th><th>Paid</th><th>Balance</th><th>Status</th><th>View</th></tr>
           </thead>
           <tbody>
             {newestFirst(filtered).map(o => {

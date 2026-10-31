@@ -11,6 +11,8 @@ import { format } from 'date-fns';
 function CheckoutModal({ cart, customer, onClose, onConfirm }) {
   const [method, setMethod] = useState('cash');
   const [isCreditSale, setIsCreditSale] = useState(false);
+  const [delivery, setDelivery] = useState(false);
+  const [installation, setInstallation] = useState(false);
   const [amountPaid, setAmountPaid] = useState(cart.reduce((s,i)=>s+i.total,0));
   const [discount, setDiscount] = useState(0);
   const [promoCode, setPromoCode] = useState('');
@@ -91,6 +93,17 @@ function CheckoutModal({ cart, customer, onClose, onConfirm }) {
             </select>
           </div>
 
+          {/* sales_order.delivery_required / installation_required */}
+          <div style={{ display:'flex', gap:18, marginBottom:8 }}>
+            <label style={{ display:'flex', alignItems:'center', gap:8, cursor:'pointer', fontSize:13 }}>
+              <input id="pos-delivery" type="checkbox" checked={delivery} onChange={e=>setDelivery(e.target.checked)} /> Delivery required
+            </label>
+            <label style={{ display:'flex', alignItems:'center', gap:8, cursor:'pointer', fontSize:13 }}>
+              <input id="pos-installation" type="checkbox" checked={installation} onChange={e=>setInstallation(e.target.checked)} /> Installation required
+            </label>
+          </div>
+          {(delivery || installation) && <div className="form-hint" style={{ marginTop:-4, marginBottom:8 }}>After the sale, register the delivery / installation in Service Jobs (linked to this order).</div>}
+
           {/* Credit Sale toggle */}
           {customer && (
             <label style={{ display:'flex', alignItems:'center', gap:10, cursor:'pointer', fontSize:13 }}>
@@ -111,7 +124,7 @@ function CheckoutModal({ cart, customer, onClose, onConfirm }) {
         </div>
         <div className="modal-footer">
           <button className="btn btn-outline" onClick={onClose}>Cancel</button>
-          <button className="btn btn-success" disabled={creditOver} onClick={() => onConfirm({ method, isCreditSale, amountPaid: isCreditSale ? amountPaid : grandTotal, discount: discount + promoAmount, promoCode: promo?.ok ? promo.discount.code : null, grandTotal })}>
+          <button className="btn btn-success" disabled={creditOver} onClick={() => onConfirm({ method, isCreditSale, amountPaid: isCreditSale ? amountPaid : grandTotal, discount: discount + promoAmount, promoCode: promo?.ok ? promo.discount.code : null, grandTotal, deliveryRequired: delivery, installationRequired: installation })}>
             <CheckCircle size={15} /> Confirm Sale
           </button>
         </div>
@@ -162,7 +175,7 @@ export default function POSPage() {
 
   const removeItem = (productId) => setCart(c => c.filter(i => i.productId !== productId));
 
-  const handleConfirm = ({ method, isCreditSale, amountPaid, discount, promoCode, grandTotal }) => {
+  const handleConfirm = ({ method, isCreditSale, amountPaid, discount, promoCode, grandTotal, deliveryRequired = false, installationRequired = false }) => {
     const invNo = newInvNo();
     const soId = newSaleId();
     const today = format(new Date(), 'yyyy-MM-dd');
@@ -172,7 +185,7 @@ export default function POSPage() {
       SALES_ORDERS.push({ id: soId, invoiceNo: null, customerId: selectedCustomer?.id || null, date: today,
         items: cart.map(i => ({ ...i, discount:0 })), subtotal: cart.reduce((s,i)=>s+i.unitPrice*i.qty,0), discountTotal: discount,
         tax:0, taxRate:0, grandTotal, paymentMethod: method, paymentStatus:'unpaid', amountPaid:0, balance: grandTotal,
-        creditSale:false, status:'on-hold', holdReason: `Insufficient stock: ${short.map(i => i.name).join(', ')}`, createdBy: user?.id });
+        creditSale:false, deliveryRequired, installationRequired, status:'on-hold', holdReason: `Insufficient stock: ${short.map(i => i.name).join(', ')}`, createdBy: user?.id });
       setCart([]); setSelectedCustomer(null); setShowCheckout(false);
       toast.warning(`Insufficient stock – order ${soId} placed on hold`);
       return;
@@ -189,7 +202,7 @@ export default function POSPage() {
       grandTotal, paymentMethod: method,
       paymentStatus: isCreditSale && balance > 0 ? 'partial' : 'paid',
       amountPaid, balance,
-      creditSale: isCreditSale, status:'completed', createdBy: user?.id,
+      creditSale: isCreditSale, deliveryRequired, installationRequired, status:'completed', createdBy: user?.id,
     };
     SALES_ORDERS.push(order);
 

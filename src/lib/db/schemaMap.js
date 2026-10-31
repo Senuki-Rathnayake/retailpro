@@ -12,6 +12,8 @@
 // in the "details" JSON column of the same row.
 // ============================================================
 
+import { PERMISSIONS as DEFAULT_PAGES, ACTIONS as DEFAULT_ACTIONS } from '../../config/defaultPermissions.js';
+
 // ---------- id helpers ----------
 export const idNum = (code) => {
   if (code === null || code === undefined || code === '') return null;
@@ -75,7 +77,7 @@ function makeEntity({ table, pk, prefix, pad = 3, fields, skip = [], toExtra, fr
 // ---------- entities ----------
 export const E = {
   category: makeEntity({ table: 'category', pk: 'category_id', prefix: 'CAT', fields: [
-    ['name', 'category_name'], ['description', 'description'],
+    ['name', 'category_name'], ['description', 'description'], ['parentId', 'parent_category_id', 'ref:CAT:3'],
   ], skip: ['productCount'] }),
 
   supplier: makeEntity({ table: 'supplier', pk: 'supplier_id', prefix: 'SUP', fields: [
@@ -96,7 +98,7 @@ export const E = {
   customer: makeEntity({ table: 'customer', pk: 'customer_id', prefix: 'C', fields: [
     ['name', 'name'], ['phone', 'phone'], ['email', 'email'], ['address', 'address'], ['customerType', 'customer_type'],
     ['createdAt', 'registered_date', 'date'],
-  ], skip: ['creditLimit', 'creditUsed', 'dbId'] }),
+  ], skip: ['creditLimit', 'creditUsed', 'dbId', 'creditApprovedBy', 'creditReviewDate'] }),
 
   discount: makeEntity({ table: 'discount', pk: 'discount_id', prefix: 'D', fields: [
     ['name', 'discount_name'], ['type', 'discount_type'], ['value', 'discount_value', 'num'], ['start', 'start_date', 'date'],
@@ -147,7 +149,7 @@ export const E = {
 
   stockMovement: makeEntity({ table: 'stock_movement', pk: 'movement_id', prefix: 'SM', fields: [
     ['type', 'movement_type'], ['qty', 'quantity', 'int'], ['note', 'reason'], ['date', 'movement_date', 'date'],
-    ['productId', 'product_id', 'ref:P:3'], ['userId', 'user_id', 'user'],
+    ['productId', 'product_id', 'ref:P:3'], ['userId', 'user_id', 'user'], ['batchId', 'batch_id', 'ref:B:3'],
   ], toExtra: (o, ctx) => ({
     service_job_id: /^JOB-\d+$/.test(o.ref || '') && ctx.exists('JOB-', o.ref) ? idNum(o.ref) : null,
     reference_doc_id: /^(PO|SO)-\d+$/.test(o.ref || '') ? idNum(o.ref) : null,
@@ -167,7 +169,7 @@ export const E = {
 
   reorder: makeEntity({ table: 'stock_alert', pk: 'alert_id', prefix: 'RO-', fields: [
     ['qty', 'threshold_qty', 'int'], ['requestDate', 'created_at', 'date'], ['productId', 'product_id', 'ref:P:3'],
-  ], toExtra: (o, ctx) => ({ alert_type: 'reorder', is_resolved: o.status !== 'open', current_qty: ctx.stockOf(o.productId) }) }),
+  ], skip: ['alertType'], toExtra: (o, ctx) => ({ alert_type: o.alertType || 'reorder', is_resolved: o.status !== 'open', current_qty: ctx.stockOf(o.productId) }) }),
 
   audit: makeEntity({ table: 'audit_log', pk: 'audit_id', prefix: 'AL', fields: [
     ['action', 'action'], ['detail', 'detail'], ['userId', 'user_id', 'user'], ['timestamp', 'logged_at', 'json'],
@@ -176,7 +178,7 @@ export const E = {
 
 // Order the tables are written in (a table comes after the tables it points to)
 export const TABLE_ORDER = [
-  'role', 'user', 'technician', 'technician_specialisation', 'system_setting', 'category', 'supplier', 'product', 'customer', 'credit_account',
+  'role', 'permission', 'role_permission', 'user', 'technician', 'technician_specialisation', 'system_setting', 'category', 'supplier', 'product', 'customer', 'credit_account',
   'discount', 'batch', 'quotation', 'sales_order', 'sales_order_item', 'warranty_record', 'purchase_order',
   'purchase_order_item', 'payable', 'service_job', 'service_visit_log', 'invoice', 'spare_part_request',
   'stock_movement', 'exchange_request', 'complaint', 'payment', 'transaction', 'refund', 'returned_item',
@@ -184,13 +186,13 @@ export const TABLE_ORDER = [
 ];
 // Tables the app reads back (the others are filled from these)
 export const LOAD_TABLES = [
-  'role', 'user', 'technician', 'technician_specialisation', 'system_setting', 'category', 'supplier', 'product', 'customer', 'credit_account',
+  'role', 'permission', 'role_permission', 'user', 'technician', 'technician_specialisation', 'system_setting', 'category', 'supplier', 'product', 'customer', 'credit_account',
   'discount', 'batch', 'quotation', 'sales_order', 'sales_order_item', 'purchase_order', 'purchase_order_item',
   'service_job', 'service_visit_log', 'spare_part_request', 'stock_movement', 'exchange_request', 'complaint',
   'payment', 'stock_alert', 'report', 'audit_log',
 ];
 export const PK = {
-  role: 'role_id', user: 'user_id', technician: 'technician_id', technician_specialisation: ['technician_id', 'specialisation'], system_setting: 'setting_id', category: 'category_id',
+  role: 'role_id', permission: 'permission_id', role_permission: ['role_id', 'permission_id'], user: 'user_id', technician: 'technician_id', technician_specialisation: ['technician_id', 'specialisation'], system_setting: 'setting_id', category: 'category_id',
   supplier: 'supplier_id', product: 'product_id', customer: 'customer_id', credit_account: 'account_id', discount: 'discount_id',
   batch: 'batch_id', quotation: 'quotation_id', sales_order: 'sales_order_id', sales_order_item: 'item_id', warranty_record: 'warranty_id',
   purchase_order: 'po_id', purchase_order_item: 'item_id', payable: 'payable_id', service_job: 'service_job_id',
@@ -257,6 +259,7 @@ export function toTables(state) {
     'P': new Set(state.products.map(x => x.id)), 'C': new Set(state.customers.map(x => x.id)),
     'QT-': new Set(state.quotations.map(x => x.id)), 'SO-': new Set(state.salesOrders.map(x => x.id)),
     'PO-': new Set(state.purchaseOrders.map(x => x.id)), 'JOB-': new Set(state.serviceJobs.map(x => x.id)),
+    'B': new Set(state.batches.map(x => x.id)),
   };
   const userIds = new Set([...KNOWN_USERS, ...state.users.map(u => u.id)]);
   // technicians get a technician_id (kept on the user record)
@@ -284,9 +287,26 @@ export function toTables(state) {
     if (!r.dbId) continue;
     T.role.push({ role_id: r.dbId, role_name: r.label, description: r.description || null, is_active: r.active !== false });
   }
+  // permissions (pages and buttons) and the M:N relationship role_permission (granted_date, access_type)
+  const permId = {};
+  (state.permissions || []).forEach(p => {
+    permId[p.name] = p.id;
+    T.permission.push({ permission_id: p.id, permission_name: p.name, module: p.module || null, action: p.action || null });
+  });
+  for (const [key, grants] of Object.entries(state.rolePermissions || {})) {
+    const roleId = state.roles[key]?.dbId;
+    if (!roleId) continue;
+    const seen = new Set();
+    grants.forEach(g => {
+      const pid = permId[g.name];
+      if (!pid || seen.has(pid)) return;
+      seen.add(pid);
+      T.role_permission.push({ role_id: roleId, permission_id: pid, granted_date: g.grantedDate || null, access_type: g.accessType || 'allow' });
+    });
+  }
   for (const u of state.users) {
-    T.user.push({ user_id: u.id, full_name: u.name, email: u.email, phone: u.phone || null, user_type: u.role,
-      is_active: u.deleted ? false : true, is_locked: u.active === false, department: u.department || null,
+    T.user.push({ user_id: u.id, username: u.username || null, full_name: u.name, email: u.email, phone: u.phone || null, user_type: u.role,
+      is_active: u.deleted ? false : true, is_locked: u.active === false, access_level: u.accessLevel || null, department: u.department || null,
       role_id: state.roles[u.role]?.dbId || null });
     // multivalued attribute: one technician_specialisation row per skill
     if (u.technicianId) (u.skills || []).forEach(sk => T.technician_specialisation.push({ technician_id: u.technicianId, specialisation: sk }));
@@ -297,6 +317,7 @@ export function toTables(state) {
   Object.entries(state.settings).forEach(([k, v], i) => T.system_setting.push({
     setting_id: i + 1, setting_key: k, setting_value: String(v), category: /Limit|Jobs/.test(k) ? 'approval' : /warranty|return/i.test(k) ? 'warranty' : 'general',
     warranty_months: k === 'warrantyMonths' ? Number(v) : null, warranty_terms: k === 'warrantyTerms' ? String(v) : null,
+    updated_at: state.settingsMeta?.[k]?.updatedAt || null, user_id: ctx.user(state.settingsMeta?.[k]?.updatedBy),
   }));
 
   const put = (ent, list) => list.forEach(o => T[ent.table].push(ent.toRow(o, ctx)));
@@ -306,7 +327,8 @@ export function toTables(state) {
   put(E.customer, state.customers);
   // credit accounts: one per customer (account_id = customer number) + credit requests (1000 + n)
   state.customers.forEach(c => T.credit_account.push({ account_id: idNum(c.id), customer_id: idNum(c.id), credit_limit: N(c.creditLimit) ?? 0,
-    current_balance: N(c.creditUsed) ?? 0, status: 'active', requested_limit: null, last_review_date: null, user_id: null, details: {} }));
+    current_balance: N(c.creditUsed) ?? 0, status: 'active', requested_limit: null, last_review_date: D(c.creditReviewDate),
+    user_id: ctx.user(c.creditApprovedBy), details: {} }));
   state.creditRequests.forEach(r => {
     const { id, customerId, currentLimit, requestedLimit, requestDate, status, decidedBy, ...rest } = r;
     T.credit_account.push({ account_id: CREDIT_REQ_BASE + idNum(id), customer_id: ctx.exists('C', customerId) ? idNum(customerId) : null,
@@ -408,7 +430,8 @@ export function toTables(state) {
     }
     if (r.inventoryUpdated || r.inspectionResult) T.returned_item.push({ return_id: n, exchange_request_id: n, return_date: D(r.resolvedAt || r.createdAt),
       reason: r.reason || null, condition: r.inspectionResult || null, is_serviceable: r.canRestock === null ? null : !!r.canRestock,
-      is_damaged: r.canRestock === null ? null : !r.canRestock, product_id: ctx.exists('P', r.productId) ? idNum(r.productId) : null, user_id: null });
+      is_damaged: r.canRestock === null ? null : !r.canRestock, product_id: ctx.exists('P', r.productId) ? idNum(r.productId) : null,
+      user_id: ctx.user(r.receivedBy) });
   });
 
   put(E.reorder, state.reorders);
@@ -450,6 +473,7 @@ export function fromTables(R) {
     const role = roleById[u.role_id] || roleKeyFrom(u.user_type) || 'sales';
     const t = techByUser[u.user_id];
     return { id: u.user_id, name: u.full_name || u.email, email: u.email, phone: u.phone, role, department: u.department,
+      username: u.username, accessLevel: u.access_level, createdAt: u.created_at,
       avatar: AVATARS[role] || '👤', active: u.is_locked !== true, lastLogin: u.last_login_at,
       ...(t ? { technicianId: t.technician_id, skills: skillRows.filter(x => x.technician_id === t.technician_id).map(x => x.specialisation),
         certification: t.certification_level, zone: t.assigned_zone } : {}) };
@@ -463,7 +487,9 @@ export function fromTables(R) {
   const from = (ent, t) => g(t).map(r => ent.fromRow(r, ctx));
 
   const settings = {};
+  const settingsMeta = {};
   g('system_setting').forEach(s => {
+    if (s.updated_at || s.user_id) settingsMeta[s.setting_key] = { updatedAt: s.updated_at || null, updatedBy: ctx.appUser(s.user_id) ?? null };
     const v = s.setting_value;
     settings[s.setting_key] = v === 'true' ? true : v === 'false' ? false : v !== null && v !== '' && !isNaN(Number(v)) ? Number(v) : v;
   });
@@ -474,7 +500,10 @@ export function fromTables(R) {
   const accounts = g('credit_account');
   const customers = from(E.customer, 'customer').map(c => {
     const a = accounts.find(x => x.account_id === idNum(c.id) && x.account_id < CREDIT_REQ_BASE);
-    return { ...c, creditLimit: a ? Number(a.credit_limit) || 0 : 0, creditUsed: a ? Number(a.current_balance) || 0 : 0, balance: c.balance ?? 0 };
+    const out = { ...c, creditLimit: a ? Number(a.credit_limit) || 0 : 0, creditUsed: a ? Number(a.current_balance) || 0 : 0, balance: c.balance ?? 0 };
+    if (a?.user_id) out.creditApprovedBy = ctx.appUser(a.user_id);
+    if (a?.last_review_date) out.creditReviewDate = D(a.last_review_date);
+    return out;
   });
   const creditRequests = accounts.filter(a => a.account_id > CREDIT_REQ_BASE).map(a => ({
     ...(a.details || {}), id: toCode('CR-', a.account_id - CREDIT_REQ_BASE), customerId: toCode('C', a.customer_id),
@@ -531,10 +560,37 @@ export function fromTables(R) {
     recipients: (r.recipients || '').split(',').map(s => s.trim()).filter(Boolean), lastRun: D(r.generated_date), createdBy: ctx.appUser(r.user_id) }));
   const reconciliations = reports.filter(r => r.report_id > RECON_BASE).map(r => ({ ...(r.details || {}),
     id: `REC-${r.report_id - RECON_BASE}`, date: D(r.generated_date), userId: ctx.appUser(r.user_id) }));
-  const reorders = g('stock_alert').filter(a => a.alert_type === 'reorder').map(a => ({ ...E.reorder.fromRow(a, ctx), status: a.details?.status ?? (a.is_resolved ? 'closed' : 'open') }));
+  const reorders = g('stock_alert').map(a => ({ ...E.reorder.fromRow(a, ctx), ...(a.alert_type && a.alert_type !== 'reorder' ? { alertType: a.alert_type } : {}),
+    status: a.details?.status ?? (a.is_resolved ? 'closed' : 'open') }));
   const audit = from(E.audit, 'audit_log').sort((a, b) => String(b.timestamp).localeCompare(String(a.timestamp)));
 
+  // permissions: read from the permission and role_permission tables
+  // (an empty database is filled once from the starting lists in config/defaultPermissions.js)
+  let permissions = g('permission').map(p => ({ id: Number(p.permission_id), name: p.permission_name, module: p.module, action: p.action }));
+  const rolePermissions = {};
+  if (permissions.length) {
+    const nameOf = Object.fromEntries(permissions.map(p => [p.id, p.name]));
+    g('role_permission').forEach(rp => {
+      const key = roleById[rp.role_id];
+      const name = nameOf[Number(rp.permission_id)];
+      if (!key || !name) return;
+      (rolePermissions[key] = rolePermissions[key] || []).push({ name, grantedDate: D(rp.granted_date), accessType: rp.access_type || 'allow' });
+    });
+  } else {
+    const today = new Date().toISOString().slice(0, 10);
+    const names = [...new Set([...Object.values(DEFAULT_PAGES).flat().map(p => `page:${p}`), ...Object.values(DEFAULT_ACTIONS).flat()])];
+    permissions = names.map((n, i) => n.startsWith('page:')
+      ? { id: i + 1, name: n, module: n.slice(5), action: 'open' }
+      : { id: i + 1, name: n, module: n.split('.')[0], action: n.split('.')[1] });
+    Object.keys(ROLE_LABELS).forEach(k => {
+      rolePermissions[k] = [...(DEFAULT_PAGES[k] || []).map(p => `page:${p}`), ...(DEFAULT_ACTIONS[k] || [])]
+        .map(name => ({ name, grantedDate: today, accessType: 'allow' }));
+    });
+  }
+  for (const k of Object.keys(ROLE_LABELS)) rolePermissions[k] = rolePermissions[k] || [];
+
   return {
+    permissions, rolePermissions, settingsMeta,
     users, roles, settings, categories, suppliers: from(E.supplier, 'supplier'), products, customers, creditRequests,
     discounts: from(E.discount, 'discount'), batches: from(E.batch, 'batch'), quotations: from(E.quotation, 'quotation'),
     salesOrders, purchaseOrders, serviceJobs, spareRequests: from(E.sparePartRequest, 'spare_part_request'),

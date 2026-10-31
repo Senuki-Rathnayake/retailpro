@@ -37,94 +37,1340 @@
    "is_active": true
   }
  ],
+ "permission": [
+  {
+   "permission_id": 1,
+   "permission_name": "page:dashboard",
+   "module": "dashboard",
+   "action": "open"
+  },
+  {
+   "permission_id": 2,
+   "permission_name": "page:users",
+   "module": "users",
+   "action": "open"
+  },
+  {
+   "permission_id": 3,
+   "permission_name": "page:settings",
+   "module": "settings",
+   "action": "open"
+  },
+  {
+   "permission_id": 4,
+   "permission_name": "page:reports",
+   "module": "reports",
+   "action": "open"
+  },
+  {
+   "permission_id": 5,
+   "permission_name": "page:customers",
+   "module": "customers",
+   "action": "open"
+  },
+  {
+   "permission_id": 6,
+   "permission_name": "page:products",
+   "module": "products",
+   "action": "open"
+  },
+  {
+   "permission_id": 7,
+   "permission_name": "page:categories",
+   "module": "categories",
+   "action": "open"
+  },
+  {
+   "permission_id": 8,
+   "permission_name": "page:stock",
+   "module": "stock",
+   "action": "open"
+  },
+  {
+   "permission_id": 9,
+   "permission_name": "page:stock-movements",
+   "module": "stock-movements",
+   "action": "open"
+  },
+  {
+   "permission_id": 10,
+   "permission_name": "page:stock-adjustments",
+   "module": "stock-adjustments",
+   "action": "open"
+  },
+  {
+   "permission_id": 11,
+   "permission_name": "page:sales",
+   "module": "sales",
+   "action": "open"
+  },
+  {
+   "permission_id": 12,
+   "permission_name": "page:pos",
+   "module": "pos",
+   "action": "open"
+  },
+  {
+   "permission_id": 13,
+   "permission_name": "page:invoices",
+   "module": "invoices",
+   "action": "open"
+  },
+  {
+   "permission_id": 14,
+   "permission_name": "page:suppliers",
+   "module": "suppliers",
+   "action": "open"
+  },
+  {
+   "permission_id": 15,
+   "permission_name": "page:purchase-orders",
+   "module": "purchase-orders",
+   "action": "open"
+  },
+  {
+   "permission_id": 16,
+   "permission_name": "page:service-jobs",
+   "module": "service-jobs",
+   "action": "open"
+  },
+  {
+   "permission_id": 17,
+   "permission_name": "page:service-history",
+   "module": "service-history",
+   "action": "open"
+  },
+  {
+   "permission_id": 18,
+   "permission_name": "page:returns",
+   "module": "returns",
+   "action": "open"
+  },
+  {
+   "permission_id": 19,
+   "permission_name": "page:complaints",
+   "module": "complaints",
+   "action": "open"
+  },
+  {
+   "permission_id": 20,
+   "permission_name": "page:warranty",
+   "module": "warranty",
+   "action": "open"
+  },
+  {
+   "permission_id": 21,
+   "permission_name": "page:payments",
+   "module": "payments",
+   "action": "open"
+  },
+  {
+   "permission_id": 22,
+   "permission_name": "page:payables",
+   "module": "payables",
+   "action": "open"
+  },
+  {
+   "permission_id": 23,
+   "permission_name": "page:finance-reports",
+   "module": "finance-reports",
+   "action": "open"
+  },
+  {
+   "permission_id": 24,
+   "permission_name": "product.add",
+   "module": "product",
+   "action": "add"
+  },
+  {
+   "permission_id": 25,
+   "permission_name": "product.edit",
+   "module": "product",
+   "action": "edit"
+  },
+  {
+   "permission_id": 26,
+   "permission_name": "service.create",
+   "module": "service",
+   "action": "create"
+  },
+  {
+   "permission_id": 27,
+   "permission_name": "service.assign",
+   "module": "service",
+   "action": "assign"
+  },
+  {
+   "permission_id": 28,
+   "permission_name": "return.approve",
+   "module": "return",
+   "action": "approve"
+  },
+  {
+   "permission_id": 29,
+   "permission_name": "complaint.escalate",
+   "module": "complaint",
+   "action": "escalate"
+  },
+  {
+   "permission_id": 30,
+   "permission_name": "complaint.resolve",
+   "module": "complaint",
+   "action": "resolve"
+  },
+  {
+   "permission_id": 31,
+   "permission_name": "user.manage",
+   "module": "user",
+   "action": "manage"
+  },
+  {
+   "permission_id": 32,
+   "permission_name": "settings.manage",
+   "module": "settings",
+   "action": "manage"
+  },
+  {
+   "permission_id": 33,
+   "permission_name": "report.export",
+   "module": "report",
+   "action": "export"
+  },
+  {
+   "permission_id": 34,
+   "permission_name": "report.schedule",
+   "module": "report",
+   "action": "schedule"
+  },
+  {
+   "permission_id": 35,
+   "permission_name": "po.approveEscalated",
+   "module": "po",
+   "action": "approveEscalated"
+  },
+  {
+   "permission_id": 36,
+   "permission_name": "refund.adminApprove",
+   "module": "refund",
+   "action": "adminApprove"
+  },
+  {
+   "permission_id": 37,
+   "permission_name": "complaint.toServiceJob",
+   "module": "complaint",
+   "action": "toServiceJob"
+  },
+  {
+   "permission_id": 38,
+   "permission_name": "credit.approveEscalated",
+   "module": "credit",
+   "action": "approveEscalated"
+  },
+  {
+   "permission_id": 39,
+   "permission_name": "sale.create",
+   "module": "sale",
+   "action": "create"
+  },
+  {
+   "permission_id": 40,
+   "permission_name": "customer.add",
+   "module": "customer",
+   "action": "add"
+  },
+  {
+   "permission_id": 41,
+   "permission_name": "customer.edit",
+   "module": "customer",
+   "action": "edit"
+  },
+  {
+   "permission_id": 42,
+   "permission_name": "customer.delete",
+   "module": "customer",
+   "action": "delete"
+  },
+  {
+   "permission_id": 43,
+   "permission_name": "return.create",
+   "module": "return",
+   "action": "create"
+  },
+  {
+   "permission_id": 44,
+   "permission_name": "complaint.create",
+   "module": "complaint",
+   "action": "create"
+  },
+  {
+   "permission_id": 45,
+   "permission_name": "refund.send",
+   "module": "refund",
+   "action": "send"
+  },
+  {
+   "permission_id": 46,
+   "permission_name": "product.delete",
+   "module": "product",
+   "action": "delete"
+  },
+  {
+   "permission_id": 47,
+   "permission_name": "stock.adjust",
+   "module": "stock",
+   "action": "adjust"
+  },
+  {
+   "permission_id": 48,
+   "permission_name": "stock.verify",
+   "module": "stock",
+   "action": "verify"
+  },
+  {
+   "permission_id": 49,
+   "permission_name": "stock.alert",
+   "module": "stock",
+   "action": "alert"
+  },
+  {
+   "permission_id": 50,
+   "permission_name": "service.issueParts",
+   "module": "service",
+   "action": "issueParts"
+  },
+  {
+   "permission_id": 51,
+   "permission_name": "return.inspect",
+   "module": "return",
+   "action": "inspect"
+  },
+  {
+   "permission_id": 52,
+   "permission_name": "stock.receive",
+   "module": "stock",
+   "action": "receive"
+  },
+  {
+   "permission_id": 53,
+   "permission_name": "stock.batch",
+   "module": "stock",
+   "action": "batch"
+  },
+  {
+   "permission_id": 54,
+   "permission_name": "product.obsolete",
+   "module": "product",
+   "action": "obsolete"
+  },
+  {
+   "permission_id": 55,
+   "permission_name": "po.create",
+   "module": "po",
+   "action": "create"
+  },
+  {
+   "permission_id": 56,
+   "permission_name": "po.receive",
+   "module": "po",
+   "action": "receive"
+  },
+  {
+   "permission_id": 57,
+   "permission_name": "po.approve",
+   "module": "po",
+   "action": "approve"
+  },
+  {
+   "permission_id": 58,
+   "permission_name": "po.edit",
+   "module": "po",
+   "action": "edit"
+  },
+  {
+   "permission_id": 59,
+   "permission_name": "po.reorder",
+   "module": "po",
+   "action": "reorder"
+  },
+  {
+   "permission_id": 60,
+   "permission_name": "po.remind",
+   "module": "po",
+   "action": "remind"
+  },
+  {
+   "permission_id": 61,
+   "permission_name": "quote.request",
+   "module": "quote",
+   "action": "request"
+  },
+  {
+   "permission_id": 62,
+   "permission_name": "quote.price",
+   "module": "quote",
+   "action": "price"
+  },
+  {
+   "permission_id": 63,
+   "permission_name": "supplier.rate",
+   "module": "supplier",
+   "action": "rate"
+  },
+  {
+   "permission_id": 64,
+   "permission_name": "supplier.add",
+   "module": "supplier",
+   "action": "add"
+  },
+  {
+   "permission_id": 65,
+   "permission_name": "supplier.edit",
+   "module": "supplier",
+   "action": "edit"
+  },
+  {
+   "permission_id": 66,
+   "permission_name": "supplier.deactivate",
+   "module": "supplier",
+   "action": "deactivate"
+  },
+  {
+   "permission_id": 67,
+   "permission_name": "payment.record",
+   "module": "payment",
+   "action": "record"
+  },
+  {
+   "permission_id": 68,
+   "permission_name": "payment.remind",
+   "module": "payment",
+   "action": "remind"
+  },
+  {
+   "permission_id": 69,
+   "permission_name": "payment.flagOverdue",
+   "module": "payment",
+   "action": "flagOverdue"
+  },
+  {
+   "permission_id": 70,
+   "permission_name": "payable.pay",
+   "module": "payable",
+   "action": "pay"
+  },
+  {
+   "permission_id": 71,
+   "permission_name": "refund.pay",
+   "module": "refund",
+   "action": "pay"
+  },
+  {
+   "permission_id": 72,
+   "permission_name": "service.bill",
+   "module": "service",
+   "action": "bill"
+  },
+  {
+   "permission_id": 73,
+   "permission_name": "payment.reconcile",
+   "module": "payment",
+   "action": "reconcile"
+  },
+  {
+   "permission_id": 74,
+   "permission_name": "credit.approve",
+   "module": "credit",
+   "action": "approve"
+  },
+  {
+   "permission_id": 75,
+   "permission_name": "service.updateStatus",
+   "module": "service",
+   "action": "updateStatus"
+  },
+  {
+   "permission_id": 76,
+   "permission_name": "service.logVisit",
+   "module": "service",
+   "action": "logVisit"
+  },
+  {
+   "permission_id": 77,
+   "permission_name": "service.recordRepair",
+   "module": "service",
+   "action": "recordRepair"
+  },
+  {
+   "permission_id": 78,
+   "permission_name": "service.requestParts",
+   "module": "service",
+   "action": "requestParts"
+  }
+ ],
+ "role_permission": [
+  {
+   "role_id": 6,
+   "permission_id": 1,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 5,
+   "permission_id": 1,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 4,
+   "permission_id": 1,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 3,
+   "permission_id": 1,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 2,
+   "permission_id": 1,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 1,
+   "permission_id": 1,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 1,
+   "permission_id": 2,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 1,
+   "permission_id": 3,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 5,
+   "permission_id": 4,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 4,
+   "permission_id": 4,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 3,
+   "permission_id": 4,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 2,
+   "permission_id": 4,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 1,
+   "permission_id": 4,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 5,
+   "permission_id": 5,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 2,
+   "permission_id": 5,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 1,
+   "permission_id": 5,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 6,
+   "permission_id": 6,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 4,
+   "permission_id": 6,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 3,
+   "permission_id": 6,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 2,
+   "permission_id": 6,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 1,
+   "permission_id": 6,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 3,
+   "permission_id": 7,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 1,
+   "permission_id": 7,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 6,
+   "permission_id": 8,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 4,
+   "permission_id": 8,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 3,
+   "permission_id": 8,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 2,
+   "permission_id": 8,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 1,
+   "permission_id": 8,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 3,
+   "permission_id": 9,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 1,
+   "permission_id": 9,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 3,
+   "permission_id": 10,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 1,
+   "permission_id": 10,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 5,
+   "permission_id": 11,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 2,
+   "permission_id": 11,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 1,
+   "permission_id": 11,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 2,
+   "permission_id": 12,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 1,
+   "permission_id": 12,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 5,
+   "permission_id": 13,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 2,
+   "permission_id": 13,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 1,
+   "permission_id": 13,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 4,
+   "permission_id": 14,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 1,
+   "permission_id": 14,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 4,
+   "permission_id": 15,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 1,
+   "permission_id": 15,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 6,
+   "permission_id": 16,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 5,
+   "permission_id": 16,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 3,
+   "permission_id": 16,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 2,
+   "permission_id": 16,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 1,
+   "permission_id": 16,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 6,
+   "permission_id": 17,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 1,
+   "permission_id": 17,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 5,
+   "permission_id": 18,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 3,
+   "permission_id": 18,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 2,
+   "permission_id": 18,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 1,
+   "permission_id": 18,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 2,
+   "permission_id": 19,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 1,
+   "permission_id": 19,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 2,
+   "permission_id": 20,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 1,
+   "permission_id": 20,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 5,
+   "permission_id": 21,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 1,
+   "permission_id": 21,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 5,
+   "permission_id": 22,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 1,
+   "permission_id": 22,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 1,
+   "permission_id": 23,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 3,
+   "permission_id": 24,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 1,
+   "permission_id": 24,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 3,
+   "permission_id": 25,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 1,
+   "permission_id": 25,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 2,
+   "permission_id": 26,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 1,
+   "permission_id": 26,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 1,
+   "permission_id": 27,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 1,
+   "permission_id": 28,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 2,
+   "permission_id": 29,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 1,
+   "permission_id": 29,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 1,
+   "permission_id": 30,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 1,
+   "permission_id": 31,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 1,
+   "permission_id": 32,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 5,
+   "permission_id": 33,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 4,
+   "permission_id": 33,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 3,
+   "permission_id": 33,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 2,
+   "permission_id": 33,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 1,
+   "permission_id": 33,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 5,
+   "permission_id": 34,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 1,
+   "permission_id": 34,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 1,
+   "permission_id": 35,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 1,
+   "permission_id": 36,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 1,
+   "permission_id": 37,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 1,
+   "permission_id": 38,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 2,
+   "permission_id": 39,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 2,
+   "permission_id": 40,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 5,
+   "permission_id": 41,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 2,
+   "permission_id": 41,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 2,
+   "permission_id": 42,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 2,
+   "permission_id": 43,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 2,
+   "permission_id": 44,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 2,
+   "permission_id": 45,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 3,
+   "permission_id": 46,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 3,
+   "permission_id": 47,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 3,
+   "permission_id": 48,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 3,
+   "permission_id": 49,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 3,
+   "permission_id": 50,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 3,
+   "permission_id": 51,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 3,
+   "permission_id": 52,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 3,
+   "permission_id": 53,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 3,
+   "permission_id": 54,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 4,
+   "permission_id": 55,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 4,
+   "permission_id": 56,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 4,
+   "permission_id": 57,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 4,
+   "permission_id": 58,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 4,
+   "permission_id": 59,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 4,
+   "permission_id": 60,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 4,
+   "permission_id": 61,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 4,
+   "permission_id": 62,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 4,
+   "permission_id": 63,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 4,
+   "permission_id": 64,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 4,
+   "permission_id": 65,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 4,
+   "permission_id": 66,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 5,
+   "permission_id": 67,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 5,
+   "permission_id": 68,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 5,
+   "permission_id": 69,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 5,
+   "permission_id": 70,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 5,
+   "permission_id": 71,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 5,
+   "permission_id": 72,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 5,
+   "permission_id": 73,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 5,
+   "permission_id": 74,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 6,
+   "permission_id": 75,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 6,
+   "permission_id": 76,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 6,
+   "permission_id": 77,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  },
+  {
+   "role_id": 6,
+   "permission_id": 78,
+   "granted_date": "2026-10-31T05:30:00",
+   "access_type": "allow"
+  }
+ ],
  "user": [
   {
-   "user_id": "ba0351d2-2646-453e-ad85-cedd9051e5ac",
-   "username": null,
+   "user_id": "8d30381b-fbd8-444b-825a-8a82e311daf3",
+   "username": "amara.s",
    "full_name": "Amara Silva",
    "email": "admin@gmail.com",
-   "phone": null,
+   "phone": "0771234501",
    "user_type": "admin",
    "is_active": true,
    "is_locked": false,
-   "created_at": "2026-10-31T14:42:28",
-   "access_level": null,
-   "department": null,
+   "created_at": "2026-10-31T16:23:15",
+   "access_level": "full",
+   "department": "Management",
    "last_login_at": null,
    "role_id": 1
   },
   {
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
-   "username": null,
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
+   "username": "kamal.p",
    "full_name": "Kamal Perera",
    "email": "cashier@gmail.com",
-   "phone": null,
+   "phone": "0771234502",
    "user_type": "sales",
    "is_active": true,
    "is_locked": false,
-   "created_at": "2026-10-31T14:42:28",
-   "access_level": null,
-   "department": null,
+   "created_at": "2026-10-31T16:23:15",
+   "access_level": "standard",
+   "department": "Sales",
    "last_login_at": null,
    "role_id": 2
   },
   {
-   "user_id": "981054be-1fa0-4841-af26-bc35a669a3b2",
-   "username": null,
+   "user_id": "3b74a4c1-71d8-4810-b10e-b1f2ea103b76",
+   "username": "nimal.f",
    "full_name": "Nimal Fernando",
    "email": "storekeeper@gmail.com",
-   "phone": null,
+   "phone": "0771234503",
    "user_type": "storekeeper",
    "is_active": true,
    "is_locked": false,
-   "created_at": "2026-10-31T14:42:28",
-   "access_level": null,
-   "department": null,
+   "created_at": "2026-10-31T16:23:15",
+   "access_level": "standard",
+   "department": "Stores",
    "last_login_at": null,
    "role_id": 3
   },
   {
-   "user_id": "408c27ee-4efd-45d3-9b8f-a8bdda82b724",
-   "username": null,
+   "user_id": "318c14ad-64b6-4adc-85db-3d61c9fd8c10",
+   "username": "dilshan.r",
    "full_name": "Dilshan Ranjith",
    "email": "purchase@gmail.com",
-   "phone": null,
+   "phone": "0771234504",
    "user_type": "purchase",
    "is_active": true,
    "is_locked": false,
-   "created_at": "2026-10-31T14:42:28",
-   "access_level": null,
-   "department": null,
+   "created_at": "2026-10-31T16:23:15",
+   "access_level": "standard",
+   "department": "Purchasing",
    "last_login_at": null,
    "role_id": 4
   },
   {
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
-   "username": null,
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
+   "username": "sanduni.p",
    "full_name": "Sanduni Perera",
    "email": "finance@gmail.com",
-   "phone": null,
+   "phone": "0771234505",
    "user_type": "finance",
    "is_active": true,
    "is_locked": false,
-   "created_at": "2026-10-31T14:42:28",
-   "access_level": null,
-   "department": null,
+   "created_at": "2026-10-31T16:23:15",
+   "access_level": "standard",
+   "department": "Finance",
    "last_login_at": null,
    "role_id": 5
   },
   {
-   "user_id": "3efecea9-6b70-49a9-8985-0027f6e8fc85",
-   "username": null,
+   "user_id": "4f9317a6-8664-4ef5-b110-831595b40438",
+   "username": "ruwan.j",
    "full_name": "Ruwan Jayasena",
    "email": "tech@gmail.com",
-   "phone": null,
+   "phone": "0771234506",
    "user_type": "technician",
    "is_active": true,
    "is_locked": false,
-   "created_at": "2026-10-31T14:42:28",
-   "access_level": null,
-   "department": null,
+   "created_at": "2026-10-31T16:23:15",
+   "access_level": "standard",
+   "department": "Service",
    "last_login_at": null,
    "role_id": 6
   }
@@ -132,10 +1378,10 @@
  "technician": [
   {
    "technician_id": 1,
-   "certification_level": null,
-   "assigned_zone": null,
+   "certification_level": "Level 3 – Senior Technician",
+   "assigned_zone": "Colombo & Western Province",
    "is_available": true,
-   "user_id": "3efecea9-6b70-49a9-8985-0027f6e8fc85"
+   "user_id": "4f9317a6-8664-4ef5-b110-831595b40438"
   }
  ],
  "technician_specialisation": [
@@ -160,8 +1406,8 @@
    "category": "general",
    "warranty_months": null,
    "warranty_terms": null,
-   "updated_at": null,
-   "user_id": null
+   "updated_at": "2026-10-21T03:30:15",
+   "user_id": "8d30381b-fbd8-444b-825a-8a82e311daf3"
   },
   {
    "setting_id": 2,
@@ -170,8 +1416,8 @@
    "category": "general",
    "warranty_months": null,
    "warranty_terms": null,
-   "updated_at": null,
-   "user_id": null
+   "updated_at": "2026-10-21T03:30:15",
+   "user_id": "8d30381b-fbd8-444b-825a-8a82e311daf3"
   },
   {
    "setting_id": 3,
@@ -180,8 +1426,8 @@
    "category": "general",
    "warranty_months": null,
    "warranty_terms": null,
-   "updated_at": null,
-   "user_id": null
+   "updated_at": "2026-10-21T03:30:15",
+   "user_id": "8d30381b-fbd8-444b-825a-8a82e311daf3"
   },
   {
    "setting_id": 4,
@@ -190,8 +1436,8 @@
    "category": "general",
    "warranty_months": null,
    "warranty_terms": null,
-   "updated_at": null,
-   "user_id": null
+   "updated_at": "2026-10-21T03:30:15",
+   "user_id": "8d30381b-fbd8-444b-825a-8a82e311daf3"
   },
   {
    "setting_id": 5,
@@ -200,8 +1446,8 @@
    "category": "general",
    "warranty_months": null,
    "warranty_terms": null,
-   "updated_at": null,
-   "user_id": null
+   "updated_at": "2026-10-21T03:30:15",
+   "user_id": "8d30381b-fbd8-444b-825a-8a82e311daf3"
   },
   {
    "setting_id": 6,
@@ -210,8 +1456,8 @@
    "category": "general",
    "warranty_months": null,
    "warranty_terms": null,
-   "updated_at": null,
-   "user_id": null
+   "updated_at": "2026-10-21T03:30:15",
+   "user_id": "8d30381b-fbd8-444b-825a-8a82e311daf3"
   },
   {
    "setting_id": 7,
@@ -220,8 +1466,8 @@
    "category": "general",
    "warranty_months": null,
    "warranty_terms": null,
-   "updated_at": null,
-   "user_id": null
+   "updated_at": "2026-10-21T03:30:15",
+   "user_id": "8d30381b-fbd8-444b-825a-8a82e311daf3"
   },
   {
    "setting_id": 8,
@@ -230,8 +1476,8 @@
    "category": "general",
    "warranty_months": null,
    "warranty_terms": null,
-   "updated_at": null,
-   "user_id": null
+   "updated_at": "2026-10-21T03:30:15",
+   "user_id": "8d30381b-fbd8-444b-825a-8a82e311daf3"
   },
   {
    "setting_id": 9,
@@ -240,8 +1486,8 @@
    "category": "warranty",
    "warranty_months": 12,
    "warranty_terms": null,
-   "updated_at": null,
-   "user_id": null
+   "updated_at": "2026-10-21T03:30:15",
+   "user_id": "8d30381b-fbd8-444b-825a-8a82e311daf3"
   },
   {
    "setting_id": 10,
@@ -250,8 +1496,8 @@
    "category": "warranty",
    "warranty_months": null,
    "warranty_terms": "Covers manufacturing defects. Physical damage, burns and liquid damage are not covered.",
-   "updated_at": null,
-   "user_id": null
+   "updated_at": "2026-10-21T03:30:15",
+   "user_id": "8d30381b-fbd8-444b-825a-8a82e311daf3"
   },
   {
    "setting_id": 11,
@@ -260,8 +1506,8 @@
    "category": "warranty",
    "warranty_months": null,
    "warranty_terms": null,
-   "updated_at": null,
-   "user_id": null
+   "updated_at": "2026-10-21T03:30:15",
+   "user_id": "8d30381b-fbd8-444b-825a-8a82e311daf3"
   },
   {
    "setting_id": 12,
@@ -270,8 +1516,8 @@
    "category": "approval",
    "warranty_months": null,
    "warranty_terms": null,
-   "updated_at": null,
-   "user_id": null
+   "updated_at": "2026-10-21T03:30:15",
+   "user_id": "8d30381b-fbd8-444b-825a-8a82e311daf3"
   },
   {
    "setting_id": 13,
@@ -280,8 +1526,8 @@
    "category": "approval",
    "warranty_months": null,
    "warranty_terms": null,
-   "updated_at": null,
-   "user_id": null
+   "updated_at": "2026-10-21T03:30:15",
+   "user_id": "8d30381b-fbd8-444b-825a-8a82e311daf3"
   },
   {
    "setting_id": 14,
@@ -290,8 +1536,8 @@
    "category": "approval",
    "warranty_months": null,
    "warranty_terms": null,
-   "updated_at": null,
-   "user_id": null
+   "updated_at": "2026-10-21T03:30:15",
+   "user_id": "8d30381b-fbd8-444b-825a-8a82e311daf3"
   },
   {
    "setting_id": 15,
@@ -300,8 +1546,8 @@
    "category": "approval",
    "warranty_months": null,
    "warranty_terms": null,
-   "updated_at": null,
-   "user_id": null
+   "updated_at": "2026-10-21T03:30:15",
+   "user_id": "8d30381b-fbd8-444b-825a-8a82e311daf3"
   },
   {
    "setting_id": 16,
@@ -310,8 +1556,8 @@
    "category": "approval",
    "warranty_months": null,
    "warranty_terms": null,
-   "updated_at": null,
-   "user_id": null
+   "updated_at": "2026-10-21T03:30:15",
+   "user_id": "8d30381b-fbd8-444b-825a-8a82e311daf3"
   },
   {
    "setting_id": 17,
@@ -320,8 +1566,8 @@
    "category": "warranty",
    "warranty_months": null,
    "warranty_terms": null,
-   "updated_at": null,
-   "user_id": null
+   "updated_at": "2026-10-21T03:30:15",
+   "user_id": "8d30381b-fbd8-444b-825a-8a82e311daf3"
   },
   {
    "setting_id": 18,
@@ -330,8 +1576,8 @@
    "category": "general",
    "warranty_months": null,
    "warranty_terms": null,
-   "updated_at": null,
-   "user_id": null
+   "updated_at": "2026-10-21T03:30:15",
+   "user_id": "8d30381b-fbd8-444b-825a-8a82e311daf3"
   },
   {
    "setting_id": 19,
@@ -340,8 +1586,8 @@
    "category": "general",
    "warranty_months": null,
    "warranty_terms": null,
-   "updated_at": null,
-   "user_id": null
+   "updated_at": "2026-10-21T03:30:15",
+   "user_id": "8d30381b-fbd8-444b-825a-8a82e311daf3"
   },
   {
    "setting_id": 20,
@@ -350,16 +1596,16 @@
    "category": "general",
    "warranty_months": null,
    "warranty_terms": null,
-   "updated_at": null,
-   "user_id": null
+   "updated_at": "2026-10-21T03:30:15",
+   "user_id": "8d30381b-fbd8-444b-825a-8a82e311daf3"
   }
  ],
  "category": [
   {
    "category_id": 1,
    "category_name": "Processors",
-   "description": null,
-   "parent_category_id": null,
+   "description": "Desktop processors (Intel and AMD)",
+   "parent_category_id": 7,
    "details": {
     "icon": "🔲"
    }
@@ -367,8 +1613,8 @@
   {
    "category_id": 2,
    "category_name": "Motherboards",
-   "description": null,
-   "parent_category_id": null,
+   "description": "Motherboards for Intel and AMD sockets",
+   "parent_category_id": 7,
    "details": {
     "icon": "🧩"
    }
@@ -376,8 +1622,8 @@
   {
    "category_id": 3,
    "category_name": "Memory & Storage",
-   "description": null,
-   "parent_category_id": null,
+   "description": "RAM and SSD storage",
+   "parent_category_id": 7,
    "details": {
     "icon": "💾"
    }
@@ -385,8 +1631,8 @@
   {
    "category_id": 4,
    "category_name": "Graphics Cards",
-   "description": null,
-   "parent_category_id": null,
+   "description": "NVIDIA graphics cards",
+   "parent_category_id": 7,
    "details": {
     "icon": "🎮"
    }
@@ -394,8 +1640,8 @@
   {
    "category_id": 5,
    "category_name": "Monitors & Peripherals",
-   "description": null,
-   "parent_category_id": null,
+   "description": "Monitors, keyboards and mice",
+   "parent_category_id": 8,
    "details": {
     "icon": "🖥️"
    }
@@ -403,10 +1649,28 @@
   {
    "category_id": 6,
    "category_name": "Spare Parts",
-   "description": null,
-   "parent_category_id": null,
+   "description": "Spare parts used in repairs",
+   "parent_category_id": 8,
    "details": {
     "icon": "🔧"
+   }
+  },
+  {
+   "category_id": 7,
+   "category_name": "PC Components",
+   "description": "Parts used to build or upgrade a computer",
+   "parent_category_id": null,
+   "details": {
+    "icon": "🖥️"
+   }
+  },
+  {
+   "category_id": 8,
+   "category_name": "Peripherals & Accessories",
+   "description": "Monitors, input devices and service spares",
+   "parent_category_id": null,
+   "details": {
+    "icon": "🖱️"
    }
   }
  ],
@@ -417,10 +1681,10 @@
    "contact_person": "Mahesh Dias",
    "phone": "0112345678",
    "email": "mahesh@techdist.lk",
-   "address": null,
+   "address": "No. 45, Galle Road, Colombo 03",
    "rating": "4.5",
    "payment_terms": 30,
-   "lead_time_days": null,
+   "lead_time_days": 5,
    "status": "active",
    "details": {
     "outstanding": 450000
@@ -432,10 +1696,10 @@
    "contact_person": "Anura Rajapaksa",
    "phone": "0113456789",
    "email": "anura@electroparts.lk",
-   "address": null,
+   "address": "No. 12, Kandy Road, Kiribathgoda",
    "rating": "4.2",
    "payment_terms": 45,
-   "lead_time_days": null,
+   "lead_time_days": 7,
    "status": "active",
    "details": {
     "outstanding": 120000
@@ -447,10 +1711,10 @@
    "contact_person": "Samanthi Kumara",
    "phone": "0114567890",
    "email": "samanthi@globalelec.lk",
-   "address": null,
+   "address": "No. 8, Unity Plaza, Colombo 04",
    "rating": "3.8",
    "payment_terms": 60,
-   "lead_time_days": null,
+   "lead_time_days": 10,
    "status": "active",
    "details": {
     "outstanding": 750000
@@ -462,10 +1726,10 @@
    "contact_person": "Ruchira Fernando",
    "phone": "0115678901",
    "email": "ruchira@premierspares.lk",
-   "address": null,
+   "address": "No. 230, Main Street, Negombo",
    "rating": "4.7",
    "payment_terms": 30,
-   "lead_time_days": null,
+   "lead_time_days": 14,
    "status": "active",
    "details": {
     "outstanding": 85000
@@ -477,7 +1741,7 @@
    "product_id": 1,
    "sku": "CPU-I9-14900K",
    "name": "Intel Core i9-14900K Processor",
-   "description": null,
+   "description": "Intel Core i9-14900K Processor – genuine product with 36 months warranty",
    "unit_price": "185000.00",
    "cost_price": "140000.00",
    "stock_qty": 14,
@@ -485,7 +1749,7 @@
    "unit_of_measure": "pcs",
    "is_spare_part": false,
    "warranty_period_months": 36,
-   "condition": null,
+   "condition": "new",
    "is_active": true,
    "category_id": 1,
    "details": {
@@ -498,7 +1762,7 @@
    "product_id": 2,
    "sku": "GPU-RTX4070S",
    "name": "NVIDIA RTX 4070 Super 12GB",
-   "description": null,
+   "description": "NVIDIA RTX 4070 Super 12GB – genuine product with 36 months warranty",
    "unit_price": "245000.00",
    "cost_price": "190000.00",
    "stock_qty": 7,
@@ -506,7 +1770,7 @@
    "unit_of_measure": "pcs",
    "is_spare_part": false,
    "warranty_period_months": 36,
-   "condition": null,
+   "condition": "new",
    "is_active": true,
    "category_id": 4,
    "details": {
@@ -519,7 +1783,7 @@
    "product_id": 3,
    "sku": "CPU-R9-7900X",
    "name": "AMD Ryzen 9 7900X Processor",
-   "description": null,
+   "description": "AMD Ryzen 9 7900X Processor – genuine product with 36 months warranty",
    "unit_price": "135000.00",
    "cost_price": "105000.00",
    "stock_qty": 9,
@@ -527,7 +1791,7 @@
    "unit_of_measure": "pcs",
    "is_spare_part": false,
    "warranty_period_months": 36,
-   "condition": null,
+   "condition": "new",
    "is_active": true,
    "category_id": 1,
    "details": {
@@ -540,7 +1804,7 @@
    "product_id": 4,
    "sku": "MB-ROG-Z790E",
    "name": "ASUS ROG Strix Z790-E Motherboard",
-   "description": null,
+   "description": "ASUS ROG Strix Z790-E Motherboard – genuine product with 36 months warranty",
    "unit_price": "225000.00",
    "cost_price": "175000.00",
    "stock_qty": 4,
@@ -548,7 +1812,7 @@
    "unit_of_measure": "pcs",
    "is_spare_part": false,
    "warranty_period_months": 36,
-   "condition": null,
+   "condition": "new",
    "is_active": true,
    "category_id": 2,
    "details": {
@@ -561,7 +1825,7 @@
    "product_id": 5,
    "sku": "SSD-990P-4TB",
    "name": "Samsung 990 Pro 4TB NVMe SSD",
-   "description": null,
+   "description": "Samsung 990 Pro 4TB NVMe SSD – genuine product with 60 months warranty",
    "unit_price": "115000.00",
    "cost_price": "90000.00",
    "stock_qty": 6,
@@ -569,7 +1833,7 @@
    "unit_of_measure": "pcs",
    "is_spare_part": false,
    "warranty_period_months": 60,
-   "condition": null,
+   "condition": "new",
    "is_active": true,
    "category_id": 3,
    "details": {
@@ -582,7 +1846,7 @@
    "product_id": 6,
    "sku": "MON-DELL-27-4K",
    "name": "Dell 27\" 4K Monitor",
-   "description": null,
+   "description": "Dell 27\" 4K Monitor – genuine product with 36 months warranty",
    "unit_price": "95000.00",
    "cost_price": "72000.00",
    "stock_qty": 12,
@@ -590,7 +1854,7 @@
    "unit_of_measure": "pcs",
    "is_spare_part": false,
    "warranty_period_months": 36,
-   "condition": null,
+   "condition": "new",
    "is_active": true,
    "category_id": 5,
    "details": {
@@ -603,7 +1867,7 @@
    "product_id": 7,
    "sku": "GPU-RTX4060TI",
    "name": "NVIDIA RTX 4060 Ti 16GB",
-   "description": null,
+   "description": "NVIDIA RTX 4060 Ti 16GB – genuine product with 36 months warranty",
    "unit_price": "175000.00",
    "cost_price": "138000.00",
    "stock_qty": 5,
@@ -611,7 +1875,7 @@
    "unit_of_measure": "pcs",
    "is_spare_part": false,
    "warranty_period_months": 36,
-   "condition": null,
+   "condition": "new",
    "is_active": true,
    "category_id": 4,
    "details": {
@@ -624,7 +1888,7 @@
    "product_id": 8,
    "sku": "SP-CPU-FAN-120",
    "name": "CPU Cooler Fan 120mm",
-   "description": null,
+   "description": "CPU Cooler Fan 120mm – genuine product with 6 months warranty",
    "unit_price": "4500.00",
    "cost_price": "2800.00",
    "stock_qty": 35,
@@ -632,7 +1896,7 @@
    "unit_of_measure": "pcs",
    "is_spare_part": true,
    "warranty_period_months": 6,
-   "condition": null,
+   "condition": "new",
    "is_active": true,
    "category_id": 6,
    "details": {
@@ -645,7 +1909,7 @@
    "product_id": 9,
    "sku": "SP-LAP-KBD",
    "name": "Laptop Replacement Keyboard",
-   "description": null,
+   "description": "Laptop Replacement Keyboard – genuine product with 6 months warranty",
    "unit_price": "8500.00",
    "cost_price": "5500.00",
    "stock_qty": 20,
@@ -653,7 +1917,7 @@
    "unit_of_measure": "pcs",
    "is_spare_part": true,
    "warranty_period_months": 6,
-   "condition": null,
+   "condition": "refurbished",
    "is_active": true,
    "category_id": 6,
    "details": {
@@ -666,7 +1930,7 @@
    "product_id": 10,
    "sku": "PER-LOGI-MK270",
    "name": "Logitech MK270 Keyboard & Mouse",
-   "description": null,
+   "description": "Logitech MK270 Keyboard & Mouse – genuine product with 12 months warranty",
    "unit_price": "12500.00",
    "cost_price": "9000.00",
    "stock_qty": 22,
@@ -674,7 +1938,7 @@
    "unit_of_measure": "pcs",
    "is_spare_part": false,
    "warranty_period_months": 12,
-   "condition": null,
+   "condition": "new",
    "is_active": true,
    "category_id": 5,
    "details": {
@@ -687,7 +1951,7 @@
    "product_id": 11,
    "sku": "RAM-KF-16-D5",
    "name": "Kingston Fury 16GB DDR5 RAM",
-   "description": null,
+   "description": "Kingston Fury 16GB DDR5 RAM – genuine product with 60 months warranty",
    "unit_price": "18500.00",
    "cost_price": "14000.00",
    "stock_qty": 3,
@@ -695,7 +1959,7 @@
    "unit_of_measure": "pcs",
    "is_spare_part": false,
    "warranty_period_months": 60,
-   "condition": null,
+   "condition": "new",
    "is_active": true,
    "category_id": 3,
    "details": {
@@ -708,7 +1972,7 @@
    "product_id": 12,
    "sku": "GPU-RTX4080S",
    "name": "NVIDIA RTX 4080 Super 16GB",
-   "description": null,
+   "description": "NVIDIA RTX 4080 Super 16GB – genuine product with 36 months warranty",
    "unit_price": "310000.00",
    "cost_price": "245000.00",
    "stock_qty": 2,
@@ -716,7 +1980,7 @@
    "unit_of_measure": "pcs",
    "is_spare_part": false,
    "warranty_period_months": 36,
-   "condition": null,
+   "condition": "new",
    "is_active": true,
    "category_id": 4,
    "details": {
@@ -733,7 +1997,7 @@
    "phone": "0771234567",
    "email": "lahiru@email.com",
    "address": "No.12, Colombo 07",
-   "customer_type": null,
+   "customer_type": "individual",
    "registered_date": "2026-07-03T05:30:00",
    "details": {
     "balance": 0
@@ -745,7 +2009,7 @@
    "phone": "0769876543",
    "email": "priya@email.com",
    "address": "No.45, Kandy Road",
-   "customer_type": null,
+   "customer_type": "individual",
    "registered_date": "2026-08-02T05:30:00",
    "details": {
     "balance": 12000
@@ -757,7 +2021,7 @@
    "phone": "0751122334",
    "email": "chamara@email.com",
    "address": "No.8, Galle Road",
-   "customer_type": null,
+   "customer_type": "business",
    "registered_date": "2026-09-01T05:30:00",
    "details": {
     "balance": 0
@@ -769,7 +2033,7 @@
    "phone": "0712223344",
    "email": "nisala@email.com",
    "address": "No.22, Negombo",
-   "customer_type": null,
+   "customer_type": "individual",
    "registered_date": "2026-10-01T05:30:00",
    "details": {
     "balance": 5500
@@ -781,7 +2045,7 @@
    "phone": "0783334455",
    "email": "tharushi@email.com",
    "address": "No.77, Matara",
-   "customer_type": null,
+   "customer_type": "individual",
    "registered_date": "2026-10-16T05:30:00",
    "details": {
     "balance": 0
@@ -794,10 +2058,10 @@
    "credit_limit": "150000.00",
    "current_balance": "45000.00",
    "status": "active",
-   "last_review_date": null,
+   "last_review_date": "2026-09-01T05:30:00",
    "requested_limit": null,
    "customer_id": 1,
-   "user_id": null,
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {}
   },
   {
@@ -805,10 +2069,10 @@
    "credit_limit": "80000.00",
    "current_balance": "0.00",
    "status": "active",
-   "last_review_date": null,
+   "last_review_date": "2026-09-06T05:30:00",
    "requested_limit": null,
    "customer_id": 2,
-   "user_id": null,
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {}
   },
   {
@@ -816,10 +2080,10 @@
    "credit_limit": "200000.00",
    "current_balance": "80000.00",
    "status": "active",
-   "last_review_date": null,
+   "last_review_date": "2026-09-11T05:30:00",
    "requested_limit": null,
    "customer_id": 3,
-   "user_id": null,
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {}
   },
   {
@@ -827,10 +2091,10 @@
    "credit_limit": "50000.00",
    "current_balance": "0.00",
    "status": "active",
-   "last_review_date": null,
+   "last_review_date": "2026-09-16T05:30:00",
    "requested_limit": null,
    "customer_id": 4,
-   "user_id": null,
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {}
   },
   {
@@ -838,10 +2102,10 @@
    "credit_limit": "100000.00",
    "current_balance": "30000.00",
    "status": "active",
-   "last_review_date": null,
+   "last_review_date": "2026-09-21T05:30:00",
    "requested_limit": null,
    "customer_id": 5,
-   "user_id": null,
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {}
   },
   {
@@ -913,7 +2177,7 @@
   {
    "batch_id": 1,
    "batch_serial_number": "BATCH-CPU-2401",
-   "manufacture_date": null,
+   "manufacture_date": "2026-05-19T05:30:00",
    "supplier_warranty_expiry": "2028-06-22T05:30:00",
    "quantity": 10,
    "supplier_ref": "PO-022",
@@ -925,7 +2189,7 @@
   {
    "batch_id": 2,
    "batch_serial_number": "BATCH-GPU-2312",
-   "manufacture_date": null,
+   "manufacture_date": "2025-08-12T05:30:00",
    "supplier_warranty_expiry": "2026-09-26T05:30:00",
    "quantity": 5,
    "supplier_ref": "PO-000",
@@ -937,7 +2201,7 @@
   {
    "batch_id": 3,
    "batch_serial_number": "BATCH-FAN-2405",
-   "manufacture_date": null,
+   "manufacture_date": "2026-06-18T05:30:00",
    "supplier_warranty_expiry": "2027-01-29T05:30:00",
    "quantity": 40,
    "supplier_ref": "PO-025",
@@ -949,7 +2213,7 @@
   {
    "batch_id": 4,
    "batch_serial_number": "SN-RAM-77310",
-   "manufacture_date": null,
+   "manufacture_date": "2026-02-28T05:30:00",
    "supplier_warranty_expiry": "2030-08-31T05:30:00",
    "quantity": 6,
    "supplier_ref": "PO-020",
@@ -1001,10 +2265,10 @@
    "total_amount": "237600.00",
    "payment_type": "card",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": 1,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -1024,10 +2288,10 @@
    "total_amount": "318500.00",
    "payment_type": "cash",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": true,
+   "installation_required": false,
    "customer_id": 1,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -1047,10 +2311,10 @@
    "total_amount": "290900.00",
    "payment_type": "card",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": null,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -1070,10 +2334,10 @@
    "total_amount": "9000.00",
    "payment_type": "cash",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": null,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -1093,10 +2357,10 @@
    "total_amount": "169700.00",
    "payment_type": "card",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": 2,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -1116,10 +2380,10 @@
    "total_amount": "111500.00",
    "payment_type": "card",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": null,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -1139,10 +2403,10 @@
    "total_amount": "130900.00",
    "payment_type": "cash",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": 1,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -1162,10 +2426,10 @@
    "total_amount": "175000.00",
    "payment_type": "transfer",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": 1,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -1185,10 +2449,10 @@
    "total_amount": "179400.00",
    "payment_type": "card",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": 4,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -1208,10 +2472,10 @@
    "total_amount": "277100.00",
    "payment_type": "cash",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": 2,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -1231,10 +2495,10 @@
    "total_amount": "115000.00",
    "payment_type": "transfer",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": 2,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -1254,10 +2518,10 @@
    "total_amount": "13500.00",
    "payment_type": "card",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": 1,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -1277,10 +2541,10 @@
    "total_amount": "17000.00",
    "payment_type": "card",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": 5,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -1300,10 +2564,10 @@
    "total_amount": "185000.00",
    "payment_type": "credit",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": 2,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 92500,
@@ -1323,10 +2587,10 @@
    "total_amount": "470000.00",
    "payment_type": "credit",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": true,
+   "installation_required": false,
    "customer_id": 3,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -1346,10 +2610,10 @@
    "total_amount": "115000.00",
    "payment_type": "cash",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": null,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -1369,10 +2633,10 @@
    "total_amount": "160500.00",
    "payment_type": "card",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": 3,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -1392,10 +2656,10 @@
    "total_amount": "202000.00",
    "payment_type": "card",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": null,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -1415,10 +2679,10 @@
    "total_amount": "135000.00",
    "payment_type": "card",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": null,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -1438,10 +2702,10 @@
    "total_amount": "185000.00",
    "payment_type": "card",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": 3,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -1461,10 +2725,10 @@
    "total_amount": "340000.00",
    "payment_type": "transfer",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": true,
+   "installation_required": false,
    "customer_id": 5,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -1484,10 +2748,10 @@
    "total_amount": "111500.00",
    "payment_type": "cash",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": 4,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -1507,10 +2771,10 @@
    "total_amount": "50000.00",
    "payment_type": "card",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": null,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -1530,10 +2794,10 @@
    "total_amount": "262900.00",
    "payment_type": "card",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": 1,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -1553,10 +2817,10 @@
    "total_amount": "310000.00",
    "payment_type": "transfer",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": true,
+   "installation_required": false,
    "customer_id": 3,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -1576,10 +2840,10 @@
    "total_amount": "18500.00",
    "payment_type": "cash",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": null,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -1599,10 +2863,10 @@
    "total_amount": "37500.00",
    "payment_type": "card",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": 5,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -1622,10 +2886,10 @@
    "total_amount": "9000.00",
    "payment_type": "cash",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": 3,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -1645,10 +2909,10 @@
    "total_amount": "250000.00",
    "payment_type": "credit",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": 5,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 115000,
@@ -1668,10 +2932,10 @@
    "total_amount": "250000.00",
    "payment_type": "card",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": 1,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -1691,10 +2955,10 @@
    "total_amount": "222000.00",
    "payment_type": "cash",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": 5,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -1714,10 +2978,10 @@
    "total_amount": "280900.00",
    "payment_type": "credit",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": 5,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 17900,
@@ -1737,10 +3001,10 @@
    "total_amount": "55500.00",
    "payment_type": "transfer",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": 1,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -1760,10 +3024,10 @@
    "total_amount": "27000.00",
    "payment_type": "card",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": 3,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -1783,15 +3047,16 @@
    "total_amount": "190000.00",
    "payment_type": "card",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": 5,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
-   "discount_id": null,
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
+   "discount_id": 1,
    "details": {
     "balance": 0,
     "taxRate": 0,
     "invoiceNo": "INV-2026-035",
+    "promoCode": "NEWYEAR10",
     "creditSale": false,
     "paymentStatus": "paid"
    },
@@ -1806,15 +3071,16 @@
    "total_amount": "237600.00",
    "payment_type": "card",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": 4,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
-   "discount_id": null,
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
+   "discount_id": 1,
    "details": {
     "balance": 0,
     "taxRate": 0,
     "invoiceNo": "INV-2026-036",
+    "promoCode": "NEWYEAR10",
     "creditSale": false,
     "paymentStatus": "paid"
    },
@@ -1829,15 +3095,16 @@
    "total_amount": "245000.00",
    "payment_type": "card",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": 1,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
-   "discount_id": null,
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
+   "discount_id": 1,
    "details": {
     "balance": 0,
     "taxRate": 0,
     "invoiceNo": "INV-2026-037",
+    "promoCode": "NEWYEAR10",
     "creditSale": false,
     "paymentStatus": "paid"
    },
@@ -1852,10 +3119,10 @@
    "total_amount": "410000.00",
    "payment_type": "cash",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": true,
+   "installation_required": false,
    "customer_id": 2,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -1875,10 +3142,10 @@
    "total_amount": "300700.00",
    "payment_type": "card",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": true,
+   "installation_required": false,
    "customer_id": 3,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -1898,10 +3165,10 @@
    "total_amount": "535000.00",
    "payment_type": "card",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": true,
+   "installation_required": false,
    "customer_id": 1,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -1921,10 +3188,10 @@
    "total_amount": "111000.00",
    "payment_type": "card",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": 3,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -1944,10 +3211,10 @@
    "total_amount": "337100.00",
    "payment_type": "cash",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": true,
+   "installation_required": false,
    "customer_id": 4,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -1967,10 +3234,10 @@
    "total_amount": "354500.00",
    "payment_type": "transfer",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": true,
+   "installation_required": false,
    "customer_id": null,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -1990,10 +3257,10 @@
    "total_amount": "314400.00",
    "payment_type": "card",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": true,
+   "installation_required": false,
    "customer_id": 5,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -2013,10 +3280,10 @@
    "total_amount": "74000.00",
    "payment_type": "cash",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": 5,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -2036,10 +3303,10 @@
    "total_amount": "33700.00",
    "payment_type": "card",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": 5,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -2059,10 +3326,10 @@
    "total_amount": "8500.00",
    "payment_type": "cash",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": 4,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -2082,10 +3349,10 @@
    "total_amount": "13500.00",
    "payment_type": "cash",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": 4,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -2105,10 +3372,10 @@
    "total_amount": "115000.00",
    "payment_type": "transfer",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": 4,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -2128,10 +3395,10 @@
    "total_amount": "225000.00",
    "payment_type": "card",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": null,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -2151,10 +3418,10 @@
    "total_amount": "225000.00",
    "payment_type": "card",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": null,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -2174,10 +3441,10 @@
    "total_amount": "90000.00",
    "payment_type": "cash",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": true,
+   "installation_required": false,
    "customer_id": 1,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -2198,10 +3465,10 @@
    "total_amount": "313200.00",
    "payment_type": "card",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": true,
+   "installation_required": false,
    "customer_id": null,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -2221,10 +3488,10 @@
    "total_amount": "112500.00",
    "payment_type": "cash",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": 2,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -2244,10 +3511,10 @@
    "total_amount": "382000.00",
    "payment_type": "credit",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": true,
+   "installation_required": false,
    "customer_id": 3,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 182000,
@@ -2267,10 +3534,10 @@
    "total_amount": "67900.00",
    "payment_type": "transfer",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": 4,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -2290,10 +3557,10 @@
    "total_amount": "392800.00",
    "payment_type": "transfer",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": true,
+   "installation_required": false,
    "customer_id": 4,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -2313,10 +3580,10 @@
    "total_amount": "115000.00",
    "payment_type": "cash",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": true,
+   "installation_required": true,
    "customer_id": 2,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -2336,10 +3603,10 @@
    "total_amount": "4400.00",
    "payment_type": "cash",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": 2,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -2359,10 +3626,10 @@
    "total_amount": "50500.00",
    "payment_type": "card",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": 5,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -2382,10 +3649,10 @@
    "total_amount": "13500.00",
    "payment_type": "transfer",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": 1,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -2405,10 +3672,10 @@
    "total_amount": "167000.00",
    "payment_type": "cash",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": true,
+   "installation_required": false,
    "customer_id": 5,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 0,
@@ -2428,10 +3695,10 @@
    "total_amount": "160500.00",
    "payment_type": "credit",
    "status": "completed",
-   "delivery_required": null,
-   "installation_required": null,
+   "delivery_required": false,
+   "installation_required": false,
    "customer_id": 5,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "discount_id": null,
    "details": {
     "balance": 12700,
@@ -3635,15 +4902,15 @@
    "expected_delivery_date": "2026-05-10T05:30:00",
    "received_date": "2026-05-08T05:30:00",
    "subtotal": "47600.00",
-   "tax_amount": null,
+   "tax_amount": "0.00",
    "total_amount": "47600.00",
    "status": "received",
-   "is_urgent": null,
+   "is_urgent": false,
    "supplier_id": 4,
-   "user_id": "408c27ee-4efd-45d3-9b8f-a8bdda82b724",
+   "user_id": "318c14ad-64b6-4adc-85db-3d61c9fd8c10",
    "quotation_id": null,
    "details": {
-    "approvedBy": "U001",
+    "approvedBy": "8d30381b-fbd8-444b-825a-8a82e311daf3",
     "payableStatus": "paid"
    }
   },
@@ -3653,15 +4920,15 @@
    "expected_delivery_date": "2026-05-11T05:30:00",
    "received_date": "2026-05-09T05:30:00",
    "subtotal": "44800.00",
-   "tax_amount": null,
+   "tax_amount": "0.00",
    "total_amount": "44800.00",
    "status": "received",
-   "is_urgent": null,
+   "is_urgent": false,
    "supplier_id": 4,
-   "user_id": "408c27ee-4efd-45d3-9b8f-a8bdda82b724",
+   "user_id": "318c14ad-64b6-4adc-85db-3d61c9fd8c10",
    "quotation_id": null,
    "details": {
-    "approvedBy": "U001",
+    "approvedBy": "8d30381b-fbd8-444b-825a-8a82e311daf3",
     "payableStatus": "paid"
    }
   },
@@ -3671,15 +4938,15 @@
    "expected_delivery_date": "2026-05-13T05:30:00",
    "received_date": "2026-05-16T05:30:00",
    "subtotal": "140000.00",
-   "tax_amount": null,
+   "tax_amount": "0.00",
    "total_amount": "140000.00",
    "status": "received",
-   "is_urgent": null,
+   "is_urgent": false,
    "supplier_id": 3,
-   "user_id": "408c27ee-4efd-45d3-9b8f-a8bdda82b724",
+   "user_id": "318c14ad-64b6-4adc-85db-3d61c9fd8c10",
    "quotation_id": null,
    "details": {
-    "approvedBy": "U001",
+    "approvedBy": "8d30381b-fbd8-444b-825a-8a82e311daf3",
     "payableStatus": "paid"
    }
   },
@@ -3689,15 +4956,15 @@
    "expected_delivery_date": "2026-06-01T05:30:00",
    "received_date": "2026-06-04T05:30:00",
    "subtotal": "58800.00",
-   "tax_amount": null,
+   "tax_amount": "0.00",
    "total_amount": "58800.00",
    "status": "received",
-   "is_urgent": null,
+   "is_urgent": false,
    "supplier_id": 4,
-   "user_id": "408c27ee-4efd-45d3-9b8f-a8bdda82b724",
+   "user_id": "318c14ad-64b6-4adc-85db-3d61c9fd8c10",
    "quotation_id": null,
    "details": {
-    "approvedBy": "U001",
+    "approvedBy": "8d30381b-fbd8-444b-825a-8a82e311daf3",
     "payableStatus": "paid"
    }
   },
@@ -3707,15 +4974,15 @@
    "expected_delivery_date": "2026-06-22T05:30:00",
    "received_date": "2026-06-25T05:30:00",
    "subtotal": "280000.00",
-   "tax_amount": null,
+   "tax_amount": "0.00",
    "total_amount": "280000.00",
    "status": "received",
-   "is_urgent": null,
+   "is_urgent": false,
    "supplier_id": 3,
-   "user_id": "408c27ee-4efd-45d3-9b8f-a8bdda82b724",
+   "user_id": "318c14ad-64b6-4adc-85db-3d61c9fd8c10",
    "quotation_id": null,
    "details": {
-    "approvedBy": "U001",
+    "approvedBy": "8d30381b-fbd8-444b-825a-8a82e311daf3",
     "payableStatus": "paid"
    }
   },
@@ -3725,15 +4992,15 @@
    "expected_delivery_date": "2026-06-28T05:30:00",
    "received_date": "2026-07-01T05:30:00",
    "subtotal": "490000.00",
-   "tax_amount": null,
+   "tax_amount": "0.00",
    "total_amount": "490000.00",
    "status": "received",
-   "is_urgent": null,
+   "is_urgent": false,
    "supplier_id": 3,
-   "user_id": "408c27ee-4efd-45d3-9b8f-a8bdda82b724",
+   "user_id": "318c14ad-64b6-4adc-85db-3d61c9fd8c10",
    "quotation_id": null,
    "details": {
-    "approvedBy": "U001",
+    "approvedBy": "8d30381b-fbd8-444b-825a-8a82e311daf3",
     "payableStatus": "paid"
    }
   },
@@ -3743,15 +5010,15 @@
    "expected_delivery_date": "2026-07-02T05:30:00",
    "received_date": "2026-06-30T05:30:00",
    "subtotal": "75600.00",
-   "tax_amount": null,
+   "tax_amount": "0.00",
    "total_amount": "75600.00",
    "status": "received",
-   "is_urgent": null,
+   "is_urgent": false,
    "supplier_id": 4,
-   "user_id": "408c27ee-4efd-45d3-9b8f-a8bdda82b724",
+   "user_id": "318c14ad-64b6-4adc-85db-3d61c9fd8c10",
    "quotation_id": null,
    "details": {
-    "approvedBy": "U001",
+    "approvedBy": "8d30381b-fbd8-444b-825a-8a82e311daf3",
     "payableStatus": "paid"
    }
   },
@@ -3761,15 +5028,15 @@
    "expected_delivery_date": "2026-07-05T05:30:00",
    "received_date": "2026-07-03T05:30:00",
    "subtotal": "980000.00",
-   "tax_amount": null,
+   "tax_amount": "0.00",
    "total_amount": "980000.00",
    "status": "received",
-   "is_urgent": null,
+   "is_urgent": false,
    "supplier_id": 3,
-   "user_id": "408c27ee-4efd-45d3-9b8f-a8bdda82b724",
+   "user_id": "318c14ad-64b6-4adc-85db-3d61c9fd8c10",
    "quotation_id": null,
    "details": {
-    "approvedBy": "U001",
+    "approvedBy": "8d30381b-fbd8-444b-825a-8a82e311daf3",
     "payableStatus": "paid"
    }
   },
@@ -3779,15 +5046,15 @@
    "expected_delivery_date": "2026-07-10T05:30:00",
    "received_date": "2026-07-08T05:30:00",
    "subtotal": "280000.00",
-   "tax_amount": null,
+   "tax_amount": "0.00",
    "total_amount": "280000.00",
    "status": "received",
-   "is_urgent": null,
+   "is_urgent": false,
    "supplier_id": 3,
-   "user_id": "408c27ee-4efd-45d3-9b8f-a8bdda82b724",
+   "user_id": "318c14ad-64b6-4adc-85db-3d61c9fd8c10",
    "quotation_id": null,
    "details": {
-    "approvedBy": "U001",
+    "approvedBy": "8d30381b-fbd8-444b-825a-8a82e311daf3",
     "payableStatus": "paid"
    }
   },
@@ -3797,15 +5064,15 @@
    "expected_delivery_date": "2026-07-15T05:30:00",
    "received_date": "2026-07-13T05:30:00",
    "subtotal": "47600.00",
-   "tax_amount": null,
+   "tax_amount": "0.00",
    "total_amount": "47600.00",
    "status": "received",
-   "is_urgent": null,
+   "is_urgent": false,
    "supplier_id": 4,
-   "user_id": "408c27ee-4efd-45d3-9b8f-a8bdda82b724",
+   "user_id": "318c14ad-64b6-4adc-85db-3d61c9fd8c10",
    "quotation_id": null,
    "details": {
-    "approvedBy": "U001",
+    "approvedBy": "8d30381b-fbd8-444b-825a-8a82e311daf3",
     "payableStatus": "paid"
    }
   },
@@ -3815,15 +5082,15 @@
    "expected_delivery_date": "2026-07-30T05:30:00",
    "received_date": "2026-07-28T05:30:00",
    "subtotal": "61600.00",
-   "tax_amount": null,
+   "tax_amount": "0.00",
    "total_amount": "61600.00",
    "status": "received",
-   "is_urgent": null,
+   "is_urgent": false,
    "supplier_id": 4,
-   "user_id": "408c27ee-4efd-45d3-9b8f-a8bdda82b724",
+   "user_id": "318c14ad-64b6-4adc-85db-3d61c9fd8c10",
    "quotation_id": null,
    "details": {
-    "approvedBy": "U001",
+    "approvedBy": "8d30381b-fbd8-444b-825a-8a82e311daf3",
     "payableStatus": "paid"
    }
   },
@@ -3833,15 +5100,15 @@
    "expected_delivery_date": "2026-08-15T05:30:00",
    "received_date": "2026-08-13T05:30:00",
    "subtotal": "126000.00",
-   "tax_amount": null,
+   "tax_amount": "0.00",
    "total_amount": "126000.00",
    "status": "received",
-   "is_urgent": null,
+   "is_urgent": false,
    "supplier_id": 2,
-   "user_id": "408c27ee-4efd-45d3-9b8f-a8bdda82b724",
+   "user_id": "318c14ad-64b6-4adc-85db-3d61c9fd8c10",
    "quotation_id": null,
    "details": {
-    "approvedBy": "U001",
+    "approvedBy": "8d30381b-fbd8-444b-825a-8a82e311daf3",
     "payableStatus": "paid"
    }
   },
@@ -3851,15 +5118,15 @@
    "expected_delivery_date": "2026-09-02T05:30:00",
    "received_date": "2026-08-31T05:30:00",
    "subtotal": "144000.00",
-   "tax_amount": null,
+   "tax_amount": "0.00",
    "total_amount": "144000.00",
    "status": "received",
-   "is_urgent": null,
+   "is_urgent": false,
    "supplier_id": 1,
-   "user_id": "408c27ee-4efd-45d3-9b8f-a8bdda82b724",
+   "user_id": "318c14ad-64b6-4adc-85db-3d61c9fd8c10",
    "quotation_id": null,
    "details": {
-    "approvedBy": "U001",
+    "approvedBy": "8d30381b-fbd8-444b-825a-8a82e311daf3",
     "payableStatus": "paid"
    }
   },
@@ -3869,15 +5136,15 @@
    "expected_delivery_date": "2026-09-13T05:30:00",
    "received_date": "2026-09-16T05:30:00",
    "subtotal": "360000.00",
-   "tax_amount": null,
+   "tax_amount": "0.00",
    "total_amount": "360000.00",
    "status": "received",
-   "is_urgent": null,
+   "is_urgent": false,
    "supplier_id": 3,
-   "user_id": "408c27ee-4efd-45d3-9b8f-a8bdda82b724",
+   "user_id": "318c14ad-64b6-4adc-85db-3d61c9fd8c10",
    "quotation_id": null,
    "details": {
-    "approvedBy": "U001",
+    "approvedBy": "8d30381b-fbd8-444b-825a-8a82e311daf3",
     "payableStatus": "pending"
    }
   },
@@ -3887,15 +5154,15 @@
    "expected_delivery_date": "2026-09-13T05:30:00",
    "received_date": "2026-09-16T05:30:00",
    "subtotal": "162000.00",
-   "tax_amount": null,
+   "tax_amount": "0.00",
    "total_amount": "162000.00",
    "status": "received",
-   "is_urgent": null,
+   "is_urgent": false,
    "supplier_id": 2,
-   "user_id": "408c27ee-4efd-45d3-9b8f-a8bdda82b724",
+   "user_id": "318c14ad-64b6-4adc-85db-3d61c9fd8c10",
    "quotation_id": null,
    "details": {
-    "approvedBy": "U001",
+    "approvedBy": "8d30381b-fbd8-444b-825a-8a82e311daf3",
     "payableStatus": "paid"
    }
   },
@@ -3905,15 +5172,15 @@
    "expected_delivery_date": "2026-09-21T05:30:00",
    "received_date": "2026-09-19T05:30:00",
    "subtotal": "1050000.00",
-   "tax_amount": null,
+   "tax_amount": "0.00",
    "total_amount": "1050000.00",
    "status": "received",
-   "is_urgent": null,
+   "is_urgent": false,
    "supplier_id": 2,
-   "user_id": "408c27ee-4efd-45d3-9b8f-a8bdda82b724",
+   "user_id": "318c14ad-64b6-4adc-85db-3d61c9fd8c10",
    "quotation_id": null,
    "details": {
-    "approvedBy": "U001",
+    "approvedBy": "8d30381b-fbd8-444b-825a-8a82e311daf3",
     "payableStatus": "paid"
    }
   },
@@ -3923,15 +5190,15 @@
    "expected_delivery_date": "2026-09-22T05:30:00",
    "received_date": "2026-09-20T05:30:00",
    "subtotal": "90000.00",
-   "tax_amount": null,
+   "tax_amount": "0.00",
    "total_amount": "90000.00",
    "status": "received",
-   "is_urgent": null,
+   "is_urgent": false,
    "supplier_id": 2,
-   "user_id": "408c27ee-4efd-45d3-9b8f-a8bdda82b724",
+   "user_id": "318c14ad-64b6-4adc-85db-3d61c9fd8c10",
    "quotation_id": null,
    "details": {
-    "approvedBy": "U001",
+    "approvedBy": "8d30381b-fbd8-444b-825a-8a82e311daf3",
     "payableStatus": "paid"
    }
   },
@@ -3941,15 +5208,15 @@
    "expected_delivery_date": "2026-09-22T05:30:00",
    "received_date": "2026-09-20T05:30:00",
    "subtotal": "90000.00",
-   "tax_amount": null,
+   "tax_amount": "0.00",
    "total_amount": "90000.00",
    "status": "received",
-   "is_urgent": null,
+   "is_urgent": false,
    "supplier_id": 2,
-   "user_id": "408c27ee-4efd-45d3-9b8f-a8bdda82b724",
+   "user_id": "318c14ad-64b6-4adc-85db-3d61c9fd8c10",
    "quotation_id": null,
    "details": {
-    "approvedBy": "U001",
+    "approvedBy": "8d30381b-fbd8-444b-825a-8a82e311daf3",
     "payableStatus": "paid"
    }
   },
@@ -3959,15 +5226,15 @@
    "expected_delivery_date": "2026-09-27T05:30:00",
    "received_date": "2026-09-30T05:30:00",
    "subtotal": "570000.00",
-   "tax_amount": null,
+   "tax_amount": "0.00",
    "total_amount": "570000.00",
    "status": "received",
-   "is_urgent": null,
+   "is_urgent": false,
    "supplier_id": 1,
-   "user_id": "408c27ee-4efd-45d3-9b8f-a8bdda82b724",
+   "user_id": "318c14ad-64b6-4adc-85db-3d61c9fd8c10",
    "quotation_id": null,
    "details": {
-    "approvedBy": "U001",
+    "approvedBy": "8d30381b-fbd8-444b-825a-8a82e311daf3",
     "payableStatus": "pending"
    }
   },
@@ -3977,15 +5244,15 @@
    "expected_delivery_date": "2026-10-21T05:30:00",
    "received_date": "2026-10-23T05:30:00",
    "subtotal": "315000.00",
-   "tax_amount": null,
+   "tax_amount": "0.00",
    "total_amount": "315000.00",
    "status": "received",
-   "is_urgent": null,
+   "is_urgent": false,
    "supplier_id": 1,
-   "user_id": "408c27ee-4efd-45d3-9b8f-a8bdda82b724",
-   "quotation_id": null,
+   "user_id": "318c14ad-64b6-4adc-85db-3d61c9fd8c10",
+   "quotation_id": 1,
    "details": {
-    "approvedBy": "U001",
+    "approvedBy": "8d30381b-fbd8-444b-825a-8a82e311daf3",
     "payableStatus": "pending"
    }
   },
@@ -3995,15 +5262,15 @@
    "expected_delivery_date": "2026-10-13T05:30:00",
    "received_date": "2026-10-11T05:30:00",
    "subtotal": "1470000.00",
-   "tax_amount": null,
+   "tax_amount": "0.00",
    "total_amount": "1470000.00",
    "status": "received",
-   "is_urgent": null,
+   "is_urgent": false,
    "supplier_id": 3,
-   "user_id": "408c27ee-4efd-45d3-9b8f-a8bdda82b724",
+   "user_id": "318c14ad-64b6-4adc-85db-3d61c9fd8c10",
    "quotation_id": null,
    "details": {
-    "approvedBy": "U001",
+    "approvedBy": "8d30381b-fbd8-444b-825a-8a82e311daf3",
     "payableStatus": "pending"
    }
   },
@@ -4013,15 +5280,15 @@
    "expected_delivery_date": "2026-10-26T05:30:00",
    "received_date": "2026-10-27T05:30:00",
    "subtotal": "700000.00",
-   "tax_amount": null,
+   "tax_amount": "0.00",
    "total_amount": "700000.00",
    "status": "received",
-   "is_urgent": null,
+   "is_urgent": false,
    "supplier_id": 2,
-   "user_id": "408c27ee-4efd-45d3-9b8f-a8bdda82b724",
+   "user_id": "318c14ad-64b6-4adc-85db-3d61c9fd8c10",
    "quotation_id": null,
    "details": {
-    "approvedBy": "U001",
+    "approvedBy": "8d30381b-fbd8-444b-825a-8a82e311daf3",
     "payableStatus": "paid"
    }
   },
@@ -4031,15 +5298,15 @@
    "expected_delivery_date": "2026-10-26T05:30:00",
    "received_date": null,
    "subtotal": "525000.00",
-   "tax_amount": null,
+   "tax_amount": "0.00",
    "total_amount": "525000.00",
    "status": "ordered",
-   "is_urgent": null,
+   "is_urgent": false,
    "supplier_id": 2,
-   "user_id": "408c27ee-4efd-45d3-9b8f-a8bdda82b724",
+   "user_id": "318c14ad-64b6-4adc-85db-3d61c9fd8c10",
    "quotation_id": null,
    "details": {
-    "approvedBy": "U001",
+    "approvedBy": "8d30381b-fbd8-444b-825a-8a82e311daf3",
     "payableStatus": "none"
    }
   },
@@ -4049,15 +5316,15 @@
    "expected_delivery_date": "2026-11-07T05:30:00",
    "received_date": null,
    "subtotal": "932000.00",
-   "tax_amount": null,
+   "tax_amount": "0.00",
    "total_amount": "932000.00",
    "status": "ordered",
-   "is_urgent": null,
+   "is_urgent": false,
    "supplier_id": 3,
-   "user_id": "408c27ee-4efd-45d3-9b8f-a8bdda82b724",
+   "user_id": "318c14ad-64b6-4adc-85db-3d61c9fd8c10",
    "quotation_id": null,
    "details": {
-    "approvedBy": "U001",
+    "approvedBy": "8d30381b-fbd8-444b-825a-8a82e311daf3",
     "payableStatus": "none"
    }
   },
@@ -4067,15 +5334,15 @@
    "expected_delivery_date": "2026-11-04T05:30:00",
    "received_date": null,
    "subtotal": "111000.00",
-   "tax_amount": null,
+   "tax_amount": "0.00",
    "total_amount": "111000.00",
    "status": "approved",
-   "is_urgent": null,
+   "is_urgent": true,
    "supplier_id": 4,
-   "user_id": "408c27ee-4efd-45d3-9b8f-a8bdda82b724",
+   "user_id": "318c14ad-64b6-4adc-85db-3d61c9fd8c10",
    "quotation_id": null,
    "details": {
-    "approvedBy": "U001",
+    "approvedBy": "8d30381b-fbd8-444b-825a-8a82e311daf3",
     "payableStatus": "none"
    }
   },
@@ -4085,15 +5352,15 @@
    "expected_delivery_date": "2026-11-04T05:30:00",
    "received_date": "2026-10-31T05:30:00",
    "subtotal": "406000.00",
-   "tax_amount": null,
+   "tax_amount": "0.00",
    "total_amount": "406000.00",
    "status": "received",
-   "is_urgent": null,
+   "is_urgent": false,
    "supplier_id": 3,
-   "user_id": "408c27ee-4efd-45d3-9b8f-a8bdda82b724",
+   "user_id": "318c14ad-64b6-4adc-85db-3d61c9fd8c10",
    "quotation_id": null,
    "details": {
-    "approvedBy": "U001",
+    "approvedBy": "8d30381b-fbd8-444b-825a-8a82e311daf3",
     "payableStatus": "pending"
    }
   }
@@ -4440,18 +5707,18 @@
   {
    "service_job_id": 1,
    "job_type": "repair",
-   "scheduled_date": null,
+   "scheduled_date": "2026-05-06T00:00:00",
    "completed_date": "2026-05-08T00:00:00",
    "status": "completed",
    "priority": "high",
    "fault_description": "PC does not power on – power supply checked",
-   "resolution_notes": null,
+   "resolution_notes": "Faulty part replaced and tested – working normally",
    "visit_count": 1,
    "billing_status": "warranty",
    "sales_order_id": null,
    "technician_id": 1,
    "details": {
-    "createdBy": "U002",
+    "createdBy": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
     "partsUsed": [],
     "updatedAt": "2026-05-08",
     "warrantyValid": true
@@ -4465,18 +5732,18 @@
   {
    "service_job_id": 2,
    "job_type": "installation",
-   "scheduled_date": null,
+   "scheduled_date": "2026-05-21T00:00:00",
    "completed_date": "2026-05-24T00:00:00",
    "status": "completed",
    "priority": "high",
    "fault_description": "New gaming PC build and set-up at customer site",
-   "resolution_notes": null,
+   "resolution_notes": "Installed, tested and handed over to the customer",
    "visit_count": 1,
    "billing_status": "paid",
    "sales_order_id": null,
    "technician_id": 1,
    "details": {
-    "createdBy": "U002",
+    "createdBy": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
     "partsUsed": [],
     "updatedAt": "2026-05-24",
     "warrantyValid": false
@@ -4490,18 +5757,18 @@
   {
    "service_job_id": 3,
    "job_type": "maintenance",
-   "scheduled_date": null,
+   "scheduled_date": "2026-05-21T00:00:00",
    "completed_date": "2026-05-24T00:00:00",
    "status": "completed",
    "priority": "normal",
    "fault_description": "Annual maintenance of office PCs",
-   "resolution_notes": null,
+   "resolution_notes": "Cleaned, checked and tested – working normally",
    "visit_count": 1,
    "billing_status": "paid",
    "sales_order_id": null,
    "technician_id": 1,
    "details": {
-    "createdBy": "U002",
+    "createdBy": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
     "partsUsed": [],
     "updatedAt": "2026-05-24",
     "warrantyValid": false
@@ -4515,18 +5782,18 @@
   {
    "service_job_id": 4,
    "job_type": "maintenance",
-   "scheduled_date": null,
+   "scheduled_date": "2026-06-07T00:00:00",
    "completed_date": "2026-06-12T00:00:00",
    "status": "completed",
    "priority": "normal",
    "fault_description": "Annual maintenance of office PCs",
-   "resolution_notes": null,
+   "resolution_notes": "Cleaned, checked and tested – working normally",
    "visit_count": 1,
    "billing_status": "paid",
    "sales_order_id": null,
    "technician_id": 1,
    "details": {
-    "createdBy": "U002",
+    "createdBy": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
     "partsUsed": [],
     "updatedAt": "2026-06-12",
     "warrantyValid": false
@@ -4540,18 +5807,18 @@
   {
    "service_job_id": 5,
    "job_type": "maintenance",
-   "scheduled_date": null,
+   "scheduled_date": "2026-06-11T00:00:00",
    "completed_date": "2026-06-14T00:00:00",
    "status": "completed",
    "priority": "normal",
    "fault_description": "Annual maintenance of office PCs",
-   "resolution_notes": null,
+   "resolution_notes": "Cleaned, checked and tested – working normally",
    "visit_count": 1,
    "billing_status": "paid",
    "sales_order_id": null,
    "technician_id": 1,
    "details": {
-    "createdBy": "U002",
+    "createdBy": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
     "partsUsed": [],
     "updatedAt": "2026-06-14",
     "warrantyValid": false
@@ -4565,18 +5832,18 @@
   {
    "service_job_id": 6,
    "job_type": "installation",
-   "scheduled_date": null,
+   "scheduled_date": "2026-06-11T00:00:00",
    "completed_date": "2026-06-14T00:00:00",
    "status": "completed",
    "priority": "high",
    "fault_description": "Office network printer and PC set-up",
-   "resolution_notes": null,
+   "resolution_notes": "Installed, tested and handed over to the customer",
    "visit_count": 1,
    "billing_status": "paid",
    "sales_order_id": null,
    "technician_id": 1,
    "details": {
-    "createdBy": "U002",
+    "createdBy": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
     "partsUsed": [],
     "updatedAt": "2026-06-14",
     "warrantyValid": false
@@ -4590,18 +5857,18 @@
   {
    "service_job_id": 7,
    "job_type": "installation",
-   "scheduled_date": null,
+   "scheduled_date": "2026-06-20T00:00:00",
    "completed_date": "2026-06-21T00:00:00",
    "status": "completed",
    "priority": "normal",
    "fault_description": "New gaming PC build and set-up at customer site",
-   "resolution_notes": null,
+   "resolution_notes": "Installed, tested and handed over to the customer",
    "visit_count": 1,
    "billing_status": "paid",
    "sales_order_id": null,
    "technician_id": 1,
    "details": {
-    "createdBy": "U002",
+    "createdBy": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
     "partsUsed": [],
     "updatedAt": "2026-06-21",
     "warrantyValid": false
@@ -4615,18 +5882,18 @@
   {
    "service_job_id": 8,
    "job_type": "maintenance",
-   "scheduled_date": null,
+   "scheduled_date": "2026-06-21T00:00:00",
    "completed_date": "2026-06-25T00:00:00",
    "status": "completed",
    "priority": "normal",
    "fault_description": "Monitor and cable check",
-   "resolution_notes": null,
+   "resolution_notes": "Cleaned, checked and tested – working normally",
    "visit_count": 1,
    "billing_status": "paid",
    "sales_order_id": null,
    "technician_id": 1,
    "details": {
-    "createdBy": "U002",
+    "createdBy": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
     "partsUsed": [],
     "updatedAt": "2026-06-25",
     "warrantyValid": false
@@ -4640,18 +5907,18 @@
   {
    "service_job_id": 9,
    "job_type": "installation",
-   "scheduled_date": null,
+   "scheduled_date": "2026-06-29T00:00:00",
    "completed_date": "2026-07-04T00:00:00",
    "status": "completed",
    "priority": "high",
    "fault_description": "SSD installation and Windows set-up",
-   "resolution_notes": null,
+   "resolution_notes": "Installed, tested and handed over to the customer",
    "visit_count": 1,
    "billing_status": "paid",
    "sales_order_id": null,
    "technician_id": 1,
    "details": {
-    "createdBy": "U002",
+    "createdBy": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
     "partsUsed": [],
     "updatedAt": "2026-07-04",
     "warrantyValid": false
@@ -4665,18 +5932,18 @@
   {
    "service_job_id": 10,
    "job_type": "installation",
-   "scheduled_date": null,
+   "scheduled_date": "2026-07-04T00:00:00",
    "completed_date": "2026-07-07T00:00:00",
    "status": "completed",
    "priority": "high",
    "fault_description": "SSD installation and Windows set-up",
-   "resolution_notes": null,
+   "resolution_notes": "Installed, tested and handed over to the customer",
    "visit_count": 1,
    "billing_status": "paid",
    "sales_order_id": null,
    "technician_id": 1,
    "details": {
-    "createdBy": "U002",
+    "createdBy": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
     "partsUsed": [],
     "updatedAt": "2026-07-07",
     "warrantyValid": false
@@ -4690,18 +5957,18 @@
   {
    "service_job_id": 11,
    "job_type": "maintenance",
-   "scheduled_date": null,
+   "scheduled_date": "2026-07-10T00:00:00",
    "completed_date": "2026-07-14T00:00:00",
    "status": "completed",
    "priority": "high",
    "fault_description": "Annual maintenance of office PCs",
-   "resolution_notes": null,
+   "resolution_notes": "Cleaned, checked and tested – working normally",
    "visit_count": 1,
    "billing_status": "paid",
    "sales_order_id": null,
    "technician_id": 1,
    "details": {
-    "createdBy": "U002",
+    "createdBy": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
     "partsUsed": [],
     "updatedAt": "2026-07-14",
     "warrantyValid": false
@@ -4715,18 +5982,18 @@
   {
    "service_job_id": 12,
    "job_type": "installation",
-   "scheduled_date": null,
+   "scheduled_date": "2026-07-11T00:00:00",
    "completed_date": "2026-07-15T00:00:00",
    "status": "completed",
    "priority": "normal",
    "fault_description": "Office network printer and PC set-up",
-   "resolution_notes": null,
+   "resolution_notes": "Installed, tested and handed over to the customer",
    "visit_count": 1,
    "billing_status": "paid",
    "sales_order_id": null,
    "technician_id": 1,
    "details": {
-    "createdBy": "U002",
+    "createdBy": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
     "partsUsed": [],
     "updatedAt": "2026-07-15",
     "warrantyValid": false
@@ -4740,18 +6007,18 @@
   {
    "service_job_id": 13,
    "job_type": "repair",
-   "scheduled_date": null,
+   "scheduled_date": "2026-07-13T00:00:00",
    "completed_date": "2026-07-15T00:00:00",
    "status": "completed",
    "priority": "normal",
    "fault_description": "PC does not power on – power supply checked",
-   "resolution_notes": null,
+   "resolution_notes": "Faulty part replaced and tested – working normally",
    "visit_count": 1,
    "billing_status": "paid",
    "sales_order_id": null,
    "technician_id": 1,
    "details": {
-    "createdBy": "U002",
+    "createdBy": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
     "partsUsed": [],
     "updatedAt": "2026-07-15",
     "warrantyValid": false
@@ -4765,18 +6032,18 @@
   {
    "service_job_id": 14,
    "job_type": "repair",
-   "scheduled_date": null,
+   "scheduled_date": "2026-07-13T00:00:00",
    "completed_date": "2026-07-15T00:00:00",
    "status": "completed",
    "priority": "normal",
    "fault_description": "PC does not power on – power supply checked",
-   "resolution_notes": null,
+   "resolution_notes": "Faulty part replaced and tested – working normally",
    "visit_count": 1,
    "billing_status": "warranty",
    "sales_order_id": null,
    "technician_id": 1,
    "details": {
-    "createdBy": "U002",
+    "createdBy": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
     "partsUsed": [],
     "updatedAt": "2026-07-15",
     "warrantyValid": true
@@ -4801,7 +6068,7 @@
    "sales_order_id": null,
    "technician_id": 1,
    "details": {
-    "createdBy": "U002",
+    "createdBy": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
     "partsUsed": [],
     "updatedAt": "2026-07-17",
     "warrantyValid": false
@@ -4815,18 +6082,18 @@
   {
    "service_job_id": 16,
    "job_type": "repair",
-   "scheduled_date": null,
+   "scheduled_date": "2026-07-22T00:00:00",
    "completed_date": "2026-07-27T00:00:00",
    "status": "completed",
    "priority": "normal",
    "fault_description": "Graphics card overheating under load",
-   "resolution_notes": null,
+   "resolution_notes": "Faulty part replaced and tested – working normally",
    "visit_count": 1,
    "billing_status": "paid",
    "sales_order_id": null,
    "technician_id": 1,
    "details": {
-    "createdBy": "U002",
+    "createdBy": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
     "partsUsed": [],
     "updatedAt": "2026-07-27",
     "warrantyValid": false
@@ -4840,18 +6107,18 @@
   {
    "service_job_id": 17,
    "job_type": "installation",
-   "scheduled_date": null,
+   "scheduled_date": "2026-08-05T00:00:00",
    "completed_date": "2026-08-09T00:00:00",
    "status": "completed",
    "priority": "normal",
    "fault_description": "New gaming PC build and set-up at customer site",
-   "resolution_notes": null,
+   "resolution_notes": "Installed, tested and handed over to the customer",
    "visit_count": 1,
    "billing_status": "paid",
    "sales_order_id": null,
    "technician_id": 1,
    "details": {
-    "createdBy": "U002",
+    "createdBy": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
     "partsUsed": [],
     "updatedAt": "2026-08-09",
     "warrantyValid": false
@@ -4876,7 +6143,7 @@
    "sales_order_id": null,
    "technician_id": 1,
    "details": {
-    "createdBy": "U002",
+    "createdBy": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
     "partsUsed": [],
     "updatedAt": "2026-08-16",
     "warrantyValid": false
@@ -4890,18 +6157,18 @@
   {
    "service_job_id": 19,
    "job_type": "installation",
-   "scheduled_date": null,
+   "scheduled_date": "2026-08-19T00:00:00",
    "completed_date": "2026-08-21T00:00:00",
    "status": "completed",
    "priority": "high",
    "fault_description": "Office network printer and PC set-up",
-   "resolution_notes": null,
+   "resolution_notes": "Installed, tested and handed over to the customer",
    "visit_count": 1,
    "billing_status": "paid",
    "sales_order_id": null,
    "technician_id": 1,
    "details": {
-    "createdBy": "U002",
+    "createdBy": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
     "partsUsed": [],
     "updatedAt": "2026-08-21",
     "warrantyValid": false
@@ -4915,18 +6182,18 @@
   {
    "service_job_id": 20,
    "job_type": "installation",
-   "scheduled_date": null,
+   "scheduled_date": "2026-08-19T00:00:00",
    "completed_date": "2026-08-19T00:00:00",
    "status": "completed",
    "priority": "normal",
    "fault_description": "SSD installation and Windows set-up",
-   "resolution_notes": null,
+   "resolution_notes": "Installed, tested and handed over to the customer",
    "visit_count": 1,
    "billing_status": "paid",
    "sales_order_id": null,
    "technician_id": 1,
    "details": {
-    "createdBy": "U002",
+    "createdBy": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
     "partsUsed": [],
     "updatedAt": "2026-08-19",
     "warrantyValid": false
@@ -4940,18 +6207,18 @@
   {
    "service_job_id": 21,
    "job_type": "repair",
-   "scheduled_date": null,
+   "scheduled_date": "2026-08-28T00:00:00",
    "completed_date": "2026-09-02T00:00:00",
    "status": "completed",
    "priority": "normal",
    "fault_description": "PC does not power on – power supply checked",
-   "resolution_notes": null,
+   "resolution_notes": "Faulty part replaced and tested – working normally",
    "visit_count": 1,
    "billing_status": "warranty",
    "sales_order_id": null,
    "technician_id": 1,
    "details": {
-    "createdBy": "U002",
+    "createdBy": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
     "partsUsed": [],
     "updatedAt": "2026-09-02",
     "warrantyValid": true
@@ -4965,18 +6232,18 @@
   {
    "service_job_id": 22,
    "job_type": "repair",
-   "scheduled_date": null,
+   "scheduled_date": "2026-09-02T00:00:00",
    "completed_date": "2026-09-02T00:00:00",
    "status": "completed",
    "priority": "normal",
    "fault_description": "Graphics card overheating under load",
-   "resolution_notes": null,
+   "resolution_notes": "Faulty part replaced and tested – working normally",
    "visit_count": 1,
    "billing_status": "warranty",
    "sales_order_id": null,
    "technician_id": 1,
    "details": {
-    "createdBy": "U002",
+    "createdBy": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
     "partsUsed": [],
     "updatedAt": "2026-09-02",
     "warrantyValid": true
@@ -5001,7 +6268,7 @@
    "sales_order_id": null,
    "technician_id": 1,
    "details": {
-    "createdBy": "U002",
+    "createdBy": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
     "partsUsed": [],
     "updatedAt": "2026-09-06",
     "warrantyValid": false
@@ -5015,18 +6282,18 @@
   {
    "service_job_id": 24,
    "job_type": "repair",
-   "scheduled_date": null,
+   "scheduled_date": "2026-09-10T00:00:00",
    "completed_date": "2026-09-14T00:00:00",
    "status": "completed",
    "priority": "normal",
    "fault_description": "Laptop keyboard keys not working",
-   "resolution_notes": null,
+   "resolution_notes": "Faulty part replaced and tested – working normally",
    "visit_count": 1,
    "billing_status": "paid",
    "sales_order_id": null,
    "technician_id": 1,
    "details": {
-    "createdBy": "U002",
+    "createdBy": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
     "partsUsed": [],
     "updatedAt": "2026-09-14",
     "warrantyValid": false
@@ -5040,18 +6307,18 @@
   {
    "service_job_id": 25,
    "job_type": "maintenance",
-   "scheduled_date": null,
+   "scheduled_date": "2026-09-15T00:00:00",
    "completed_date": "2026-09-18T00:00:00",
    "status": "completed",
    "priority": "normal",
    "fault_description": "Monitor and cable check",
-   "resolution_notes": null,
+   "resolution_notes": "Cleaned, checked and tested – working normally",
    "visit_count": 1,
    "billing_status": "paid",
    "sales_order_id": null,
    "technician_id": 1,
    "details": {
-    "createdBy": "U002",
+    "createdBy": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
     "partsUsed": [],
     "updatedAt": "2026-09-18",
     "warrantyValid": false
@@ -5065,18 +6332,18 @@
   {
    "service_job_id": 26,
    "job_type": "installation",
-   "scheduled_date": null,
+   "scheduled_date": "2026-09-22T00:00:00",
    "completed_date": "2026-09-22T00:00:00",
    "status": "completed",
    "priority": "normal",
    "fault_description": "SSD installation and Windows set-up",
-   "resolution_notes": null,
+   "resolution_notes": "Installed, tested and handed over to the customer",
    "visit_count": 1,
    "billing_status": "paid",
    "sales_order_id": null,
    "technician_id": 1,
    "details": {
-    "createdBy": "U002",
+    "createdBy": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
     "partsUsed": [],
     "updatedAt": "2026-09-22",
     "warrantyValid": false
@@ -5090,18 +6357,18 @@
   {
    "service_job_id": 27,
    "job_type": "repair",
-   "scheduled_date": null,
+   "scheduled_date": "2026-09-24T00:00:00",
    "completed_date": "2026-09-25T00:00:00",
    "status": "completed",
    "priority": "high",
    "fault_description": "Random restarts – RAM tested and replaced",
-   "resolution_notes": null,
+   "resolution_notes": "Faulty part replaced and tested – working normally",
    "visit_count": 1,
    "billing_status": "warranty",
    "sales_order_id": null,
    "technician_id": 1,
    "details": {
-    "createdBy": "U002",
+    "createdBy": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
     "partsUsed": [],
     "updatedAt": "2026-09-25",
     "warrantyValid": true
@@ -5115,18 +6382,18 @@
   {
    "service_job_id": 28,
    "job_type": "maintenance",
-   "scheduled_date": null,
+   "scheduled_date": "2026-10-04T00:00:00",
    "completed_date": "2026-10-05T00:00:00",
    "status": "completed",
    "priority": "high",
    "fault_description": "Quarterly cleaning and thermal paste replacement",
-   "resolution_notes": null,
+   "resolution_notes": "Cleaned, checked and tested – working normally",
    "visit_count": 1,
    "billing_status": "paid",
    "sales_order_id": null,
    "technician_id": 1,
    "details": {
-    "createdBy": "U002",
+    "createdBy": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
     "partsUsed": [],
     "updatedAt": "2026-10-05",
     "warrantyValid": false
@@ -5140,18 +6407,18 @@
   {
    "service_job_id": 29,
    "job_type": "repair",
-   "scheduled_date": null,
+   "scheduled_date": "2026-10-05T00:00:00",
    "completed_date": "2026-10-06T00:00:00",
    "status": "completed",
    "priority": "normal",
    "fault_description": "Graphics card overheating under load",
-   "resolution_notes": null,
+   "resolution_notes": "Faulty part replaced and tested – working normally",
    "visit_count": 1,
    "billing_status": "paid",
    "sales_order_id": null,
    "technician_id": 1,
    "details": {
-    "createdBy": "U002",
+    "createdBy": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
     "partsUsed": [],
     "updatedAt": "2026-10-06",
     "warrantyValid": false
@@ -5165,18 +6432,18 @@
   {
    "service_job_id": 30,
    "job_type": "repair",
-   "scheduled_date": null,
+   "scheduled_date": "2026-10-05T00:00:00",
    "completed_date": "2026-10-06T00:00:00",
    "status": "completed",
    "priority": "high",
    "fault_description": "Graphics card overheating under load",
-   "resolution_notes": null,
+   "resolution_notes": "Faulty part replaced and tested – working normally",
    "visit_count": 1,
    "billing_status": "paid",
    "sales_order_id": null,
    "technician_id": 1,
    "details": {
-    "createdBy": "U002",
+    "createdBy": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
     "partsUsed": [],
     "updatedAt": "2026-10-06",
     "warrantyValid": false
@@ -5190,18 +6457,18 @@
   {
    "service_job_id": 31,
    "job_type": "installation",
-   "scheduled_date": null,
+   "scheduled_date": "2026-10-07T00:00:00",
    "completed_date": "2026-10-08T00:00:00",
    "status": "completed",
    "priority": "high",
    "fault_description": "New gaming PC build and set-up at customer site",
-   "resolution_notes": null,
+   "resolution_notes": "Installed, tested and handed over to the customer",
    "visit_count": 1,
    "billing_status": "paid",
    "sales_order_id": null,
    "technician_id": 1,
    "details": {
-    "createdBy": "U002",
+    "createdBy": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
     "partsUsed": [],
     "updatedAt": "2026-10-08",
     "warrantyValid": false
@@ -5215,18 +6482,18 @@
   {
    "service_job_id": 32,
    "job_type": "maintenance",
-   "scheduled_date": null,
+   "scheduled_date": "2026-10-15T00:00:00",
    "completed_date": "2026-10-16T00:00:00",
    "status": "completed",
    "priority": "normal",
    "fault_description": "Monitor and cable check",
-   "resolution_notes": null,
+   "resolution_notes": "Cleaned, checked and tested – working normally",
    "visit_count": 1,
    "billing_status": "paid",
    "sales_order_id": null,
    "technician_id": 1,
    "details": {
-    "createdBy": "U002",
+    "createdBy": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
     "partsUsed": [],
     "updatedAt": "2026-10-16",
     "warrantyValid": false
@@ -5240,18 +6507,18 @@
   {
    "service_job_id": 33,
    "job_type": "installation",
-   "scheduled_date": null,
+   "scheduled_date": "2026-10-24T00:00:00",
    "completed_date": "2026-10-24T00:00:00",
    "status": "completed",
    "priority": "normal",
    "fault_description": "Office PC upgrade and SSD installation at customer site",
-   "resolution_notes": null,
+   "resolution_notes": "Installed, tested and handed over to the customer",
    "visit_count": 1,
    "billing_status": "paid",
    "sales_order_id": 58,
    "technician_id": 1,
    "details": {
-    "createdBy": "U002",
+    "createdBy": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
     "partsUsed": [],
     "updatedAt": "2026-10-24",
     "warrantyValid": true,
@@ -5266,18 +6533,18 @@
   {
    "service_job_id": 34,
    "job_type": "installation",
-   "scheduled_date": null,
+   "scheduled_date": "2026-10-24T00:00:00",
    "completed_date": "2026-10-25T00:00:00",
    "status": "completed",
    "priority": "normal",
    "fault_description": "Office network printer and PC set-up",
-   "resolution_notes": null,
+   "resolution_notes": "Installed, tested and handed over to the customer",
    "visit_count": 1,
    "billing_status": "paid",
    "sales_order_id": null,
    "technician_id": 1,
    "details": {
-    "createdBy": "U002",
+    "createdBy": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
     "partsUsed": [],
     "updatedAt": "2026-10-25",
     "warrantyValid": false
@@ -5291,7 +6558,7 @@
   {
    "service_job_id": 35,
    "job_type": "repair",
-   "scheduled_date": null,
+   "scheduled_date": "2026-10-26T00:00:00",
    "completed_date": null,
    "status": "in-progress",
    "priority": "high",
@@ -5302,7 +6569,7 @@
    "sales_order_id": 55,
    "technician_id": 1,
    "details": {
-    "createdBy": "U002",
+    "createdBy": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
     "partsUsed": [
      {
       "qty": 1,
@@ -5323,18 +6590,18 @@
   {
    "service_job_id": 36,
    "job_type": "repair",
-   "scheduled_date": null,
+   "scheduled_date": "2026-10-26T00:00:00",
    "completed_date": "2026-10-27T00:00:00",
    "status": "completed",
    "priority": "normal",
    "fault_description": "Graphics card overheating under load",
-   "resolution_notes": null,
+   "resolution_notes": "Faulty part replaced and tested – working normally",
    "visit_count": 1,
    "billing_status": "paid",
    "sales_order_id": null,
    "technician_id": 1,
    "details": {
-    "createdBy": "U002",
+    "createdBy": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
     "partsUsed": [],
     "updatedAt": "2026-10-27",
     "warrantyValid": false
@@ -5348,7 +6615,7 @@
   {
    "service_job_id": 37,
    "job_type": "maintenance",
-   "scheduled_date": null,
+   "scheduled_date": "2026-10-30T00:00:00",
    "completed_date": null,
    "status": "pending",
    "priority": "normal",
@@ -5359,7 +6626,7 @@
    "sales_order_id": 52,
    "technician_id": null,
    "details": {
-    "createdBy": "U002",
+    "createdBy": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
     "partsUsed": [],
     "updatedAt": "2026-10-29",
     "warrantyValid": false,
@@ -5374,7 +6641,7 @@
   {
    "service_job_id": 38,
    "job_type": "repair",
-   "scheduled_date": null,
+   "scheduled_date": "2026-10-31T00:00:00",
    "completed_date": null,
    "status": "assigned",
    "priority": "urgent",
@@ -5385,7 +6652,7 @@
    "sales_order_id": 62,
    "technician_id": 1,
    "details": {
-    "createdBy": "U002",
+    "createdBy": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
     "partsUsed": [],
     "updatedAt": "2026-10-30",
     "warrantyValid": true,
@@ -5406,7 +6673,7 @@
    "visit_type": "repair",
    "duration_minutes": 120,
    "service_job_id": 1,
-   "user_id": "3efecea9-6b70-49a9-8985-0027f6e8fc85"
+   "user_id": "4f9317a6-8664-4ef5-b110-831595b40438"
   },
   {
    "visit_log_id": 2001,
@@ -5415,7 +6682,7 @@
    "visit_type": "installation",
    "duration_minutes": 120,
    "service_job_id": 2,
-   "user_id": "3efecea9-6b70-49a9-8985-0027f6e8fc85"
+   "user_id": "4f9317a6-8664-4ef5-b110-831595b40438"
   },
   {
    "visit_log_id": 3001,
@@ -5424,7 +6691,7 @@
    "visit_type": "maintenance",
    "duration_minutes": 120,
    "service_job_id": 3,
-   "user_id": "3efecea9-6b70-49a9-8985-0027f6e8fc85"
+   "user_id": "4f9317a6-8664-4ef5-b110-831595b40438"
   },
   {
    "visit_log_id": 4001,
@@ -5433,7 +6700,7 @@
    "visit_type": "maintenance",
    "duration_minutes": 180,
    "service_job_id": 4,
-   "user_id": "3efecea9-6b70-49a9-8985-0027f6e8fc85"
+   "user_id": "4f9317a6-8664-4ef5-b110-831595b40438"
   },
   {
    "visit_log_id": 5001,
@@ -5442,7 +6709,7 @@
    "visit_type": "maintenance",
    "duration_minutes": 60,
    "service_job_id": 5,
-   "user_id": "3efecea9-6b70-49a9-8985-0027f6e8fc85"
+   "user_id": "4f9317a6-8664-4ef5-b110-831595b40438"
   },
   {
    "visit_log_id": 6001,
@@ -5451,7 +6718,7 @@
    "visit_type": "installation",
    "duration_minutes": 180,
    "service_job_id": 6,
-   "user_id": "3efecea9-6b70-49a9-8985-0027f6e8fc85"
+   "user_id": "4f9317a6-8664-4ef5-b110-831595b40438"
   },
   {
    "visit_log_id": 7001,
@@ -5460,7 +6727,7 @@
    "visit_type": "installation",
    "duration_minutes": 60,
    "service_job_id": 7,
-   "user_id": "3efecea9-6b70-49a9-8985-0027f6e8fc85"
+   "user_id": "4f9317a6-8664-4ef5-b110-831595b40438"
   },
   {
    "visit_log_id": 8001,
@@ -5469,7 +6736,7 @@
    "visit_type": "maintenance",
    "duration_minutes": 180,
    "service_job_id": 8,
-   "user_id": "3efecea9-6b70-49a9-8985-0027f6e8fc85"
+   "user_id": "4f9317a6-8664-4ef5-b110-831595b40438"
   },
   {
    "visit_log_id": 9001,
@@ -5478,7 +6745,7 @@
    "visit_type": "installation",
    "duration_minutes": 60,
    "service_job_id": 9,
-   "user_id": "3efecea9-6b70-49a9-8985-0027f6e8fc85"
+   "user_id": "4f9317a6-8664-4ef5-b110-831595b40438"
   },
   {
    "visit_log_id": 10001,
@@ -5487,7 +6754,7 @@
    "visit_type": "installation",
    "duration_minutes": 60,
    "service_job_id": 10,
-   "user_id": "3efecea9-6b70-49a9-8985-0027f6e8fc85"
+   "user_id": "4f9317a6-8664-4ef5-b110-831595b40438"
   },
   {
    "visit_log_id": 11001,
@@ -5496,7 +6763,7 @@
    "visit_type": "maintenance",
    "duration_minutes": 120,
    "service_job_id": 11,
-   "user_id": "3efecea9-6b70-49a9-8985-0027f6e8fc85"
+   "user_id": "4f9317a6-8664-4ef5-b110-831595b40438"
   },
   {
    "visit_log_id": 12001,
@@ -5505,7 +6772,7 @@
    "visit_type": "installation",
    "duration_minutes": 120,
    "service_job_id": 12,
-   "user_id": "3efecea9-6b70-49a9-8985-0027f6e8fc85"
+   "user_id": "4f9317a6-8664-4ef5-b110-831595b40438"
   },
   {
    "visit_log_id": 13001,
@@ -5514,7 +6781,7 @@
    "visit_type": "repair",
    "duration_minutes": 60,
    "service_job_id": 13,
-   "user_id": "3efecea9-6b70-49a9-8985-0027f6e8fc85"
+   "user_id": "4f9317a6-8664-4ef5-b110-831595b40438"
   },
   {
    "visit_log_id": 14001,
@@ -5523,7 +6790,7 @@
    "visit_type": "repair",
    "duration_minutes": 120,
    "service_job_id": 14,
-   "user_id": "3efecea9-6b70-49a9-8985-0027f6e8fc85"
+   "user_id": "4f9317a6-8664-4ef5-b110-831595b40438"
   },
   {
    "visit_log_id": 16001,
@@ -5532,7 +6799,7 @@
    "visit_type": "repair",
    "duration_minutes": 180,
    "service_job_id": 16,
-   "user_id": "3efecea9-6b70-49a9-8985-0027f6e8fc85"
+   "user_id": "4f9317a6-8664-4ef5-b110-831595b40438"
   },
   {
    "visit_log_id": 17001,
@@ -5541,7 +6808,7 @@
    "visit_type": "installation",
    "duration_minutes": 60,
    "service_job_id": 17,
-   "user_id": "3efecea9-6b70-49a9-8985-0027f6e8fc85"
+   "user_id": "4f9317a6-8664-4ef5-b110-831595b40438"
   },
   {
    "visit_log_id": 19001,
@@ -5550,7 +6817,7 @@
    "visit_type": "installation",
    "duration_minutes": 180,
    "service_job_id": 19,
-   "user_id": "3efecea9-6b70-49a9-8985-0027f6e8fc85"
+   "user_id": "4f9317a6-8664-4ef5-b110-831595b40438"
   },
   {
    "visit_log_id": 20001,
@@ -5559,7 +6826,7 @@
    "visit_type": "installation",
    "duration_minutes": 120,
    "service_job_id": 20,
-   "user_id": "3efecea9-6b70-49a9-8985-0027f6e8fc85"
+   "user_id": "4f9317a6-8664-4ef5-b110-831595b40438"
   },
   {
    "visit_log_id": 21001,
@@ -5568,7 +6835,7 @@
    "visit_type": "repair",
    "duration_minutes": 180,
    "service_job_id": 21,
-   "user_id": "3efecea9-6b70-49a9-8985-0027f6e8fc85"
+   "user_id": "4f9317a6-8664-4ef5-b110-831595b40438"
   },
   {
    "visit_log_id": 22001,
@@ -5577,7 +6844,7 @@
    "visit_type": "repair",
    "duration_minutes": 120,
    "service_job_id": 22,
-   "user_id": "3efecea9-6b70-49a9-8985-0027f6e8fc85"
+   "user_id": "4f9317a6-8664-4ef5-b110-831595b40438"
   },
   {
    "visit_log_id": 24001,
@@ -5586,7 +6853,7 @@
    "visit_type": "repair",
    "duration_minutes": 180,
    "service_job_id": 24,
-   "user_id": "3efecea9-6b70-49a9-8985-0027f6e8fc85"
+   "user_id": "4f9317a6-8664-4ef5-b110-831595b40438"
   },
   {
    "visit_log_id": 25001,
@@ -5595,7 +6862,7 @@
    "visit_type": "maintenance",
    "duration_minutes": 60,
    "service_job_id": 25,
-   "user_id": "3efecea9-6b70-49a9-8985-0027f6e8fc85"
+   "user_id": "4f9317a6-8664-4ef5-b110-831595b40438"
   },
   {
    "visit_log_id": 26001,
@@ -5604,7 +6871,7 @@
    "visit_type": "installation",
    "duration_minutes": 120,
    "service_job_id": 26,
-   "user_id": "3efecea9-6b70-49a9-8985-0027f6e8fc85"
+   "user_id": "4f9317a6-8664-4ef5-b110-831595b40438"
   },
   {
    "visit_log_id": 27001,
@@ -5613,7 +6880,7 @@
    "visit_type": "repair",
    "duration_minutes": 60,
    "service_job_id": 27,
-   "user_id": "3efecea9-6b70-49a9-8985-0027f6e8fc85"
+   "user_id": "4f9317a6-8664-4ef5-b110-831595b40438"
   },
   {
    "visit_log_id": 28001,
@@ -5622,7 +6889,7 @@
    "visit_type": "maintenance",
    "duration_minutes": 60,
    "service_job_id": 28,
-   "user_id": "3efecea9-6b70-49a9-8985-0027f6e8fc85"
+   "user_id": "4f9317a6-8664-4ef5-b110-831595b40438"
   },
   {
    "visit_log_id": 29001,
@@ -5631,7 +6898,7 @@
    "visit_type": "repair",
    "duration_minutes": 60,
    "service_job_id": 29,
-   "user_id": "3efecea9-6b70-49a9-8985-0027f6e8fc85"
+   "user_id": "4f9317a6-8664-4ef5-b110-831595b40438"
   },
   {
    "visit_log_id": 30001,
@@ -5640,7 +6907,7 @@
    "visit_type": "repair",
    "duration_minutes": 180,
    "service_job_id": 30,
-   "user_id": "3efecea9-6b70-49a9-8985-0027f6e8fc85"
+   "user_id": "4f9317a6-8664-4ef5-b110-831595b40438"
   },
   {
    "visit_log_id": 31001,
@@ -5649,7 +6916,7 @@
    "visit_type": "installation",
    "duration_minutes": 120,
    "service_job_id": 31,
-   "user_id": "3efecea9-6b70-49a9-8985-0027f6e8fc85"
+   "user_id": "4f9317a6-8664-4ef5-b110-831595b40438"
   },
   {
    "visit_log_id": 32001,
@@ -5658,7 +6925,7 @@
    "visit_type": "maintenance",
    "duration_minutes": 60,
    "service_job_id": 32,
-   "user_id": "3efecea9-6b70-49a9-8985-0027f6e8fc85"
+   "user_id": "4f9317a6-8664-4ef5-b110-831595b40438"
   },
   {
    "visit_log_id": 33001,
@@ -5667,7 +6934,7 @@
    "visit_type": null,
    "duration_minutes": null,
    "service_job_id": 33,
-   "user_id": "3efecea9-6b70-49a9-8985-0027f6e8fc85"
+   "user_id": "4f9317a6-8664-4ef5-b110-831595b40438"
   },
   {
    "visit_log_id": 34001,
@@ -5676,7 +6943,7 @@
    "visit_type": "installation",
    "duration_minutes": 180,
    "service_job_id": 34,
-   "user_id": "3efecea9-6b70-49a9-8985-0027f6e8fc85"
+   "user_id": "4f9317a6-8664-4ef5-b110-831595b40438"
   },
   {
    "visit_log_id": 35001,
@@ -5685,7 +6952,7 @@
    "visit_type": null,
    "duration_minutes": null,
    "service_job_id": 35,
-   "user_id": "3efecea9-6b70-49a9-8985-0027f6e8fc85"
+   "user_id": "4f9317a6-8664-4ef5-b110-831595b40438"
   },
   {
    "visit_log_id": 35002,
@@ -5694,7 +6961,7 @@
    "visit_type": null,
    "duration_minutes": null,
    "service_job_id": 35,
-   "user_id": "3efecea9-6b70-49a9-8985-0027f6e8fc85"
+   "user_id": "4f9317a6-8664-4ef5-b110-831595b40438"
   },
   {
    "visit_log_id": 36001,
@@ -5703,7 +6970,7 @@
    "visit_type": "repair",
    "duration_minutes": 180,
    "service_job_id": 36,
-   "user_id": "3efecea9-6b70-49a9-8985-0027f6e8fc85"
+   "user_id": "4f9317a6-8664-4ef5-b110-831595b40438"
   }
  ],
  "spare_part_request": [
@@ -5715,9 +6982,9 @@
    "status": "issued",
    "service_job_id": 35,
    "product_id": 8,
-   "user_id": "981054be-1fa0-4841-af26-bc35a669a3b2",
+   "user_id": "3b74a4c1-71d8-4810-b10e-b1f2ea103b76",
    "details": {
-    "requestedBy": "U006"
+    "requestedBy": "4f9317a6-8664-4ef5-b110-831595b40438"
    }
   },
   {
@@ -5730,7 +6997,7 @@
    "product_id": 9,
    "user_id": null,
    "details": {
-    "requestedBy": "U006"
+    "requestedBy": "4f9317a6-8664-4ef5-b110-831595b40438"
    }
   }
  ],
@@ -5743,9 +7010,9 @@
    "movement_date": "2026-10-21T00:00:00",
    "reference_doc_id": 22,
    "product_id": 1,
-   "user_id": "981054be-1fa0-4841-af26-bc35a669a3b2",
+   "user_id": "3b74a4c1-71d8-4810-b10e-b1f2ea103b76",
    "service_job_id": null,
-   "batch_id": null,
+   "batch_id": 1,
    "details": {
     "ref": "PO-022"
    }
@@ -5758,7 +7025,7 @@
    "movement_date": "2026-10-23T00:00:00",
    "reference_doc_id": null,
    "product_id": 6,
-   "user_id": "981054be-1fa0-4841-af26-bc35a669a3b2",
+   "user_id": "3b74a4c1-71d8-4810-b10e-b1f2ea103b76",
    "service_job_id": null,
    "batch_id": null,
    "details": {
@@ -5773,7 +7040,7 @@
    "movement_date": "2026-10-26T00:00:00",
    "reference_doc_id": null,
    "product_id": 8,
-   "user_id": "981054be-1fa0-4841-af26-bc35a669a3b2",
+   "user_id": "3b74a4c1-71d8-4810-b10e-b1f2ea103b76",
    "service_job_id": 35,
    "batch_id": null,
    "details": {
@@ -5788,7 +7055,7 @@
    "movement_date": "2026-10-28T00:00:00",
    "reference_doc_id": 20,
    "product_id": 3,
-   "user_id": "981054be-1fa0-4841-af26-bc35a669a3b2",
+   "user_id": "3b74a4c1-71d8-4810-b10e-b1f2ea103b76",
    "service_job_id": null,
    "batch_id": null,
    "details": {
@@ -5803,7 +7070,7 @@
    "movement_date": "2026-10-30T00:00:00",
    "reference_doc_id": null,
    "product_id": 11,
-   "user_id": "981054be-1fa0-4841-af26-bc35a669a3b2",
+   "user_id": "3b74a4c1-71d8-4810-b10e-b1f2ea103b76",
    "service_job_id": null,
    "batch_id": null,
    "details": {
@@ -5822,14 +7089,17 @@
    "sales_order_id": 52,
    "customer_id": 2,
    "product_id": 6,
-   "user_id": "ba0351d2-2646-453e-ad85-cedd9051e5ac",
+   "user_id": "8d30381b-fbd8-444b-825a-8a82e311daf3",
    "service_job_id": null,
    "details": {
     "canRestock": false,
-    "requestedBy": "U002",
+    "receivedBy": "3b74a4c1-71d8-4810-b10e-b1f2ea103b76",
+    "requestedBy": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
     "refundAmount": 90000,
-    "refundStatus": "processed",
+    "refundPaidAt": "2026-10-21",
+    "refundStatus": "paid",
     "warrantyValid": true,
+    "refundReceiptNo": "PAY-064",
     "inspectionResult": "defective"
    }
   },
@@ -5844,12 +7114,13 @@
    "customer_id": 5,
    "product_id": 7,
    "user_id": null,
-   "service_job_id": null,
+   "service_job_id": 36,
    "details": {
     "canRestock": null,
-    "requestedBy": "U002",
+    "requestedBy": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
     "refundAmount": 0,
     "refundStatus": "none",
+    "recommendedBy": "4f9317a6-8664-4ef5-b110-831595b40438",
     "warrantyValid": true,
     "inspectionResult": null
    }
@@ -5865,10 +7136,11 @@
    "resolved_date": "2026-10-21T05:30:00",
    "resolution": "Apologised and offered priority service. Technician visit scheduled.",
    "customer_id": 1,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
-   "service_job_id": null,
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
+   "service_job_id": 32,
    "details": {
-    "assignedTo": "U001"
+    "escalated": true,
+    "assignedTo": "8d30381b-fbd8-444b-825a-8a82e311daf3"
    },
    "subject": "Delayed service response"
   },
@@ -5881,10 +7153,10 @@
    "resolved_date": null,
    "resolution": null,
    "customer_id": 4,
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "service_job_id": null,
    "details": {
-    "assignedTo": "U001"
+    "assignedTo": "8d30381b-fbd8-444b-825a-8a82e311daf3"
    },
    "subject": "Wrong item delivered"
   }
@@ -5900,7 +7172,7 @@
    "is_refund": false,
    "invoice_id": 1,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C001",
@@ -5917,7 +7189,7 @@
    "is_refund": false,
    "invoice_id": 2,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C001",
@@ -5934,7 +7206,7 @@
    "is_refund": false,
    "invoice_id": 3,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": null,
@@ -5951,7 +7223,7 @@
    "is_refund": false,
    "invoice_id": 4,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": null,
@@ -5968,7 +7240,7 @@
    "is_refund": false,
    "invoice_id": 5,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C002",
@@ -5985,7 +7257,7 @@
    "is_refund": false,
    "invoice_id": 6,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": null,
@@ -6002,7 +7274,7 @@
    "is_refund": false,
    "invoice_id": 7,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C001",
@@ -6019,7 +7291,7 @@
    "is_refund": false,
    "invoice_id": 8,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C001",
@@ -6036,7 +7308,7 @@
    "is_refund": false,
    "invoice_id": 9,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C004",
@@ -6053,7 +7325,7 @@
    "is_refund": false,
    "invoice_id": 10,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C002",
@@ -6070,7 +7342,7 @@
    "is_refund": false,
    "invoice_id": 11,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C002",
@@ -6087,7 +7359,7 @@
    "is_refund": false,
    "invoice_id": 12,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C001",
@@ -6104,7 +7376,7 @@
    "is_refund": false,
    "invoice_id": 13,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C005",
@@ -6121,7 +7393,7 @@
    "is_refund": false,
    "invoice_id": 14,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Partial credit payment",
     "customerId": "C002",
@@ -6138,7 +7410,7 @@
    "is_refund": false,
    "invoice_id": 15,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C003",
@@ -6155,7 +7427,7 @@
    "is_refund": false,
    "invoice_id": 16,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": null,
@@ -6172,7 +7444,7 @@
    "is_refund": false,
    "invoice_id": 17,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C003",
@@ -6189,7 +7461,7 @@
    "is_refund": false,
    "invoice_id": 18,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": null,
@@ -6206,7 +7478,7 @@
    "is_refund": false,
    "invoice_id": 19,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": null,
@@ -6223,7 +7495,7 @@
    "is_refund": false,
    "invoice_id": 20,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C003",
@@ -6240,7 +7512,7 @@
    "is_refund": false,
    "invoice_id": 21,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C005",
@@ -6257,7 +7529,7 @@
    "is_refund": false,
    "invoice_id": 22,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C004",
@@ -6274,7 +7546,7 @@
    "is_refund": false,
    "invoice_id": 23,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": null,
@@ -6291,7 +7563,7 @@
    "is_refund": false,
    "invoice_id": 24,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C001",
@@ -6308,7 +7580,7 @@
    "is_refund": false,
    "invoice_id": 25,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C003",
@@ -6325,7 +7597,7 @@
    "is_refund": false,
    "invoice_id": 26,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": null,
@@ -6342,7 +7614,7 @@
    "is_refund": false,
    "invoice_id": 27,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C005",
@@ -6359,7 +7631,7 @@
    "is_refund": false,
    "invoice_id": 28,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C003",
@@ -6376,7 +7648,7 @@
    "is_refund": false,
    "invoice_id": 29,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Partial credit payment",
     "customerId": "C005",
@@ -6393,7 +7665,7 @@
    "is_refund": false,
    "invoice_id": 30,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C001",
@@ -6410,7 +7682,7 @@
    "is_refund": false,
    "invoice_id": 31,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C005",
@@ -6427,7 +7699,7 @@
    "is_refund": false,
    "invoice_id": 32,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Partial credit payment",
     "customerId": "C005",
@@ -6444,7 +7716,7 @@
    "is_refund": false,
    "invoice_id": 33,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C001",
@@ -6461,7 +7733,7 @@
    "is_refund": false,
    "invoice_id": 34,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C003",
@@ -6478,7 +7750,7 @@
    "is_refund": false,
    "invoice_id": 35,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C005",
@@ -6495,7 +7767,7 @@
    "is_refund": false,
    "invoice_id": 36,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C004",
@@ -6512,7 +7784,7 @@
    "is_refund": false,
    "invoice_id": 37,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C001",
@@ -6529,7 +7801,7 @@
    "is_refund": false,
    "invoice_id": 38,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C002",
@@ -6546,7 +7818,7 @@
    "is_refund": false,
    "invoice_id": 39,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C003",
@@ -6563,7 +7835,7 @@
    "is_refund": false,
    "invoice_id": 40,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C001",
@@ -6580,7 +7852,7 @@
    "is_refund": false,
    "invoice_id": 41,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C003",
@@ -6597,7 +7869,7 @@
    "is_refund": false,
    "invoice_id": 42,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C004",
@@ -6614,7 +7886,7 @@
    "is_refund": false,
    "invoice_id": 43,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": null,
@@ -6631,7 +7903,7 @@
    "is_refund": false,
    "invoice_id": 44,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C005",
@@ -6648,7 +7920,7 @@
    "is_refund": false,
    "invoice_id": 45,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C005",
@@ -6665,7 +7937,7 @@
    "is_refund": false,
    "invoice_id": 46,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C005",
@@ -6682,7 +7954,7 @@
    "is_refund": false,
    "invoice_id": 47,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C004",
@@ -6699,7 +7971,7 @@
    "is_refund": false,
    "invoice_id": 48,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C004",
@@ -6716,7 +7988,7 @@
    "is_refund": false,
    "invoice_id": 49,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C004",
@@ -6733,7 +8005,7 @@
    "is_refund": false,
    "invoice_id": 50,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": null,
@@ -6750,7 +8022,7 @@
    "is_refund": false,
    "invoice_id": 51,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": null,
@@ -6767,7 +8039,7 @@
    "is_refund": false,
    "invoice_id": 52,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C001",
@@ -6784,7 +8056,7 @@
    "is_refund": false,
    "invoice_id": 53,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": null,
@@ -6801,7 +8073,7 @@
    "is_refund": false,
    "invoice_id": 54,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C002",
@@ -6818,7 +8090,7 @@
    "is_refund": false,
    "invoice_id": 55,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Partial credit payment",
     "customerId": "C003",
@@ -6835,7 +8107,7 @@
    "is_refund": false,
    "invoice_id": 56,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C004",
@@ -6852,7 +8124,7 @@
    "is_refund": false,
    "invoice_id": 57,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C004",
@@ -6869,7 +8141,7 @@
    "is_refund": false,
    "invoice_id": 58,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment",
     "customerId": "C002",
@@ -6886,7 +8158,7 @@
    "is_refund": false,
    "invoice_id": 59,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C002",
@@ -6903,7 +8175,7 @@
    "is_refund": false,
    "invoice_id": 60,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C005",
@@ -6920,7 +8192,7 @@
    "is_refund": false,
    "invoice_id": 61,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C001",
@@ -6937,7 +8209,7 @@
    "is_refund": false,
    "invoice_id": 62,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Full payment on sale",
     "customerId": "C005",
@@ -6954,11 +8226,28 @@
    "is_refund": false,
    "invoice_id": 63,
    "payable_id": null,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "Partial credit payment",
     "customerId": "C005",
     "salesOrderId": "SO-063"
+   }
+  },
+  {
+   "payment_id": 64,
+   "payment_date": "2026-10-21T05:30:00",
+   "amount": "90000.00",
+   "payment_method": "transfer",
+   "payment_type": "refund",
+   "reference_number": "PAY-064",
+   "is_refund": true,
+   "invoice_id": 52,
+   "payable_id": null,
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
+   "details": {
+    "note": "Refund RET-001",
+    "customerId": "C002",
+    "salesOrderId": "SO-052"
    }
   },
   {
@@ -6971,7 +8260,7 @@
    "is_refund": false,
    "invoice_id": null,
    "payable_id": 1,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "PO-001 settled",
     "supplierId": "SUP004",
@@ -6988,7 +8277,7 @@
    "is_refund": false,
    "invoice_id": null,
    "payable_id": 2,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "PO-002 settled",
     "supplierId": "SUP004",
@@ -7005,7 +8294,7 @@
    "is_refund": false,
    "invoice_id": null,
    "payable_id": 3,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "PO-003 settled",
     "supplierId": "SUP003",
@@ -7022,7 +8311,7 @@
    "is_refund": false,
    "invoice_id": null,
    "payable_id": 4,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "PO-004 settled",
     "supplierId": "SUP004",
@@ -7039,7 +8328,7 @@
    "is_refund": false,
    "invoice_id": null,
    "payable_id": 5,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "PO-005 settled",
     "supplierId": "SUP003",
@@ -7056,7 +8345,7 @@
    "is_refund": false,
    "invoice_id": null,
    "payable_id": 7,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "PO-007 settled",
     "supplierId": "SUP004",
@@ -7073,7 +8362,7 @@
    "is_refund": false,
    "invoice_id": null,
    "payable_id": 6,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "PO-006 settled",
     "supplierId": "SUP003",
@@ -7090,7 +8379,7 @@
    "is_refund": false,
    "invoice_id": null,
    "payable_id": 8,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "PO-008 settled",
     "supplierId": "SUP003",
@@ -7107,7 +8396,7 @@
    "is_refund": false,
    "invoice_id": null,
    "payable_id": 9,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "PO-009 settled",
     "supplierId": "SUP003",
@@ -7124,7 +8413,7 @@
    "is_refund": false,
    "invoice_id": null,
    "payable_id": 10,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "PO-010 settled",
     "supplierId": "SUP004",
@@ -7141,7 +8430,7 @@
    "is_refund": false,
    "invoice_id": null,
    "payable_id": 11,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "PO-011 settled",
     "supplierId": "SUP004",
@@ -7158,7 +8447,7 @@
    "is_refund": false,
    "invoice_id": null,
    "payable_id": 12,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "PO-012 settled",
     "supplierId": "SUP002",
@@ -7175,7 +8464,7 @@
    "is_refund": false,
    "invoice_id": null,
    "payable_id": 13,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "PO-013 settled",
     "supplierId": "SUP001",
@@ -7192,7 +8481,7 @@
    "is_refund": false,
    "invoice_id": null,
    "payable_id": 15,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "PO-015 settled",
     "supplierId": "SUP002",
@@ -7209,7 +8498,7 @@
    "is_refund": false,
    "invoice_id": null,
    "payable_id": 16,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "PO-016 settled",
     "supplierId": "SUP002",
@@ -7226,7 +8515,7 @@
    "is_refund": false,
    "invoice_id": null,
    "payable_id": 17,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "PO-017 settled",
     "supplierId": "SUP002",
@@ -7243,7 +8532,7 @@
    "is_refund": false,
    "invoice_id": null,
    "payable_id": 18,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "PO-018 settled",
     "supplierId": "SUP002",
@@ -7260,7 +8549,7 @@
    "is_refund": false,
    "invoice_id": null,
    "payable_id": 22,
-   "user_id": "d213568c-8049-461f-b99e-f5303663e19f",
+   "user_id": "a973d776-1750-4e1d-b520-8be966d8a2ab",
    "details": {
     "note": "PO-022 settled",
     "supplierId": "SUP002",
@@ -7286,7 +8575,34 @@
    }
   }
  ],
- "stock_alert": [],
+ "stock_alert": [
+  {
+   "alert_id": 1,
+   "alert_type": "low_stock",
+   "threshold_qty": 5,
+   "current_qty": 3,
+   "created_at": "2026-10-30T00:00:00",
+   "is_resolved": false,
+   "product_id": 11,
+   "details": {
+    "status": "open",
+    "raisedBy": "3b74a4c1-71d8-4810-b10e-b1f2ea103b76"
+   }
+  },
+  {
+   "alert_id": 2,
+   "alert_type": "low_stock",
+   "threshold_qty": 2,
+   "current_qty": 2,
+   "created_at": "2026-10-30T00:00:00",
+   "is_resolved": false,
+   "product_id": 12,
+   "details": {
+    "status": "open",
+    "raisedBy": "3b74a4c1-71d8-4810-b10e-b1f2ea103b76"
+   }
+  }
+ ],
  "report": [
   {
    "report_id": 1,
@@ -7296,7 +8612,7 @@
    "format": "pdf",
    "module": "reports",
    "recipients": "admin@gmail.com",
-   "user_id": "ba0351d2-2646-453e-ad85-cedd9051e5ac",
+   "user_id": "8d30381b-fbd8-444b-825a-8a82e311daf3",
    "details": {
     "active": true
    }
@@ -7309,7 +8625,7 @@
    "format": "pdf",
    "module": "reports",
    "recipients": "storekeeper@gmail.com",
-   "user_id": "ba0351d2-2646-453e-ad85-cedd9051e5ac",
+   "user_id": "8d30381b-fbd8-444b-825a-8a82e311daf3",
    "details": {
     "active": true
    }
@@ -7322,7 +8638,7 @@
    "format": "pdf",
    "module": "reports",
    "recipients": "finance@gmail.com",
-   "user_id": "ba0351d2-2646-453e-ad85-cedd9051e5ac",
+   "user_id": "8d30381b-fbd8-444b-825a-8a82e311daf3",
    "details": {
     "active": true
    }
@@ -7333,48 +8649,48 @@
    "audit_id": 1,
    "action": "LOGIN",
    "detail": "Admin logged in",
-   "logged_at": "2026-10-31T19:12:28",
-   "user_id": "ba0351d2-2646-453e-ad85-cedd9051e5ac",
+   "logged_at": "2026-10-31T20:53:15",
+   "user_id": "8d30381b-fbd8-444b-825a-8a82e311daf3",
    "details": {}
   },
   {
    "audit_id": 2,
    "action": "SALE_CREATED",
    "detail": "Invoice INV-2026-062 created",
-   "logged_at": "2026-10-31T18:12:28",
-   "user_id": "f800ca07-37f0-49c5-9f3d-ffbeee0daeeb",
+   "logged_at": "2026-10-31T19:53:15",
+   "user_id": "9b388b80-a66f-4d60-b2bc-d25653c32eda",
    "details": {}
   },
   {
    "audit_id": 3,
    "action": "STOCK_ADJUSTED",
    "detail": "P011 qty adjusted -1 (damaged)",
-   "logged_at": "2026-10-30T20:12:28",
-   "user_id": "981054be-1fa0-4841-af26-bc35a669a3b2",
+   "logged_at": "2026-10-30T21:53:15",
+   "user_id": "3b74a4c1-71d8-4810-b10e-b1f2ea103b76",
    "details": {}
   },
   {
    "audit_id": 4,
    "action": "JOB_ASSIGNED",
    "detail": "JOB-035 assigned to Ruwan Jayasena",
-   "logged_at": "2026-10-29T20:12:28",
-   "user_id": "ba0351d2-2646-453e-ad85-cedd9051e5ac",
+   "logged_at": "2026-10-29T21:53:15",
+   "user_id": "8d30381b-fbd8-444b-825a-8a82e311daf3",
    "details": {}
   },
   {
    "audit_id": 5,
    "action": "REFUND_APPROVED",
    "detail": "RET-001 refund approved",
-   "logged_at": "2026-10-28T20:12:28",
-   "user_id": "ba0351d2-2646-453e-ad85-cedd9051e5ac",
+   "logged_at": "2026-10-28T21:53:15",
+   "user_id": "8d30381b-fbd8-444b-825a-8a82e311daf3",
    "details": {}
   },
   {
    "audit_id": 6,
    "action": "PO_CREATED",
    "detail": "PO-024 created for SUP003",
-   "logged_at": "2026-10-26T20:12:28",
-   "user_id": "408c27ee-4efd-45d3-9b8f-a8bdda82b724",
+   "logged_at": "2026-10-26T21:53:15",
+   "user_id": "318c14ad-64b6-4adc-85db-3d61c9fd8c10",
    "details": {}
   }
  ],
@@ -9982,6 +11298,17 @@
    "invoice_id": 63
   },
   {
+   "transaction_id": 64,
+   "transaction_type": "refund",
+   "amount": "-90000.00",
+   "transaction_date": "2026-10-21T00:00:00",
+   "related_reference": "SO-052",
+   "category": "sales",
+   "is_reconciled": false,
+   "payment_id": 64,
+   "invoice_id": 52
+  },
+  {
    "transaction_id": 50001,
    "transaction_type": "supplier payment",
    "amount": "-47600.00",
@@ -10186,11 +11513,11 @@
    "refund_date": "2026-10-21T05:30:00",
    "refund_amount": "90000.00",
    "refund_method": "transfer",
-   "status": "processed",
+   "status": "paid",
    "reason": "Product stopped working after 2 months",
    "return_received": false,
-   "payment_id": null,
-   "user_id": "ba0351d2-2646-453e-ad85-cedd9051e5ac",
+   "payment_id": 64,
+   "user_id": "8d30381b-fbd8-444b-825a-8a82e311daf3",
    "exchange_request_id": 1
   }
  ],
@@ -10203,7 +11530,7 @@
    "is_serviceable": false,
    "is_damaged": true,
    "product_id": 6,
-   "user_id": null,
+   "user_id": "3b74a4c1-71d8-4810-b10e-b1f2ea103b76",
    "exchange_request_id": 1
   }
  ]

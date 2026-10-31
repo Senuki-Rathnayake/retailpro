@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Save, Shield, Settings, Bell, Database, RefreshCw, FileText, Sun, Moon } from 'lucide-react';
 import { useToast } from '../context/ToastContext';
-import { APP_SETTINGS, CATEGORIES, PRODUCTS, AUDIT_LOG, newAuditId } from '../data/store';
+import { APP_SETTINGS, CATEGORIES, PRODUCTS, AUDIT_LOG, newAuditId, markSettingsUpdated, lastSettingsUpdate, getUser, currentState } from '../data/store';
+import { loadCompanyData, saveNow } from '../lib/db/sync';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 
@@ -13,6 +14,28 @@ export default function SettingsPage() {
   // every value comes from the system_setting table
   const [settings, setSettings] = useState(() => ({ ...APP_SETTINGS }));
   const [errors, setErrors] = useState({});
+  const [lastUpd, setLastUpd] = useState(() => lastSettingsUpdate());
+  const [busy, setBusy] = useState(false);
+
+  // Download every record as a JSON file (a backup copy of the database)
+  const downloadBackup = async () => {
+    await saveNow();
+    const blob = new Blob([JSON.stringify({ exportedAt: new Date().toISOString(), data: currentState() }, null, 2)], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `rajida-backup-${new Date().toISOString().slice(0, 10)}.json`;
+    a.click();
+    URL.revokeObjectURL(a.href);
+    AUDIT_LOG.unshift({ id: newAuditId(), action: 'BACKUP_DOWNLOADED', userId: user?.id, detail: 'Backup of all records downloaded', timestamp: new Date().toISOString() });
+    toast.success('Backup file downloaded');
+  };
+  // Read everything again from the database
+  const reloadData = async () => {
+    setBusy(true);
+    try { await saveNow(); await loadCompanyData(); setSettings({ ...APP_SETTINGS }); setLastUpd(lastSettingsUpdate()); toast.success('Data reloaded from the database'); }
+    catch (e) { toast.error('Could not reload: ' + e.message); }
+    finally { setBusy(false); }
+  };
 
   // Warranty policy (Manage warranty policy settings)
   const [policy, setPolicy] = useState({ months: APP_SETTINGS.warrantyMonths, terms: APP_SETTINGS.warrantyTerms, categories: [] });
@@ -47,7 +70,10 @@ export default function SettingsPage() {
       toast.error(`Value is not valid for this setting: ${Object.values(errs)[0]}`);
       return;
     }
+    const changed = Object.keys(settings).filter(k => String(APP_SETTINGS[k]) !== String(settings[k]));
     Object.keys(settings).forEach(k => { APP_SETTINGS[k] = typeof APP_SETTINGS[k] === 'number' ? Number(settings[k]) : settings[k]; });
+    markSettingsUpdated(changed, user?.id);   // system_setting.updated_at and user_id
+    setLastUpd(lastSettingsUpdate());
     AUDIT_LOG.unshift({ id: newAuditId(), action: 'SETTINGS_UPDATED', userId: user?.id, detail: 'System settings updated', timestamp: new Date().toISOString() });
     toast.success('Settings updated');
   };
@@ -58,6 +84,8 @@ export default function SettingsPage() {
     if (!policy.terms.trim()) { toast.error('Please enter the warranty terms'); return; }
     APP_SETTINGS.warrantyMonths = months;
     APP_SETTINGS.warrantyTerms = policy.terms.trim();
+    markSettingsUpdated(['warrantyMonths', 'warrantyTerms'], user?.id);
+    setLastUpd(lastSettingsUpdate());
     // apply to the selected product categories
     let updated = 0;
     PRODUCTS.forEach(p => { if (policy.categories.includes(p.category)) { p.warranty = months; updated++; } });
@@ -73,9 +101,10 @@ export default function SettingsPage() {
         <div>
           <h1 className="page-title">System Settings</h1>
           <p className="page-subtitle">Configure business profiles, tax rates, warranty terms, and operational rules</p>
+          {lastUpd && <p id="settings-last-update" style={{ fontSize: 12, color: 'var(--text-muted)', margin: '4px 0 0' }}>Last changed {String(lastUpd.updatedAt).slice(0, 16).replace('T', ' ')} by {getUser(lastUpd.updatedBy)?.name || 'a former staff member'}</p>}
         </div>
         <div className="page-header-actions">
-          <button className="btn btn-primary" onClick={handleSave}>
+          <button id="btn-save-settings" className="btn btn-primary" onClick={handleSave}>
             <Save size={16} /> Save Changes
           </button>
         </div>
@@ -317,16 +346,19 @@ export default function SettingsPage() {
             <button
               type="button"
               className="btn btn-outline"
-              onClick={() => toast.info('System database backup snapshot created')}
+              id="btn-backup"
+              onClick={downloadBackup}
             >
-              <Database size={15} /> Create Backup
+              <Database size={15} /> Download Backup
             </button>
             <button
               type="button"
               className="btn btn-outline"
-              onClick={() => toast.success('Mock data cache refreshed')}
+              id="btn-reload-data"
+              disabled={busy}
+              onClick={reloadData}
             >
-              <RefreshCw size={15} /> Refresh Cache
+              <RefreshCw size={15} /> {busy ? 'Reloading…' : 'Reload from Database'}
             </button>
           </div>
         </div>

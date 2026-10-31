@@ -5,7 +5,7 @@ import { useToast } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
 
 function CustomerModal({ customer, onClose, onSave, saving = false, canSetLimit = true }) {
-  const [form, setForm] = useState(customer || { name:'', phone:'', email:'', address:'', creditLimit: canSetLimit ? 50000 : 0, creditRequest:false, requestedLimit:100000 });
+  const [form, setForm] = useState(customer || { name:'', phone:'', email:'', address:'', customerType:'individual', creditLimit: canSetLimit ? 50000 : 0, creditRequest:false, requestedLimit:100000 });
   const badPhone = form.phone && !isValidPhone(form.phone.replace(/\s/g, ''));
   const badEmail = form.email && !isValidEmail(form.email);
   const set = (k,v) => setForm(f => ({ ...f, [k]:v }));
@@ -51,6 +51,14 @@ function CustomerModal({ customer, onClose, onSave, saving = false, canSetLimit 
             ) : (
               <div className="form-group"><label className="form-label">Credit Limit</label><div style={{ fontSize:13 }}>{fmt(form.creditLimit)} (set by Finance)</div></div>
             )}
+          </div>
+          <div className="form-group">
+            <label className="form-label">Customer Type</label>
+            <select id="cust-type" className="form-select" value={form.customerType || 'individual'} onChange={e=>set('customerType',e.target.value)}>
+              <option value="individual">Individual</option>
+              <option value="business">Business</option>
+              <option value="government">Government / Institution</option>
+            </select>
           </div>
           <div className="form-group">
             <label className="form-label">Address</label>
@@ -100,10 +108,12 @@ export default function CustomersPage() {
     const req = { creditRequest, requestedLimit };
     if (modal === 'new') {
       const newC = { ...form, id: newCustId(), creditLimit: form.creditLimit || 0, creditUsed:0, balance:0, createdAt: new Date().toISOString().slice(0,10) };
+      if (newC.creditLimit > 0) { newC.creditApprovedBy = user?.id; newC.creditReviewDate = today(); }   // credit_account.user_id / last_review_date
       setCustomers(cs => [...cs, newC]);
       CUSTOMERS.push(newC);
       toast.success(`New customer registered – ${newC.id}${raiseCredit(newC, req)}`);
     } else {
+      if (Number(form.creditLimit) !== Number(modal.creditLimit)) { form.creditApprovedBy = user?.id; form.creditReviewDate = today(); }
       setCustomers(cs => cs.map(c => c.id === modal.id ? { ...c, ...form } : c));
       const i = CUSTOMERS.findIndex(c => c.id === modal.id);
       if (i !== -1) CUSTOMERS[i] = { ...CUSTOMERS[i], ...form };
@@ -240,6 +250,7 @@ export default function CustomersPage() {
                     <span style={{ display:'flex', gap:8, alignItems:'center', color:'var(--text-secondary)' }}><Phone size={13}/>{detail.phone}</span>
                     <span style={{ display:'flex', gap:8, alignItems:'center', color:'var(--text-secondary)' }}><Mail size={13}/>{detail.email}</span>
                     <span style={{ display:'flex', gap:8, alignItems:'center', color:'var(--text-secondary)' }}><MapPin size={13}/>{detail.address}</span>
+                    <span style={{ color:'var(--text-secondary)', textTransform:'capitalize' }}>Type: {detail.customerType || 'individual'}{detail.createdAt ? ` · registered ${detail.createdAt}` : ''}</span>
                   </div>
                 </div>
                 <div className="card-elevated" style={{ padding:16 }}>

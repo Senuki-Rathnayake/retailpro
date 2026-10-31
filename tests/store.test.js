@@ -75,7 +75,7 @@ describe('loading and clearing the store', () => {
     const st = S.currentState();
     expect(st.products).toBe(S.PRODUCTS);
     expect(st.settings).toBe(S.APP_SETTINGS);
-    expect(Object.keys(st)).toHaveLength(24);
+    expect(Object.keys(st)).toHaveLength(27);
   });
   test('clearStore empties every list after sign-out', () => {
     S.clearStore();

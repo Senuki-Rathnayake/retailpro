@@ -514,7 +514,11 @@ export default function ServiceJobsPage() {
     if (form.assignedTo && !availableTechnicians(form.type).some(t => t.id === form.assignedTo)) { toast.error('Selected technician has no free capacity'); return; }
     const { closeAtCounter, ...rest } = form;
     const so = SALES_ORDERS.find(o => o.id === form.salesOrderId);
-    if (so) so.status = closeAtCounter ? 'completed' : 'service-scheduled';
+    if (so) {
+      so.status = closeAtCounter ? 'completed' : 'service-scheduled';
+      if (form.type === 'installation') so.installationRequired = true;   // sales_order.installation_required
+      else so.deliveryRequired = so.deliveryRequired || !closeAtCounter;
+    }
     const newJob = {
       id: newJobId(), ...rest, address: form.address || getCustomer(form.customerId)?.address || '',
       warrantyValid: true, warrantyExpiry: '', serviceFee: 0, billingStatus: 'unbilled',
@@ -574,7 +578,7 @@ export default function ServiceJobsPage() {
           <div className="card-body">
             {toBill.length === 0 ? <div id="all-billed" className="alert alert-success">All completed jobs are billed</div> : (
               <table className="table">
-                <thead><tr><th>Job</th><th>Customer</th><th>Type</th><th>Completed</th><th>Fee</th><th></th></tr></thead>
+                <thead><tr><th>Job</th><th>Customer</th><th>Type</th><th>Completed</th><th>Fee</th><th>Actions</th></tr></thead>
                 <tbody>{newestFirst(toBill, 'completedAt').map(j => (
                   <tr key={j.id}><td>{j.id}</td><td>{getCustomer(j.customerId)?.name}</td><td>{j.type}</td><td>{j.completedAt || '—'}</td><td>{fmt(j.serviceFee || 5000)}</td>
                     <td><button id={`bill-${j.id}`} className="btn btn-primary btn-sm" onClick={() => billJob(j)}>Bill job</button></td></tr>

@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Search, PackageCheck, AlertTriangle, CheckCircle2 } from 'lucide-react';
 import {
   PRODUCTS, SUPPLIERS, PURCHASE_ORDERS, STOCK_MOVEMENTS, BATCHES, SPARE_PART_REQUESTS, REORDER_REQUESTS,
-  SERVICE_JOBS, getUser, newSmId, newBatchId, today, newReorderId, lowStockFirst, newestFirst } from '../data/store';
+  SERVICE_JOBS, CATEGORIES, getUser, newSmId, newBatchId, newCategoryId, today, newReorderId, lowStockFirst, newestFirst } from '../data/store';
 
 const prodName = (id) => PRODUCTS.find(p => p.id === id)?.name || id;
 const supName = (id) => SUPPLIERS.find(s => s.id === id)?.name || id;
@@ -22,7 +22,7 @@ export function ReceivePurchaseTab({ toast, user, onChange }) {
   const pick = (id) => {
     setPoId(id);
     const o = PURCHASE_ORDERS.find(x => x.id === id);
-    setLines(o ? o.items.map(it => ({ productId: it.productId, name: it.name, ordered: it.qty, done: it.receivedQty || 0, qty: 0, batchNo: '' })) : []);
+    setLines(o ? o.items.map(it => ({ productId: it.productId, name: it.name, ordered: it.qty, done: it.receivedQty || 0, qty: 0, batchNo: '', mfgDate: '' })) : []);
   };
 
   const save = () => {
@@ -35,12 +35,16 @@ export function ReceivePurchaseTab({ toast, user, onChange }) {
       item.receivedQty = (item.receivedQty || 0) + l.qty;
       const p = PRODUCTS.find(x => x.id === l.productId);
       if (p) p.stock += l.qty;
-      STOCK_MOVEMENTS.push({ id: newSmId(), productId: l.productId, type: 'in', qty: l.qty, ref: po.id,
-        note: `Stock received${l.batchNo ? ` (Batch: ${l.batchNo})` : ''}`, date: today(), userId: user?.id });
+      let batchId = null;
       if (l.batchNo.trim()) {
-        BATCHES.push({ id: newBatchId(), batchNo: l.batchNo.trim(), productId: l.productId, quantity: l.qty, receivedDate: today(),
+        batchId = newBatchId();
+        BATCHES.push({ id: batchId, batchNo: l.batchNo.trim(), productId: l.productId, quantity: l.qty, receivedDate: today(),
+          manufactureDate: l.mfgDate || null,
           supplierWarrantyExpiry: today().replace(/^\d{4}/, y => String(+y + 1)), supplierRef: po.id, status: 'active' });
       }
+      // stock_movement.batch_id links the movement to the batch it brought in
+      STOCK_MOVEMENTS.push({ id: newSmId(), productId: l.productId, type: 'in', qty: l.qty, ref: po.id, batchId,
+        note: `Stock received${l.batchNo ? ` (Batch: ${l.batchNo})` : ''}`, date: today(), userId: user?.id });
     });
     const complete = po.items.every(it => (it.receivedQty || 0) >= it.qty);
     po.status = complete ? 'received' : 'partial';
@@ -69,7 +73,7 @@ export function ReceivePurchaseTab({ toast, user, onChange }) {
             {po && (
               <>
                 <table className="table" style={{ marginTop: 12 }}>
-                  <thead><tr><th>Product</th><th>Ordered</th><th>Received so far</th><th>Balance</th><th>Receive now</th><th>Batch / serial no.</th></tr></thead>
+                  <thead><tr><th>Product</th><th>Ordered</th><th>Received so far</th><th>Balance</th><th>Receive now</th><th>Batch / serial no.</th><th>Manufactured</th></tr></thead>
                   <tbody>
                     {lines.map((l, i) => {
                       const bal = l.ordered - l.done;
@@ -81,6 +85,8 @@ export function ReceivePurchaseTab({ toast, user, onChange }) {
                             {l.qty > bal && <div style={{ color: 'var(--danger-400)', fontSize: 11 }}>More than balance</div>}</td>
                           <td><input id={`recv-batch-${i}`} className="form-input" placeholder="optional" value={l.batchNo}
                             onChange={e => setLines(ls => ls.map((x, j) => j === i ? { ...x, batchNo: e.target.value } : x))} /></td>
+                          <td><input id={`recv-mfg-${i}`} type="date" className="form-input" max={today()} disabled={!l.batchNo.trim()} value={l.mfgDate}
+                            onChange={e => setLines(ls => ls.map((x, j) => j === i ? { ...x, mfgDate: e.target.value } : x))} /></td>
                         </tr>
                       );
                     })}
@@ -116,7 +122,7 @@ export function BatchesTab({ toast, canMark }) {
   };
   const expired = (b) => b.supplierWarrantyExpiry < today();
   const history = sel ? STOCK_MOVEMENTS.filter(m => m.productId === sel.productId &&
-    ((m.note || '').includes(sel.batchNo) || m.ref === sel.supplierRef || m.ref === `TAG:${sel.batchNo}`)) : [];
+    (m.batchId === sel.id || (m.note || '').includes(sel.batchNo) || m.ref === sel.supplierRef || m.ref === `TAG:${sel.batchNo}`)) : [];
 
   return (
     <div className="card" id="batches">
@@ -133,6 +139,7 @@ export function BatchesTab({ toast, canMark }) {
             <div style={{ fontWeight: 700, marginBottom: 6 }}>{sel.batchNo} – {prodName(sel.productId)}</div>
             <div style={{ fontSize: 13, display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0,1fr))', gap: 4 }}>
               <span>Quantity: {sel.quantity}</span><span>Received: {sel.receivedDate}</span>
+              <span>Manufactured: {sel.manufactureDate || '–'}</span>
               <span>Supplier reference: {sel.supplierRef}</span>
               <span>Supplier warranty until: {sel.supplierWarrantyExpiry} {expired(sel) && <span className="badge badge-danger">expired</span>}</span>
               <span>Status: <span className={`badge badge-${sel.status === 'active' ? 'success' : 'gray'}`}>{sel.status}</span></span>
@@ -153,11 +160,11 @@ export function BatchesTab({ toast, canMark }) {
         )}
 
         <table className="table" style={{ marginTop: 16 }}>
-          <thead><tr><th>Batch / serial</th><th>Product</th><th>Qty</th><th>Received</th><th>Supplier warranty</th><th>Status</th></tr></thead>
+          <thead><tr><th>Batch / serial</th><th>Product</th><th>Qty</th><th>Manufactured</th><th>Received</th><th>Supplier warranty</th><th>Status</th></tr></thead>
           <tbody>
             {newestFirst(BATCHES, 'receivedDate').map(b => (
               <tr key={b.id} style={{ cursor: 'pointer' }} onClick={() => { setQ(b.batchNo); setSel(b); }}>
-                <td style={{ fontFamily: 'var(--font-mono)' }}>{b.batchNo}</td><td>{prodName(b.productId)}</td><td>{b.quantity}</td>
+                <td style={{ fontFamily: 'var(--font-mono)' }}>{b.batchNo}</td><td>{prodName(b.productId)}</td><td>{b.quantity}</td><td>{b.manufactureDate || '–'}</td>
                 <td>{b.receivedDate}</td><td>{b.supplierWarrantyExpiry}{expired(b) && ' ⚠️'}</td>
                 <td><span className={`badge badge-${b.status === 'active' ? 'success' : 'gray'}`}>{b.status}</span></td>
               </tr>
@@ -278,7 +285,7 @@ export function SparePartsTab({ toast, user, canIssue, canManage, onChange }) {
         <div className="card-body">
           {SPARE_PART_REQUESTS.length === 0 ? <div className="alert alert-info">No spare part requests</div> : (
             <table className="table">
-              <thead><tr><th>Request</th><th>Service job</th><th>Part</th><th>Qty</th><th>In stock</th><th>Requested by</th><th>Status</th><th></th></tr></thead>
+              <thead><tr><th>Request</th><th>Service job</th><th>Part</th><th>Qty</th><th>In stock</th><th>Requested by</th><th>Status</th>{canIssue && <th>Actions</th>}</tr></thead>
               <tbody>
                 {newestFirst(SPARE_PART_REQUESTS, 'requestDate').map(r => {
                   const p = PRODUCTS.find(x => x.id === r.productId);
@@ -287,7 +294,7 @@ export function SparePartsTab({ toast, user, canIssue, canManage, onChange }) {
                       <td>{r.id}</td><td>{r.serviceJobId}</td><td>{p?.name || r.productId}</td><td>{r.requestedQty}</td><td>{p?.stock ?? 0}</td>
                       <td>{getUser(r.requestedBy)?.name || r.requestedBy}</td>
                       <td><span className={`badge badge-${r.status === 'issued' ? 'success' : r.status === 'reorder' ? 'danger' : 'warning'}`}>{r.status}</span></td>
-                      <td>{canIssue && OPEN_REQ.includes(r.status) && <button id={`issue-${r.id}`} className="btn btn-primary btn-sm" onClick={() => issue(r)}>Issue</button>}</td>
+                      {canIssue && <td>{OPEN_REQ.includes(r.status) && <button id={`issue-${r.id}`} className="btn btn-primary btn-sm" onClick={() => issue(r)}>Issue</button>}</td>}
                     </tr>
                   );
                 })}
@@ -333,5 +340,92 @@ export function SparePartsTab({ toast, user, canIssue, canManage, onChange }) {
         </div>
       </div>
     </>
+  );
+}
+
+// ------------------------------------------------------------------ Categorise product (category table)
+// A category can sit under a parent category (parent_category_id points to another row of the same table)
+export function CategoriesTab({ toast, canEdit }) {
+  const [, refresh] = useState(0);
+  const blank = { id: null, name: '', parentId: '', description: '' };
+  const [form, setForm] = useState(blank);
+  const set = (k, v) => setForm(f => ({ ...f, [k]: v }));
+  const nameOf = (id) => CATEGORIES.find(c => c.id === id)?.name || '';
+  // a category may not become its own parent (or the parent of one of its parents)
+  const isBelow = (id, maybeParent) => {
+    let p = CATEGORIES.find(c => c.id === maybeParent);
+    for (let guard = 0; p && guard < 50; guard++) { if (p.id === id) return true; p = CATEGORIES.find(c => c.id === p.parentId); }
+    return false;
+  };
+  const parents = CATEGORIES.filter(c => !form.id || (c.id !== form.id && !isBelow(form.id, c.id)));
+  const count = (id) => PRODUCTS.filter(p => p.category === id).length;
+  const save = () => {
+    const name = form.name.trim();
+    if (name.length < 2) { toast.error('Enter the category name'); return; }
+    if (CATEGORIES.some(c => c.id !== form.id && c.name.toLowerCase() === name.toLowerCase())) { toast.error('A category with this name already exists'); return; }
+    if (form.id) {
+      const c = CATEGORIES.find(x => x.id === form.id);
+      Object.assign(c, { name, parentId: form.parentId || null, description: form.description.trim() || null });
+      toast.success(`Category ${name} updated`);
+    } else {
+      CATEGORIES.push({ id: newCategoryId(), name, parentId: form.parentId || null, description: form.description.trim() || null, icon: '📁' });
+      toast.success(`Category ${name} added`);
+    }
+    setForm(blank); refresh(n => n + 1);
+  };
+  const remove = (c) => {
+    if (count(c.id)) { toast.error('This category has products – move them to another category first'); return; }
+    if (CATEGORIES.some(x => x.parentId === c.id)) { toast.error('This category has sub-categories – move them first'); return; }
+    if (!confirm(`Delete category ${c.name}?`)) return;
+    CATEGORIES.splice(CATEGORIES.indexOf(c), 1);
+    toast.success(`Category ${c.name} deleted`); refresh(n => n + 1);
+  };
+  return (
+    <div className="card" id="categories">
+      <div className="card-header"><div className="card-title">🗂️ Categories</div></div>
+      <div className="card-body">
+        {canEdit && (
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 2fr auto', gap: 8, alignItems: 'end', marginBottom: 16 }}>
+            <div className="form-group" style={{ margin: 0 }}>
+              <label className="form-label">Category name *</label>
+              <input id="cat-name" className="form-input" value={form.name} onChange={e => set('name', e.target.value)} placeholder="e.g. Gaming Laptops" />
+            </div>
+            <div className="form-group" style={{ margin: 0 }}>
+              <label className="form-label">Parent category</label>
+              <select id="cat-parent" className="form-select" value={form.parentId || ''} onChange={e => set('parentId', e.target.value)}>
+                <option value="">– None (main category) –</option>
+                {parents.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+              </select>
+            </div>
+            <div className="form-group" style={{ margin: 0 }}>
+              <label className="form-label">Description</label>
+              <input id="cat-description" className="form-input" value={form.description || ''} onChange={e => set('description', e.target.value)} />
+            </div>
+            <div style={{ display: 'flex', gap: 6 }}>
+              <button id="cat-save" className="btn btn-primary" onClick={save}>{form.id ? 'Save' : 'Add'}</button>
+              {form.id && <button className="btn btn-outline" onClick={() => setForm(blank)}>Cancel</button>}
+            </div>
+          </div>
+        )}
+        <table className="table">
+          <thead><tr><th>Code</th><th>Category</th><th>Parent category</th><th>Description</th><th>Products</th>{canEdit && <th>Actions</th>}</tr></thead>
+          <tbody>
+            {CATEGORIES.map(c => (
+              <tr key={c.id} id={`cat-row-${c.id}`}>
+                <td style={{ fontFamily: 'var(--font-mono)', fontSize: 12 }}>{c.id}</td>
+                <td>{c.icon} {c.name}</td>
+                <td>{c.parentId ? nameOf(c.parentId) : <span style={{ color: 'var(--text-muted)' }}>–</span>}</td>
+                <td style={{ fontSize: 12.5, color: 'var(--text-secondary)' }}>{c.description || '–'}</td>
+                <td>{count(c.id)}</td>
+                {canEdit && <td><div className="table-action-cell">
+                  <button className="btn btn-ghost btn-sm" onClick={() => setForm({ id: c.id, name: c.name, parentId: c.parentId || '', description: c.description || '' })}>Edit</button>
+                  <button className="btn btn-ghost btn-sm" style={{ color: 'var(--danger-400)' }} onClick={() => remove(c)}>Delete</button>
+                </div></td>}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
   );
 }

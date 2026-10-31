@@ -33,6 +33,9 @@ export const BATCHES = [];              // batch
 export const SPARE_PART_REQUESTS = [];  // spare_part_request
 export const REORDER_REQUESTS = [];     // stock_alert (type reorder)
 export const CREDIT_REQUESTS = [];      // credit_account (requests)
+export const PERMISSIONS_LIST = [];     // permission table: { id, name, module, action }
+export const ROLE_PERMISSIONS = {};     // role_permission table: role -> [{ name, grantedDate, accessType }]
+export const SETTINGS_META = {};        // system_setting.updated_at / user_id: key -> { updatedAt, updatedBy }
 
 // The lists in the shape used by src/lib/db/schemaMap.js
 export const currentState = () => ({
@@ -41,6 +44,7 @@ export const currentState = () => ({
   salesOrders: SALES_ORDERS, purchaseOrders: PURCHASE_ORDERS, serviceJobs: SERVICE_JOBS, spareRequests: SPARE_PART_REQUESTS,
   stockMovements: STOCK_MOVEMENTS, returns: RETURNS, complaints: COMPLAINTS, payments: PAYMENTS, supplierPayments: SUPPLIER_PAYMENTS,
   reorders: REORDER_REQUESTS, reportSchedules: REPORT_SCHEDULES, reconciliations: RECONCILIATIONS, audit: AUDIT_LOG,
+  permissions: PERMISSIONS_LIST, rolePermissions: ROLE_PERMISSIONS, settingsMeta: SETTINGS_META,
 });
 
 // Put records read from the database into the lists (same list objects, so every page sees them)
@@ -54,6 +58,31 @@ export function applyState(s) {
   }
 }
 export const clearStore = () => applyState({ roles: defaultRoles() });
+
+// ---------- role permissions (permission + role_permission tables) ----------
+const granted = (role) => (ROLE_PERMISSIONS[role] || []).filter(g => g.accessType !== 'deny');
+// pages a role may open ('page:stock' -> 'stock')
+export const pagesOf = (role) => granted(role).filter(g => g.name.startsWith('page:')).map(g => g.name.slice(5));
+// buttons a role may use ('stock.adjust')
+export const actionsOf = (role) => granted(role).filter(g => !g.name.startsWith('page:')).map(g => g.name);
+// Admin ticks the pages of a role: pages kept keep their granted date, new pages get today's date
+export function setRolePages(role, pages) {
+  const now = format(new Date(), 'yyyy-MM-dd');
+  const old = ROLE_PERMISSIONS[role] || [];
+  const keep = old.filter(g => !g.name.startsWith('page:') || pages.includes(g.name.slice(5)));
+  const added = pages.filter(p => !old.some(g => g.name === `page:${p}`)).map(p => ({ name: `page:${p}`, grantedDate: now, accessType: 'allow' }));
+  ROLE_PERMISSIONS[role] = [...keep, ...added];
+  return ROLE_PERMISSIONS[role];
+}
+// latest date a permission of this role was granted
+export const permissionsChangedOn = (role) => (ROLE_PERMISSIONS[role] || []).map(g => g.grantedDate).filter(Boolean).sort().pop() || null;
+
+// system_setting.updated_at and user_id: who changed a setting and when
+export function markSettingsUpdated(keys, userId) {
+  const at = new Date().toISOString();
+  keys.forEach(k => { SETTINGS_META[k] = { updatedAt: at, updatedBy: userId || null }; });
+}
+export const lastSettingsUpdate = () => Object.values(SETTINGS_META).filter(m => m.updatedAt).sort((a, b) => String(b.updatedAt).localeCompare(String(a.updatedAt)))[0] || null;
 
 // ---------- lookups ----------
 export const getCustomer  = (id) => CUSTOMERS.find(c => c.id === id);

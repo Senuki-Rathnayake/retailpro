@@ -245,7 +245,8 @@ export default function ReturnsPage() {
       ...ret,
       inspectionResult: restock ? 'Serviceable / Inspected' : 'Damaged / Write-off',
       canRestock: restock,
-      inventoryUpdated: true
+      inventoryUpdated: true,
+      receivedBy: user?.id,   // returned_item.user_id (storekeeper who received and inspected it)
     };
     if (restock) {
       const pidx = PRODUCTS.findIndex(p => p.id === ret.productId);
@@ -293,6 +294,13 @@ export default function ReturnsPage() {
     toast.warning(`Complaint ${cmp.id} escalated to Senior Management`);
   };
 
+  // the last column of a row: buttons this role may use, or a short result (inspection, rejection, service job)
+  const retAction = (r) => (r.status === 'pending' && canDo('return.approve')) || (r.status === 'approved' && !r.inventoryUpdated && canDo('return.inspect')) ||
+    (r.status === 'approved' && r.refundStatus === 'awaiting-item' && canDo('refund.send')) ||
+    (r.status === 'approved' && r.refundStatus === 'pending' && canDo('refund.pay')) || (r.refundStatus === 'needs-admin' && canDo('refund.adminApprove'));
+  const retCell = (r) => retAction(r) || r.inventoryUpdated || (r.status === 'rejected' && !!r.rejectReason);
+  const cmpAction = (c) => c.status === 'open' && ((!c.escalated && canDo('complaint.escalate')) || (canDo('complaint.toServiceJob') && !c.serviceJobId) || canDo('complaint.resolve'));
+  const cmpCell = (c) => cmpAction(c) || !!c.serviceJobId || c.status === 'resolved';
   const filteredReturns = returns.filter(r => {
     const c = getCustomer(r.customerId);
     return !q || r.id.includes(q) || c?.name.toLowerCase().includes(q.toLowerCase()) || r.reason?.toLowerCase().includes(q.toLowerCase());
@@ -302,6 +310,11 @@ export default function ReturnsPage() {
     const cu = getCustomer(c.customerId);
     return !q || c.id.includes(q) || cu?.name.toLowerCase().includes(q.toLowerCase()) || c.subject?.toLowerCase().includes(q.toLowerCase());
   });
+  // the last column shows only when at least one listed row has something in it
+  const showRetCol = filteredReturns.some(retCell);
+  const retButtons = filteredReturns.some(retAction);
+  const showCmpCol = filteredComplaints.some(cmpCell);
+  const cmpButtons = filteredComplaints.some(cmpAction);
 
   return (
     <div>
@@ -347,11 +360,11 @@ export default function ReturnsPage() {
         <div className="table-container">
           <table className="table">
             <thead>
-              <tr><th>ID</th><th>Type</th><th>Customer</th><th>Product</th><th>Reason</th><th>Warranty</th><th>Status</th><th>Refund</th><th>Actions</th></tr>
+              <tr><th>ID</th><th>Type</th><th>Customer</th><th>Product</th><th>Reason</th><th>Warranty</th><th>Status</th><th>Refund</th>{showRetCol && <th>{retButtons ? 'Actions' : 'Result'}</th>}</tr>
             </thead>
             <tbody>
               {filteredReturns.length === 0 && (
-                <tr><td colSpan={9}><div className="empty-state"><div className="empty-state-icon">🔄</div><div className="empty-state-title">No returns found</div></div></td></tr>
+                <tr><td colSpan={showRetCol ? 9 : 8}><div className="empty-state"><div className="empty-state-icon">🔄</div><div className="empty-state-title">No returns found</div></div></td></tr>
               )}
               {newestFirst(filteredReturns, 'createdAt').map(r => {
                 const c = getCustomer(r.customerId);
@@ -373,7 +386,7 @@ export default function ReturnsPage() {
                         </div>
                       ) : '—'}
                     </td>
-                    <td>
+                    {showRetCol && <td>
                       <div className="table-action-cell">
                         {r.status === 'pending' && canDo('return.approve') && (
                           <>
@@ -401,7 +414,7 @@ export default function ReturnsPage() {
                         )}
                         {r.status === 'rejected' && r.rejectReason && <span className="badge badge-danger" style={{ fontSize:10 }}>{r.rejectReason}</span>}
                       </div>
-                    </td>
+                    </td>}
                   </tr>
                 );
               })}
@@ -414,11 +427,11 @@ export default function ReturnsPage() {
         <div className="table-container">
           <table className="table">
             <thead>
-              <tr><th>ID</th><th>Customer</th><th>Subject</th><th>Priority</th><th>Status</th><th>Date</th><th>Actions</th></tr>
+              <tr><th>ID</th><th>Customer</th><th>Subject</th><th>Priority</th><th>Status</th><th>Date</th>{showCmpCol && <th>{cmpButtons ? 'Actions' : 'Result'}</th>}</tr>
             </thead>
             <tbody>
               {filteredComplaints.length === 0 && (
-                <tr><td colSpan={7}><div className="empty-state"><div className="empty-state-icon">💬</div><div className="empty-state-title">No complaints found</div></div></td></tr>
+                <tr><td colSpan={showCmpCol ? 7 : 6}><div className="empty-state"><div className="empty-state-icon">💬</div><div className="empty-state-title">No complaints found</div></div></td></tr>
               )}
               {newestFirst(filteredComplaints, 'createdAt').map(c => {
                 const cu = getCustomer(c.customerId);
@@ -433,7 +446,7 @@ export default function ReturnsPage() {
                     <td><span className={`badge badge-${c.priority==='urgent'?'danger':c.priority==='high'?'warning':'gray'}`}>{c.priority}</span></td>
                     <td><span className={`badge badge-${c.status==='resolved'?'success':'warning'}`}>{c.status}</span></td>
                     <td style={{ fontSize:12 }}>{c.createdAt}</td>
-                    <td>
+                    {showCmpCol && <td>
                       <div className="table-action-cell">
                         {c.status === 'open' && (
                           <>
@@ -463,7 +476,7 @@ export default function ReturnsPage() {
                         {c.serviceJobId && <span className="badge badge-primary" style={{ fontSize:10 }}>🔧 {c.serviceJobId}</span>}
                         {c.status === 'resolved' && <div style={{ fontSize:12, color:'var(--success-400)' }}>✅ {c.resolution?.slice(0,25)}</div>}
                       </div>
-                    </td>
+                    </td>}
                   </tr>
                 );
               })}

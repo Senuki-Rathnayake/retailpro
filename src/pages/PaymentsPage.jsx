@@ -119,6 +119,8 @@ export default function PaymentsPage() {
   };
 
   // SD 48 Approve credit limits: payment history and approval authority are checked
+  // the Actions column of the credit requests shows only when a request can be decided by this role
+  const creditActions = CREDIT_REQUESTS.some(r => (r.status === 'pending' && canDo('credit.approve')) || (r.status === 'escalated' && canDo('credit.approveEscalated')));
   const decideCredit = (r, approve) => {
     const c = CUSTOMERS.find(x => x.id === r.customerId);
     if (!approve) { r.status = 'rejected'; r.decidedBy = user?.id; toast.success(`Credit request ${r.id} rejected`); bump(n => n + 1); return; }
@@ -128,7 +130,7 @@ export default function PaymentsPage() {
       r.status = 'escalated'; r.escalatedBy = user?.id;
       toast.warning(`Request exceeds your authority (${fmt(APP_SETTINGS.creditApprovalLimit)}) – escalated to Admin`); bump(n => n + 1); return;
     }
-    if (c) c.creditLimit = r.requestedLimit;
+    if (c) { c.creditLimit = r.requestedLimit; c.creditApprovedBy = user?.id; c.creditReviewDate = today(); }   // credit_account.user_id / last_review_date
     r.status = 'approved'; r.decidedBy = user?.id; r.decidedAt = today();
     toast.success(`Credit limit approved – ${c?.name} now ${fmt(r.requestedLimit)}`);
     bump(n => n + 1);
@@ -293,9 +295,9 @@ export default function PaymentsPage() {
       {activeTab === 'credit' && (
         <div className="table-container" id="credit-requests">
           <table className="table">
-            <thead><tr><th>Request</th><th>Customer</th><th>Current limit</th><th>Requested</th><th>Unpaid invoices</th><th>Date</th><th>Status</th><th></th></tr></thead>
+            <thead><tr><th>Request</th><th>Customer</th><th>Current limit</th><th>Requested</th><th>Unpaid invoices</th><th>Date</th><th>Status</th>{creditActions && <th>Actions</th>}</tr></thead>
             <tbody>
-              {CREDIT_REQUESTS.length === 0 && <tr><td colSpan={8}><div className="empty-state-title">No credit requests</div></td></tr>}
+              {CREDIT_REQUESTS.length === 0 && <tr><td colSpan={creditActions ? 8 : 7}><div className="empty-state-title">No credit requests</div></td></tr>}
               {newestFirst(CREDIT_REQUESTS, 'requestDate').map(r => {
                 const c = getCustomer(r.customerId);
                 const unpaid = SALES_ORDERS.filter(o => o.customerId === r.customerId && o.paymentStatus !== 'paid');
@@ -307,10 +309,10 @@ export default function PaymentsPage() {
                     <td>{unpaid.length ? `${unpaid.length} (${fmt(unpaid.reduce((a, o) => a + o.balance, 0))})` : 'none'}</td>
                     <td style={{ fontSize:12 }}>{r.requestDate}</td>
                     <td><span className={`badge badge-${r.status === 'approved' ? 'success' : r.status === 'rejected' ? 'danger' : 'warning'}`}>{r.status}</span>{r.reason && <div style={{ fontSize:11 }}>{r.reason}</div>}</td>
-                    <td>{canAct && <div className="table-action-cell">
+                    {creditActions && <td>{canAct && <div className="table-action-cell">
                       <button id={`credit-approve-${r.id}`} className="btn btn-success btn-sm" onClick={() => decideCredit(r, true)}>Approve</button>
                       <button id={`credit-reject-${r.id}`} className="btn btn-danger btn-sm" onClick={() => decideCredit(r, false)}>Reject</button>
-                    </div>}</td>
+                    </div>}</td>}
                   </tr>
                 );
               })}
@@ -428,7 +430,7 @@ export default function PaymentsPage() {
         <div className="table-container">
           <table className="table">
             <thead>
-              <tr><th>Invoice</th><th>Customer</th><th>Total</th><th>Paid</th><th>Balance</th><th>Date</th><th>Age</th><th>Status</th><th>Actions</th></tr>
+              <tr><th>Invoice</th><th>Customer</th><th>Total</th><th>Paid</th><th>Balance</th><th>Date</th><th>Age</th><th>Status</th>{(canDo('payment.remind') || canDo('payment.flagOverdue')) && <th>Actions</th>}</tr>
             </thead>
             <tbody>
               {outstandingInvoices.length === 0 && (
@@ -451,7 +453,7 @@ export default function PaymentsPage() {
                         {o.flaggedOverdue && <span className="badge badge-danger">Overdue</span>}
                       </div>
                     </td>
-                    <td>
+                    {(canDo('payment.remind') || canDo('payment.flagOverdue')) && <td>
                       <div className="table-action-cell">
                         {canDo('payment.remind') && <button
                           className="btn btn-outline btn-sm"
@@ -473,7 +475,7 @@ export default function PaymentsPage() {
                           <AlertTriangle size={12} /> Flag Overdue
                         </button>}
                       </div>
-                    </td>
+                    </td>}
                   </tr>
                 );
               })}
